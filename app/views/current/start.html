@@ -1,0 +1,250 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Get healthcare cover for travelling abroad
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+<style>
+  td.nhsuk-table__cell:nth-child(1) {
+    /*background-color: red;*/
+    width: 75%;
+  }
+  td.nhsuk-table__cell:nth-child(2),
+  td.nhsuk-table__cell:nth-child(3) {
+    text-align: center;
+   /* width: 15%;*/
+  }
+  th.table-heading:nth-child(2),
+  th.table-heading:nth-child(3) {
+    text-align: center;
+  }
+</style>
+
+{% block content %}
+<div class="nhsuk-grid-row">
+   <div class="nhsuk-grid-column-two-thirds">
+      <h1>Get healthcare cover for travelling abroad</h1>
+
+      <!-- <p>Use this service to check if you are eligible and apply for cover.</p> -->
+
+      <p>Use this service to:</p>
+      <ul>
+         <li>check if you are eligible and apply for cover</li>
+         <li>get a replacement UK GHIC or UK EHIC</li>
+         <li>renew an expired UK GHIC or UK EHIC</li>
+      </ul>
+
+      <div class="nhsuk-inset-text">
+         <span class="nhsuk-u-visually-hidden">Information: </span>
+         <p>You only need to apply if you plan to visit the EU, Norway, Iceland, Lichtenstein, or Switzerland.</p>
+       </div>
+
+       <h2>New applications</h2>
+
+      <p>If you’re eligible, you’ll receive a card that can be used to get emergency treatment.</p>
+      <p>Depending on your circumstances this will be either a:</p>
+      <ul>
+         <li>UK Global Health Insurance Card (GHIC</li>
+         <li>UK European Health Insurance Card (EHIC)</li>
+      </ul>
+      <p>During your application we’ll let you know what you’re entitled to. Both cards provide the same level of cover but are valid in different countries.</p>
+
+      <details class="nhsuk-details nhsuk-expander">
+         <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+            Where the cards are valid and what they cover</span>
+         </summary>
+         <div class="nhsuk-details__text">
+            <p>A UK GHIC or existing EHIC covers you when visiting an EU country. A UK GHIC may become valid in more countries in the future.</p>
+            <p>A new UK EHIC covers you when visiting an EU country, Norway, Iceland, Liechtenstein, or Switzerland.</p>
+         </div>
+      </details>
+
+      <table role="table" class="nhsuk-table-responsive">
+         <caption class="nhsuk-table__caption">healthcare cover</caption>
+         <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+               <th role="columnheader" class="table-heading" scope="col">
+                  Countries
+               </th>
+               <th role="columnheader" class="table-heading" scope="col">
+                  UK GHIC
+               </th>
+               <th role="columnheader" class="table-heading" scope="col">
+                  UK EHIC
+               </th>
+            </tr>
+         </thead>
+         <tbody class="nhsuk-table__body">
+            <tr role="row" class="nhsuk-table__row">
+               <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"> </span>European Union (EU)<br> 
+               </td>
+               <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span>
+                  <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+               </td>
+               <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span>
+                  <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+               </td>
+            </tr>
+            <tr role="row" class="nhsuk-table__row">
+               <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"> </span>Norway, Iceland, Liechtenstein and Switzerland
+               </td>
+               <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span>
+                  <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                     <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+                     <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+                  </svg>
+               </td>
+               <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span>
+                  <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+               </td>
+            </tr>
+            <tr role="row" class="nhsuk-table__row">
+               <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"> </span>In the future, more countries may be added 
+               </td>
+               <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span>
+                  <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+               </td>
+               <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading"></span>
+                  <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                     <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+                     <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+                  </svg>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+
+      {{ details({
+        "text": " What countries are in the European Union (EU)?",
+        "HTML": "
+        <p>The EU countries are:</p>
+        <p>Austria, Belgium, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden.</p>
+        "
+      }) }}
+
+      <br>
+
+      <p>Both cards give you access to state provided healthcare while staying in an EU country for things like:</p>
+      <ul>
+         <li>emergency treatment</li>
+         <li>visits to A&E</li>
+         <li>routine maternity care, unless you're <a href="">going abroad to give birth</a></li>
+      </ul>
+
+      {% from 'warning-callout/macro.njk' import warningCallout %}
+
+      {{ warningCallout({
+        "heading": "If you already have a card",
+        "HTML": "<p>If you already have a card, you can still use it until the expiry date shown on the card. You can apply for a new card up to 6 months before your current card expires.</p>
+        <p>If you have moved to another country to live or work since receiving your current card, you may no longer be covered and we will need to check your eligibility again.</p>"
+      }) }}
+
+
+      <h2>Replace a lost or stolen card</h2>
+
+      <p>
+         Use this service to get a replacement UK EHIC or UK GHIC for yourself or anyone else on your application. If you have lost an old style EHIC you will need to make a new application to get a new UK EHIC or UK GHIC.
+      </p>
+
+      <h2>Renew an expired card</h2>
+
+      <p>
+         Use this service to renew a new UK EHIC or UK GHIC.
+      </p>
+
+      <h2>Before you start</h2>
+
+      <p>You'll need:</p>
+
+      <ul>
+        <li>Your National Insurance number</li>
+        <li>The National Insurance numbers of any other people you are applying for who are 16 years old or over</li>
+      </ul>
+
+      <div class="nhsuk-inset-text">
+         <span class="nhsuk-u-visually-hidden">Information: </span>
+         <p>Depending on your circumstances we may also ask for you NHS number, if you have one.</p>
+      </div>
+
+      <a href="new-application" class="nhsuk-button nhsuk-u-margin-bottom-8">
+        Start now
+        <!-- Check eligibility and apply -->
+      </a>
+
+      <p><a href="terms">Who can apply using this service</a></p>
+
+      <br>
+
+      <details class="nhsuk-details nhsuk-expander">
+         <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+            If you are abroad and do not have your card with you</span>
+         </summary>
+         <div class="nhsuk-details__text">
+            <p>You can get a Provisional Replacement Certificate (PRC) to prove your entitlement to medically necessary healthcare if you travel to the EU without your UK GHIC, UK EHIC or EHIC and need treatment during your visit. This includes if you travel and require treatment before you have received your card.</p>
+            <p>You should only apply for a PRC at the point you need treatment. PRCs cannot be issued in advance.</p>
+            <p>To apply for a PRC contact <a href="https://www.nhsbsa.nhs.uk/contact-us/overseas-healthcare-services-contact-us">NHS Overseas Healthcare Services</a>.</p>
+         </div>
+      </details>
+
+      <details class="nhsuk-details nhsuk-expander">
+         <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+            Arrange travel insurance</span>
+         </summary>
+         <div class="nhsuk-details__text">
+            <p>Your UK EHIC or UK GHIC card is not a substitute for travel insurance. It may not cover all health costs and never covers repatriation costs. Make sure you have travel insurance as well as an UK EHIC or UK GHIC.</p>
+         </div>
+      </details>
+
+      <details class="nhsuk-details nhsuk-expander">
+         <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+            How we use your information</span>
+         </summary>
+         <div class="nhsuk-details__text">
+            <p>To process your application, we may share your information (where appropriate) with:</p>
+            <ul>
+               <li>Indesser and LexisNexis, third party data providers acting on our behalf who will make a UK residency check</li>
+               <li>NHS Digital to validate EU Settlement Scheme status</li>
+            </ul>
+            <p>For more information about how we use your information please read our privacy notice.</p>
+         </div>
+      </details>
+
+   </div>
+
+</div>
+{% endblock %}

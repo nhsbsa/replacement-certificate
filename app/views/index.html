@@ -1,89 +1,145 @@
-<!-- Use this page as the index for your project -->
-
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
-<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!-- 
-  In /views/layout.html you can:
-    - change the header and footer 
-    - add custom CSS and JavaScript
--->
-
-<!-- Set the page title -->
 {% block pageTitle %}
-  NHS.UK prototype kit
-{% endblock %}
 
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+   Apply for a Provisional Replacement Certificate (PRC)
+
+{% endblock %}
 {% block beforeContent %}
 {% endblock %}
-
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
-{% block outerContent %}
-{% endblock %}
-
-<!-- For adding page content -->
-<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
 
-      <!-- Change the page title here -->
+<style type="text/css">
+
+   p.current {
+      float: right; 
+      color: black; 
+      padding: 10px 0;
+   }
+
+   .nhsuk-inset-text{ 
+      border-color: #d5281b;
+      color: #d5281b;
+      font-weight: bold;
+   }
+   
+</style>
+
+<div class="nhsuk-grid-row">
+   <div class="nhsuk-grid-column-full">
       <h1>
-        NHS.UK prototype kit
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
+         Overseas Healthcare Services
+         <!-- <span class="nhsuk-caption-xl nhsuk-caption--bottom">Apply for an EHIC</span> -->
+         <span class="nhsuk-caption-xl nhsuk-caption--bottom">Apply for a Provisional Replacement Certificate (PRC)</span>
       </h1>
-
-      <!-- Add your content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
-
       <p class="nhsuk-lede-text">
-        This kit lets you rapidly create HTML prototypes of NHS services.
+         Enable UK citizens to get medically necessary treatment when they visit an EU/EEA country or Switzerland and don't have their GHIC or EHIC with them.
       </p>
 
       <hr>
 
-      <h2>
-        About this page
-      </h2>
+      <!-- <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>Don't use any of this prototype code on production services, it doesn't adhere to development standards and is hacked together quickly and roughly.</p>
+      </div> -->
 
-      <p>
-        Use this page as the index for your project.
-      </p>
-      
-      <p>
-        You'll find the code for this page at <strong>/app/views/index.html</strong>.
-      </p>
+      <h3>Project phases</h3>
 
-      <p>
-        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
-      </p>
+      <!-- {{ actionLink({
+        "text": "Live",
+        "href": "live"
+      }) }}
+
+      {{ actionLink({
+        "text": "Beta",
+        "href": "beta"
+      }) }} -->
+
+      {{ actionLink({
+        "text": "Alpha",
+        "href": "alpha"
+      }) }}
 
       <hr>
 
-      <h2>
-        Get started
-      </h2>
-
-      <p>Get started by using the:</p>
+      <!-- <h3>Experimental work</h3>
 
       <ul>
-        <li>
-          <a href="/docs/how-tos">how to guides</a>
-        </li>
-        <li>
-          <a href="/docs/page-templates">page templates</a>
-        </li>
-        <li>
-          code snippets for styles and components from the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>
-        </li>
+         <li>Nationality capture</li>
+         <li>NHS.UK landing page</li>
+         <li>Tasklist</li>
       </ul>
 
-      <!-- End of content -->
+      {{ actionLink({
+        "text": "Experimental work",
+        "href": "experimental"
+      }) }}
 
-    </div>
-  </div>
+      <hr> -->
+
+      <h3>Usability testing prototype</h3>
+
+      <p>(Opens in a new tab)</p>
+
+      <p>
+         Username: <strong>nhsbsa</strong>
+         <br>
+         Password: <strong>nhsbsa</strong>
+      </p>
+
+      <div class="nhsuk-action-link">
+        <a class="nhsuk-action-link__link" href="https://ehic-user-research.herokuapp.com/" target="_blank">
+          <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+          </svg>
+          <span class="nhsuk-action-link__text">
+            Usability testing prototype
+         </span>
+        </a>
+      </div>
+
+      <hr>
+
+      <h3>Get healthcare for travelling abroad prototype</h3>
+
+      <p>(Opens in a new tab)</p>
+
+      <p>
+         Username: <strong>nhsbsa</strong>
+         <br>
+         Password: <strong>nhsbsa</strong>
+      </p>
+
+      <div class="nhsuk-action-link">
+        <a class="nhsuk-action-link__link" href="https://ehic-prototype.herokuapp.com/" target="_blank">
+          <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+          </svg>
+          <span class="nhsuk-action-link__text">
+            Get healthcare for travelling abroad prototype
+         </span>
+        </a>
+      </div>
+
+      <!-- <hr>
+
+      <h3>Design History</h3>
+
+      <p>A log of design decisions made (link opens in a new tab).</p>
+
+      <div class="nhsuk-action-link">
+        <a class="nhsuk-action-link__link" href="https://ehic-design-history.herokuapp.com/" target="_blank">
+          <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+          </svg>
+          <span class="nhsuk-action-link__text">
+            'Get healthcare cover for travelling abroad' Design History
+         </span>
+        </a>
+      </div> -->
+
+   </div>
+</div>
 {% endblock %}

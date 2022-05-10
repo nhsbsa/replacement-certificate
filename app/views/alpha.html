@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+
+   Apply for a Provisional Replacement Certificate (PRC)
+
+{% endblock %}
+{% block beforeContent %}
+{% endblock %}
+{% block content %}
+
+<style type="text/css">
+
+   p.current {
+      float: right; 
+      color: black; 
+      padding: 10px 0;
+      /*font-weight: bold;*/
+   }
+
+   .nhsuk-tag--green {
+    background-color: #cce5d8;
+    border: 1px solid #004c23;
+    color: #004c23;
+    margin-left: 10px;
+}
+
+.nhsuk-details__text {
+      width: 66.6%;
+   }
+   
+</style>
+
+<div class="nhsuk-grid-row">
+   <div class="nhsuk-grid-column-full">
+      <h1>
+         Overseas Healthcare Services
+         <span class="nhsuk-caption-xl nhsuk-caption--bottom">Apply for a Provisional Replacement Certificate (PRC)</span>
+      </h1>
+      <h3>Alpha</h3>
+      <p>May 2022</p>
+      <!-- <p>GDS Alpha assessment - 22 September 2020
+          <strong class="nhsuk-tag nhsuk-tag--green">
+           Passed
+         </strong>
+      </p> -->
+      
+      <hr>
+
+      <div class="nhsuk-expander-group">
+         <details class="nhsuk-details nhsuk-expander">
+            <summary class="nhsuk-details__summary">
+               <span class="nhsuk-details__summary-text">
+               Alpha (Sprint 49)
+               </span>
+            <p class="current">CURRENT SPRINT</p>
+            </summary>
+            <div class="nhsuk-details__text">
+               <p>Sprint commencing: 5 May 2022</p>
+               <h3>Journeys</h3>
+               <ul>
+                  <li></li>
+               </ul>
+               <hr>
+               {{ actionLink({
+               "text": "Apply for a Provisional Replacement Certificate (PRC)",
+               "href": "/current/start"
+               }) }}
+            </div>
+         </details>
+      </div>
+
+   </div>
+</div>
+{% endblock %}
