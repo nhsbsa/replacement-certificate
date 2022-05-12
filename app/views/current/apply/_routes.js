@@ -21,14 +21,14 @@ const axios = require('axios');
 //   }
 // })
 
-// Who are you applying for?
-router.post('/who-apply-for', function (req, res) {
-  var applyFor = req.session.data['applyFor']
+// Who are you applying for? 
+router.post('/applyFor', function (req, res) {
+  var applyFor = req.session.data['who-apply-for']
   if (applyFor == "Myself") {
-    res.redirect('/receiving-treatment')
+    res.redirect('receiving-treatment')
   }
   else {
-    res.redirect('/who-apply-for')
+    res.redirect('who-apply-for')
   }
 })
 
