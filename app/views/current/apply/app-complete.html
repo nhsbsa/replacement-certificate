@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Application complete
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <div class="nhsuk-panel nhsuk-panel--confirmation nhsuk-u-margin-bottom-4">
+            <h1 class="nhsuk-panel__title">
+                Application submitted
+              </h1>
+              <div class="nhsuk-panel__body">
+                Your reference number
+                <br>
+                <strong>25002123</strong>
+              </div>
+            </div>
+
+            <p>A confirmation email has been sent to <strong>{{ data['email-address'] }}</strong></p>
+
+          <h2>What happens next</h2>
+
+          <p>We will now review your application.</p>
+
+          <p>To check your eligibility for a GHIC, we need to check your UK residency. This is not a credit check and will not affect your credit score in any way.</p>
+           
+          <!-- <p>If you added any dependants to your application, we will also make the necessary checks to confirm they are eligible.</p> -->
+           
+          <p>Once we have done this, we will process your application.</p>
+           
+          <p>
+          <!-- If you gave us an email address, w -->
+          We will email you and let you know if your application has been successful or not. If we require any further information
+        <!-- , both for yourself and any dependants you have added,  -->
+        we will contact you and let you know what we need.</p>
+             
+          <!-- <p>If you did not give us an email address, we will contact you by post.</p> -->
+           
+          <!-- <p>Once all the information we need has been accepted, most customers receive their GHIC within 15 working days.</p> -->
+           
+          <p>For information on how we use your data, please refer to our <a href="contact">privacy notice</a>.</p>
+
+            <form action="../start" method="post">
+
+              {{ button({
+              "text": "Finish"
+            }) }}
+
+          </form>
+            
+        </div>
+      </div>
+{% endblock %}

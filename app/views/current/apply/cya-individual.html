@@ -1,0 +1,195 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <form action="app-complete" method="post">
+
+        <h1>Check your answers before sending your application</h1>
+
+        <h2>Your details</h2>
+
+        {{ summaryList({
+          rows: [
+            
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: "Karen Francis"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "full-name",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Date of birth"
+              },
+              value: {
+                text: "15 March 1984"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "dob",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Home address"
+              },
+              value: {
+                html: "73 Roman Rd<br>Leeds<br> LS2 5ZN"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "address-lookup",
+                    text: "Change",
+                    visuallyHiddenText: "home address"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Do you plan to permanently move to another country in the next 5 years?"
+              },
+              value: {
+                html: '<p>Yes</p>'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "emigrate",
+                    text: "Change",
+                    visuallyHiddenText: "Email address"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Move date"
+              },
+              value: {
+                html: '<p>1 August 2024</p>'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "emigration-date",
+                    text: "Change",
+                    visuallyHiddenText: "Email address"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                html: '<p>karen.francis@example.com</p>'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "email-address",
+                    text: "Change",
+                    visuallyHiddenText: "email address"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Contact telephone number"
+              },
+              value: {
+                html: '<p>07123 456 7890</p>'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "phone-number",
+                    text: "Change",
+                    visuallyHiddenText: " Contact telephone number"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Type of healthcare cover"
+              },
+              value: {
+                html: '<p>GHIC</p>'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "card-type",
+                    text: "Change",
+                    visuallyHiddenText: "Card type"
+                  }
+                ]
+              }
+            }
+            
+          ]
+        }) }}
+
+        <h2>Now send your application</h2>
+        <p>By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+        {{ button({
+          "text": "Accept and send"
+        }) }}
+
+
+      </form>
+
+     <!-- {{ backLink({
+        "href": "add-another-yn",
+        "text": "Change my previous answer"
+      }) }} -->
+
+    </div>
+  </div>
+{% endblock %}
