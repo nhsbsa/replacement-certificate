@@ -1,7 +1,9 @@
-% extends "layout.html" %}
+<!-- START HERE -->
+
+{% extends "layout.html" %}
 
 {% block pageTitle %}
-    Is the treatment state-funded?
+  Is the treatment state-funded?
 {% endblock %}
 
 {% block beforeContent %}
@@ -58,7 +60,7 @@
         {% endcall %}
 
         {{ details({
-            "text": "More information about state-funded treatment",
+            "text": "More information about what medical treatment PRC covers",
             "HTML": "
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             "
@@ -71,10 +73,11 @@
       </form>
 
      {{ backLink({
-        "href": "",
+        "href": "medically-necessary",
         "text": "Change my previous answer"
       }) }}
       
     </div>
   </div>
 {% endblock %}
+

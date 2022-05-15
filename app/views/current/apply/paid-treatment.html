@@ -1,7 +1,9 @@
-% extends "layout.html" %}
+<!-- START HERE -->
+
+{% extends "layout.html" %}
 
 {% block pageTitle %}
-    Have you paid towards the treatment?
+  Have you paid towards the treatment?
 {% endblock %}
 
 {% block beforeContent %}
@@ -61,10 +63,11 @@
       </form>
 
      {{ backLink({
-        "href": "",
+        "href": "state-funded",
         "text": "Change my previous answer"
       }) }}
       
     </div>
   </div>
 {% endblock %}
+

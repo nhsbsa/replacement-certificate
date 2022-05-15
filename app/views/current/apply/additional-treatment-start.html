@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    What is the date you expect to return?
+    What date did you start receiving treatment?
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,11 +26,11 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-        <form action="full-name" method="post">
+        <form action="return-date" method="post">
             <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
                 <legend class="nhsuk-fieldset__legend nhsuk-label--l">
                     <h1 class="nhsuk-fieldset__heading">
-                        What is the date you expect to return?
+                      What date did you start receiving treatment?
                     </h1>
                 </legend>
                 <span class="nhsuk-hint" id="example-hint">
@@ -72,7 +72,7 @@
         </form>
 
      {{ backLink({
-        "href": "treatment-start",
+        "href": "",
         "text": "Change my previous answer"
       }) }}
       

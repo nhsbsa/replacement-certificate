@@ -28,12 +28,20 @@
     <div class="nhsuk-grid-column-three-quarters">
       <form action="facilityDetails" method="post">
 
+        {% call fieldset({
+          legend: {
+            text: "What are the treatment facility details?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
         <div class="nhsuk-form-group">
             <label class="nhsuk-label" for="location-picker-1">
-              Country of nationality
+              Country of treatment
             </label>
-
-            <select id="location-picker-1" class="treatment-country" name="location-picker-1" type="text">
+            
+            <select id="location-picker-1" class="nhsuk-input nhsuk-input--width-30" name="location-picker-1" type="text">
               <option value=""></option>
               <option value="af" id="af" name="nationalityMakeup">Afghanistan</option>
               <option value="al">Albania</option>
@@ -285,14 +293,6 @@
 
           </div>
 
-        {% call fieldset({
-          legend: {
-            text: "What are the treatment facility details?",
-            classes: "nhsuk-fieldset__legend--l",
-            isPageHeading: true
-          }
-        }) %}
-
         {{ input({
           "label": {
             "text": "Treatment facility name"
@@ -315,13 +315,14 @@
         {% endcall %}
 
         {{ button({
+          "href": "treatment-start",
           "text": "Continue"
         }) }}
 
       </form>
 
      {{ backLink({
-        "href": "",
+        "href": "studying-uk-citizen",
         "text": "Change my previous answer"
       }) }}
 

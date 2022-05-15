@@ -33,7 +33,7 @@
               Country of nationality
             </label>
 
-            <select id="location-picker-1" class="treatment-country" name="location-picker-1" type="text">
+            <select id="location-picker-1" class="nhsuk-input nhsuk-input--width-30" name="location-picker-1" type="text">
               <option value=""></option>
               <option value="af" id="af" name="nationalityMakeup">Afghanistan</option>
               <option value="al">Albania</option>
@@ -315,6 +315,7 @@
         {% endcall %}
 
         {{ button({
+          "href": "additional-treatment-start",
           "text": "Continue"
         }) }}
 

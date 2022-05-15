@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  You aren't eligible for an EHIC
+{% endblock %}
+
+{% block beforeContent %}
+
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        You are not eligible for an EHIC
+      </h1>
+
+      <p class="nhsuk-lede-text">
+        You cannot apply for this service if you have held UK citizenship and do not hold EU nationality.
+      </p>
+
+      <!-- <h3>Check if you're eligible for settled status</h3>
+      <p>If you’re an EU, EEA or Swiss citizen, you and your family can apply to the <a href="https://www.gov.uk/settled-status-eu-citizens-families">EU Settlement Scheme</a> to continue living in the UK after 30 June 2021.</p>
+      <p> If your application is successful, you’ll get either settled or pre-settled status.</p> -->
+
+      <!-- <p class="nhsuk-lede-text">
+        Visit the 
+          <a href="https://service-manual.nhs.uk">NHS digital service manual</a> 
+        for guidance and examples.
+      </p> -->
+
+      {{ backLink({
+        "href": "nationality",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>  
+
+  </div>
+{% endblock %}

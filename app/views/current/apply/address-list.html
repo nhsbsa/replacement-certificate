@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is your home address?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <form action="two-years-address" method="post">
+
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              What is your home address?
+            </h1>
+          </legend>
+
+          <h3>Select an address</h3>
+
+          <div class="nhsuk-form-group">
+          {% if (items | length > 0)  %}
+            <select class="nhsuk-select" id="select-1" name="select-1">
+              <option value="0" selected disabled>
+                {{ items | length }} {% if (items | length > 1)  %}addresses{% else %}address{% endif %} found.
+                {# 20 addresses found #}
+              </option>
+              {% for item in items %}
+                <option value="{{ item | replace(" ,", "") }}, {{ data['postcode'] }}">{{ item | replace(" ,", "") }}, {{ data['postcode'] }}</option>
+              {% endfor %}
+            </select>
+            {% else %}
+              <p>No address found.</p>
+            {% endif %}
+          </div>
+        </fieldset>
+
+        <button class="nhsuk-button" type="submit">Continue</button>
+
+        <p><a href="address-manual">I can't find my address in the list</a></p>
+
+      </form>
+
+     {{ backLink({
+        "href": "address-lookup",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

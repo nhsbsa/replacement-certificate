@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Have you ever held UK citizenship?
+    Do you have healthcare cover from another country?
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,19 +27,19 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="inEuUkCitizenship" method="post">
+      <form action="coverAnother" method="post">
 
         {% call fieldset({
           legend: {
-            text: "Have you ever held UK citizenship?",
+            text: "Do you have healthcare cover from another country?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
         {{ radios({
-          "idPrefix": "inEuUkCitizenship",
-          "name": "inEuUkCitizenship",
+          "idPrefix": "cover-from-another",
+          "name": "cover-from-another",
           "items": [
             {
               "value": "Yes",
@@ -60,11 +60,11 @@
 
       </form>
 
-      {{ backLink({
-        "href": "where-do-you-live",
+     {{ backLink({
+        "href": "",
         "text": "Change my previous answer"
       }) }}
-
+      
     </div>
   </div>
 {% endblock %}
