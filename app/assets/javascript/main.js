@@ -12,3 +12,5 @@ accessibleAutocomplete.enhanceSelectElement({
 accessibleAutocomplete.enhanceSelectElement({
     selectElement: document.querySelector('#eu-location-picker')
   })
+
+

@@ -134,42 +134,42 @@ router.post('/coverAnother', function (req, res) {
 })
 
 // What is your nationality?
-function arraysContainSame(a, b) {
-  a = Array.isArray(a) ? a : [];
-  b = Array.isArray(b) ? b : [];
-  return a.length === b.length && a.every(el => b.includes(el));
-}
+// function arraysContainSame(a, b) {
+//   a = Array.isArray(a) ? a : [];
+//   b = Array.isArray(b) ? b : [];
+//   return a.length === b.length && a.every(el => b.includes(el));
+// }
 
-router.post('/nationality', function (req, res) {
+// router.post('/nationality', function (req, res) {
 
-  var nationality = req.session.data['nationality'];
-  console.log(nationality);
+//   var nationality = req.session.data['nationality'];
+//   console.log(nationality);
 
-  if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
-    res.redirect('studying-uk-citizen')
-  }
-  else if (nationality == 'UK') {
-    res.redirect('studying-uk-citizen')
-  }
-  else if (arraysContainSame(nationality, ['UK', 'EU, EEA or Swiss', 'Other']) == true) {
-    res.redirect('uk-citizenship')
-  }
-  else if (arraysContainSame(nationality, ['EU, EEA or Swiss', 'Other']) == true) {
-    res.redirect('uk-citizenship')
-  }
-  else if (nationality == 'EU, EEA or Swiss') {
-    res.redirect('uk-citizenship')
-  }
-  else if (nationality == 'Other') {
-    res.redirect('studying-uk-citizen')
-  }
-  else if (arraysContainSame(nationality, ['UK', 'EU, EEA or Swiss']) == true) {
-    res.redirect('birth-country')
-  }
-  else {
-    res.redirect('nationality')
-  }
-})
+//   if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
+//     res.redirect('studying-uk-citizen')
+//   }
+//   else if (nationality == 'UK') {
+//     res.redirect('studying-uk-citizen')
+//   }
+//   else if (arraysContainSame(nationality, ['UK', 'EU, EEA or Swiss', 'Other']) == true) {
+//     res.redirect('uk-citizenship')
+//   }
+//   else if (arraysContainSame(nationality, ['EU, EEA or Swiss', 'Other']) == true) {
+//     res.redirect('uk-citizenship')
+//   }
+//   else if (nationality == 'EU, EEA or Swiss') {
+//     res.redirect('uk-citizenship')
+//   }
+//   else if (nationality == 'Other') {
+//     res.redirect('studying-uk-citizen')
+//   }
+//   else if (arraysContainSame(nationality, ['UK', 'EU, EEA or Swiss']) == true) {
+//     res.redirect('birth-country')
+//   }
+//   else {
+//     res.redirect('nationality')
+//   }
+// })
 
 // Have you ever held UK citizenship?
 router.post('/ukCitizenship', function (req, res) {
