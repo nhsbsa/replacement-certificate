@@ -58,22 +58,33 @@
         "
       }) }}
 
-      <!-- <br> -->
-
-      <!-- <p>Both cards give you access to state provided healthcare while staying in an EU country for things like:</p>
-      <ul>
-         <li>emergency treatment</li>
-         <li>visits to A&E</li>
-         <li>routine maternity care, unless you're <a href="">going abroad to give birth</a></li>
-      </ul> -->
+    
 
       {% from 'warning-callout/macro.njk' import warningCallout %}
 
       {{ warningCallout({
         "heading": "Important",
-        "HTML": "<p>You only need a PRC if you are receving medical treament while abroad. To make sure you have healthcare cover before you travel, <a href=\"https://www.nhs.uk/nhs-services/online-services/find-nhs-number/\" target=\"_blank\">apply for a UK Global Health insurance Card (UK GHIC) or UK European Health insurance Card (UK EHIC)</a>.</p>"
+        "HTML": "<p>You only need a PRC at the point of receving medical treament while abroad. To make sure you have healthcare cover before you travel, <a href=\"https://www.nhs.uk/nhs-services/online-services/find-nhs-number/\" target=\"_blank\">apply for a UK Global Health insurance Card (UK GHIC) or UK European Health insurance Card (UK EHIC)</a>.</p>"
       }) }}
 
+      <h2>What is covered</h2>
+
+      <p>A PRC will cover you for medically necessary healthcare that cannot reasonably wait until you return home.</p>
+
+      <p>Medically necessary healthcare includes things like:</p>
+
+      <ul>
+        <li>emergency treatment and visits to A&E</li>
+        <li>treatment for a long-term or pre-existing medical condition</li>
+        <li>routine medical care for pre-existing conditions that need monitoring</li>
+        <li>routine maternity care, as long as you're not <a href="https://www.nhs.uk/using-the-nhs/healthcare-abroad/going-abroad-for-treatment/giving-birth-outside-the-uk/">going abroad to give birth</a></li>
+        <li>oxygen therapy and kidney dialysis</li>
+      </ul>
+
+      <div class="nhsuk-inset-text">
+         <span class="nhsuk-u-visually-hidden">Information: </span>
+         <p>A PRC only covers you for treatment you receive at a public hospital, clinic or other treatment facilty. If you are receiving private treatment, you need to consult your travel insurance.</p>
+      </div>
 
       <h2>Before you start</h2>
 
@@ -81,15 +92,17 @@
 
       <ul>
         <li>The name of the hospital, clinic or facilty where you are receiving medical treatment</li>
-        <li>An email address for the hospital, clinic or facilty where you are receiving medical treatment</li>
+        <li>The email address for the specific department of the organisation providing your treatment</li>
+        <li>Your email address</li>
       </ul>
+
 
       <!-- <div class="nhsuk-inset-text">
          <span class="nhsuk-u-visually-hidden">Information: </span>
-         <p>Depending on your circumstances we may also ask for you NHS number, if you have one.</p>
+         <p>Hospital staff will be able to provide you with a valid email address.</p>
       </div> -->
 
-      <a href="apply/who-apply-for" class="nhsuk-button nhsuk-u-margin-bottom-8">
+      <a href="who-apply-for" class="nhsuk-button nhsuk-u-margin-bottom-8">
         Start now
       </a>
 
