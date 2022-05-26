@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Applying for a Provisional Replacement Certificate (PRC) for your child
+  What is your date of birth?
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,17 +26,37 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="ordinarily-live" method="post">
+      <!-- <form action="nino" method="post"> -->
+      <form action="know-nino" method="post">
 
-        <h2>Applying for a Provisional Replacement Certificate (PRC) for your child</h2>
-
-        <p>In order to process your application we need to:</p>
-        
-        <ul>
-          <li>take your details</li>
-          <li>take your childs details</li>
-        </ul>
+        {{ dateInput({
+        "id": "example",
+        "namePrefix": "parent",
+        "fieldset": {
+          "legend": {
+            "text": "What is your date of birth?",
+            "classes": "nhsuk-label--l",
+            "isPageHeading": true
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 1984"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
 
         {{ button({
           "text": "Continue"
@@ -48,7 +68,7 @@
         "href": "javascript:history.go(-1)",
         "text": "Change my previous answer"
       }) }}
-      
+
     </div>
   </div>
 {% endblock %}

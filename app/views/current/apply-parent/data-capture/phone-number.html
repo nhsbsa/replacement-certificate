@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Applying for a Provisional Replacement Certificate (PRC) for your child
+  What is your contact telephone number?
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,17 +26,31 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="ordinarily-live" method="post">
+      <!-- <form action="add-child-1" method="post"> -->
+      <!-- <form action="add-someone" method="post"> -->
+      <form action="email-address" method="post">
 
-        <h2>Applying for a Provisional Replacement Certificate (PRC) for your child</h2>
+        {% call fieldset({
+          legend: {
+            text: "What is your contact telephone number?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
 
-        <p>In order to process your application we need to:</p>
+        <p>We ask for this in case we need to contact you about your application.</p>
         
-        <ul>
-          <li>take your details</li>
-          <li>take your childs details</li>
-        </ul>
+        {{ input({
+          "label": {
+            "text": "Enter your contact telephone number (optional)"
+          },
+          "id": "input-width-30",
+          "name": "phone-number",
+          "classes": "nhsuk-input--width-30"
+        }) }}
+
+
+        {% endcall %}
 
         {{ button({
           "text": "Continue"
@@ -48,7 +62,7 @@
         "href": "javascript:history.go(-1)",
         "text": "Change my previous answer"
       }) }}
-      
+
     </div>
   </div>
 {% endblock %}

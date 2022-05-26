@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Applying for a Provisional Replacement Certificate (PRC) for your child
+
+  Have you paid towards the cost of medical treatment?
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,16 +29,40 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="ordinarily-live" method="post">
+      <form action="paidTreatment" method="post">
 
-        <h2>Applying for a Provisional Replacement Certificate (PRC) for your child</h2>
+        {% call fieldset({
+          legend: {
+            text: "Have you paid towards the cost of medical treatment?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
 
-        <p>In order to process your application we need to:</p>
-        
-        <ul>
-          <li>take your details</li>
-          <li>take your childs details</li>
-        </ul>
+        <p>This includes things like A, B and C but not X, Y or Z. </p>
+
+        <p>In some countries you may need to pay for some things like doctor's visits.</p>
+
+        <!-- {{ insetText({
+          "HTML": "<p>In some countries you may need to pay medical costs  </p>"
+        }) }} -->
+
+        {{ radios({
+          "idPrefix": "paid-treatment",
+          "name": "paid-treatment",
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
 
         {{ button({
           "text": "Continue"
@@ -52,3 +78,4 @@
     </div>
   </div>
 {% endblock %}
+

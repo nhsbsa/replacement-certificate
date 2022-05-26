@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Applying for a Provisional Replacement Certificate (PRC) for your child
+    Have you lived at this address for the past 2 years?
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,16 +27,32 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="ordinarily-live" method="post">
+      <form action="twoYearsAddress" method="post">
 
-        <h2>Applying for a Provisional Replacement Certificate (PRC) for your child</h2>
+        {% call fieldset({
+          legend: {
+            text: "Have you lived at this address for the past 2 years?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
 
-        <p>In order to process your application we need to:</p>
-        
-        <ul>
-          <li>take your details</li>
-          <li>take your childs details</li>
-        </ul>
+        {{ radios({
+          "idPrefix": "two-years-address",
+          "name": "two-years-address",
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
 
         {{ button({
           "text": "Continue"

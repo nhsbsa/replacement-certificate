@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you know {{ data['child-first-name'] }}'s National Insurance number?
+{% endblock %}
+
+{% block beforeContent %}
+
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <form action="knowNino" method="post">
+
+        <h2>Do you know {{ data['child-firstname'] }}'s National Insurance number?</h2>
+
+        {% call fieldset({
+          legend: {
+            text: "",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+      
+        <!-- <p>Your NHS number is a 10 digit number. For example, <span class=\"nhsuk-u-nowrap\">485 777 3456</span>.</p>
+        <p>You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.</p> -->
+
+        <!-- <p>It’s on their National Insurance card, benefit letter, payslip or P60.
+         For example,
+          <span class="nhsuk-u-nowrap\">‘QQ 12 34 56 C’</span>.</p> -->
+        
+
+        {{ radios({
+          "idPrefix": "know-nino",
+          "name": "child-know-nino",
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+
+
+        <!-- {{ details({
+          "text": "Where to find your NHS number",
+          "HTML": "
+          <p>You can find your NHS number:</p>
+
+        <ul>
+          <li>on any letter the NHS has sent you</li>
+          <li>on a prescription</li>
+          <li>by logging in to a GP practice online service</li>
+          <li>by downloading and logging into the NHS App on your smartphone or tablet</li>
+        </ul>
+          "
+        }) }} -->
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+      {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+
+
+ <!--  {{ radios({
+          "idPrefix": "partners",
+          "name": "partners",
+          "items": [
+            {
+              "value": "Spouse",
+              "text": "Yes, add spouse or civil partner"
+            },
+            {
+              "value": "Durable",
+              "text": "Yes, add unmarried (durable) partner"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        }) }} -->
+{% endblock %}

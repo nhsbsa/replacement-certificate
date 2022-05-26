@@ -38,7 +38,7 @@ router.post('/applyForChild', function (req, res) {
 router.post('/parentGuardian', function (req, res) {
   var parentGuardian = req.session.data['parent-guardian']
   if (parentGuardian == "Yes") {
-    res.redirect('apply-parent/info')
+    res.redirect('apply-parent/treatment-country')
   }
   else if (parentGuardian == "No") {
     res.redirect('')

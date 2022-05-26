@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Applying for a Provisional Replacement Certificate (PRC) for your child
+  Where do you ordinarily live?
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,16 +27,36 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="ordinarily-live" method="post">
+      <form action="ordinaryResidence" method="post">
 
-        <h2>Applying for a Provisional Replacement Certificate (PRC) for your child</h2>
+        {% call fieldset({
+          legend: {
+            text: "Where do you ordinarily live?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
 
-        <p>In order to process your application we need to:</p>
-        
-        <ul>
-          <li>take your details</li>
-          <li>take your childs details</li>
-        </ul>
+        {{ radios({
+          "idPrefix": "ordinarily-live",
+          "name": "ordinarily-live",
+          "items": [
+            {
+              "value": "UK",
+              "text": "UK"
+            },
+            {
+              "value": "EU, Norway, Iceland, Liechtenstein or Switzerland",
+              "text": "EU, Norway, Iceland, Liechtenstein or Switzerland"
+            },
+            {
+              "value": "Other",
+              "text": "Other"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
 
         {{ button({
           "text": "Continue"
@@ -52,3 +72,4 @@
     </div>
   </div>
 {% endblock %}
+

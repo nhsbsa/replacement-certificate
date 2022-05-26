@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Applying for a Provisional Replacement Certificate (PRC) for your child
+  What was your previous address?
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,21 +26,34 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="ordinarily-live" method="post">
+      <form action="previous-address-list" method="post">
 
-        <h2>Applying for a Provisional Replacement Certificate (PRC) for your child</h2>
+        {% call fieldset({
+          legend: {
+            text: "What was your previous address?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
 
-        <p>In order to process your application we need to:</p>
-        
-        <ul>
-          <li>take your details</li>
-          <li>take your childs details</li>
-        </ul>
+        {{ input({
+          "label": {
+            "text": "Postcode",
+            "classes": "nhsuk-label--m"
+          },
+          "id": "input-width-10",
+          "name": "test-width-10",
+          "classes": "nhsuk-input--width-10"
+        }) }}
+
+
+        {% endcall %}
 
         {{ button({
-          "text": "Continue"
+          "text": "Find address"
         }) }}
+
+        <p><a href="previous-address-manual">Enter address manually</a></p>
 
       </form>
 
@@ -48,7 +61,7 @@
         "href": "javascript:history.go(-1)",
         "text": "Change my previous answer"
       }) }}
-      
+
     </div>
   </div>
 {% endblock %}

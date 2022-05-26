@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Applying for a Provisional Replacement Certificate (PRC) for your child
+    Do you need to get a PRC for any other treatment facilities?
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,16 +27,32 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="ordinarily-live" method="post">
+      <form action="secondAdditionalTreatment" method="post">
 
-        <h2>Applying for a Provisional Replacement Certificate (PRC) for your child</h2>
+        {% call fieldset({
+          legend: {
+            text: "Do you need to get a PRC for any other treatment facilities?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
 
-        <p>In order to process your application we need to:</p>
-        
-        <ul>
-          <li>take your details</li>
-          <li>take your childs details</li>
-        </ul>
+        {{ radios({
+          "idPrefix": "additional-facility-2",
+          "name": "additional-facility-2",
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
 
         {{ button({
           "text": "Continue"

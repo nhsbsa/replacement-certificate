@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Applying for a Provisional Replacement Certificate (PRC) for your child
+    Has your child received treatment in the last 6 months?
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,16 +27,34 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="ordinarily-live" method="post">
+      <form action="sixMonths" method="post">
 
-        <h2>Applying for a Provisional Replacement Certificate (PRC) for your child</h2>
+        {% call fieldset({
+          legend: {
+            text: "Has your child received medical treatment in the last 6 months?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
 
-        <p>In order to process your application we need to:</p>
-        
-        <ul>
-          <li>take your details</li>
-          <li>take your childs details</li>
-        </ul>
+        <p>You can apply for a PRC if you're child is currently receiving treatment or if they received treatment within the last 6 months and the hospital has asked you get a backdated PRC.</p>
+
+        {{ radios({
+          "idPrefix": "last-six-months",
+          "name": "last-six-months",
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
 
         {{ button({
           "text": "Continue"
