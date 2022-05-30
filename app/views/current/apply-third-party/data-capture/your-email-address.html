@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    Has your child received treatment in the last 6 months?
+  What is your email address?
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,33 +26,27 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="sixMonths" method="post">
+      <form action="../cya" method="post">
 
         {% call fieldset({
           legend: {
-            text: "Has your child received medical treatment in the last 6 months?",
+            text: "What is your email address?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <p>You can apply for a PRC if your child is currently receiving treatment or if they received treatment within the last 6 months and the hospital has asked you get a backdated PRC.</p>
+        <p>We will send a copy of the Provisional Replacement Certificate to the email address you provide.</p>
 
-        {{ radios({
-          "idPrefix": "last-six-months",
-          "name": "last-six-months",
-          "items": [
-            {
-              "value": "Yes",
-              "text": "Yes"
-            },
-            {
-              "value": "No",
-              "text": "No"
-            }
-          ]
+        {{ input({
+          "label": {
+            "text": "Enter your email address"
+          },
+          "id": "input-width-30",
+          "name": "your-email-address",
+          "classes": "nhsuk-input--width-30"
         }) }}
+
 
         {% endcall %}
 
@@ -66,7 +60,7 @@
         "href": "javascript:history.go(-1)",
         "text": "Change my previous answer"
       }) }}
-      
+
     </div>
   </div>
 {% endblock %}

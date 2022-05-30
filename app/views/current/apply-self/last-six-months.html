@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    Has your child received treatment in the last 6 months?
+    Have you received treatment in the last 6 months?
 {% endblock %}
 
 {% block beforeContent %}
@@ -31,13 +31,13 @@
 
         {% call fieldset({
           legend: {
-            text: "Has your child received medical treatment in the last 6 months?",
+            text: "Have you received medical treatment in the last 6 months?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <p>You can apply for a PRC if your child is currently receiving treatment or if they received treatment within the last 6 months and the hospital has asked you get a backdated PRC.</p>
+        <p>You can apply for a PRC if you are currently receiving treatment or if you received treatment within the last 6 months and the hospital has asked you get a backdated PRC.</p>
 
         {{ radios({
           "idPrefix": "last-six-months",

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is your email address?
+  What is your home address?
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,25 +26,59 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="child/full-name" method="post">
+      <form action="two-years-address" method="post">
 
         {% call fieldset({
           legend: {
-            text: "What is your email address?",
+            text: "What is your home address?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <p>We will send a copy of the Provisional Replacement Certificate to the email address you provide.</p>
+        {{ input({
+          "label": {
+          "text": "Building and street"
+          },
+          "id": "input-width-20",
+          "name": "test-width-20",
+          "classes": "nhsuk-input--width-20"
+        }) }}
 
         {{ input({
           "label": {
-            "text": "Enter your email address"
+          "text": ""
           },
-          "id": "input-width-30",
-          "name": "email-address",
-          "classes": "nhsuk-input--width-30"
+          "id": "input-width-20",
+          "name": "test-width-20",
+          "classes": "nhsuk-input--width-20"
+        }) }}
+
+        {{ input({
+          "label": {
+            "text": "Town or city"
+          },
+          "id": "input-width-20",
+          "name": "test-width-20",
+          "classes": "nhsuk-input--width-20"
+        }) }}
+
+        {{ input({
+          "label": {
+            "text": "County"
+          },
+          "id": "input-width-20",
+          "name": "test-width-20",
+          "classes": "nhsuk-input--width-20"
+        }) }}
+
+        {{ input({
+          "label": {
+            "text": "Postcode"
+          },
+          "id": "input-width-10",
+          "name": "test-width-10",
+          "classes": "nhsuk-input--width-10"
         }) }}
 
 

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    Has your child received treatment in the last 6 months?
+    Has {{ data['patient-firstname'] }} lived at this address for the past 2 years?
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,21 +27,21 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="sixMonths" method="post">
+      <form action="twoYearsAddress" method="post">
+
+        <h2>Has {{ data['patient-firstname'] }} lived at this address for the past 2 years?</h2>
 
         {% call fieldset({
           legend: {
-            text: "Has your child received medical treatment in the last 6 months?",
+            text: "",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <p>You can apply for a PRC if your child is currently receiving treatment or if they received treatment within the last 6 months and the hospital has asked you get a backdated PRC.</p>
-
         {{ radios({
-          "idPrefix": "last-six-months",
-          "name": "last-six-months",
+          "idPrefix": "two-years-address",
+          "name": "two-years-address",
           "items": [
             {
               "value": "Yes",

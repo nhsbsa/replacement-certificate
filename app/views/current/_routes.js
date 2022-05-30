@@ -10,7 +10,8 @@ const axios = require('axios');
 router.post('/applyFor', function (req, res) {
   var applyFor = req.session.data['who-apply-for']
   if (applyFor == "Myself") {
-    res.redirect('apply/receiving-treatment')
+    // res.redirect('apply/receiving-treatment')
+    res.redirect('apply-self/treatment-country')
   }
   else if (applyFor == "Someone else") {
     res.redirect('apply-for-child')
@@ -27,7 +28,7 @@ router.post('/applyForChild', function (req, res) {
     res.redirect('parent-guardian')
   }
   else if (applyForChild == "No") {
-    res.redirect('apply-on-behalf/')
+    res.redirect('apply-third-party/treatment-country')
   }
   else {
     res.redirect('apply-for-child')
@@ -41,7 +42,7 @@ router.post('/parentGuardian', function (req, res) {
     res.redirect('apply-parent/treatment-country')
   }
   else if (parentGuardian == "No") {
-    res.redirect('')
+    res.redirect('apply-third-party/treatment-country')
   }
   else {
     res.redirect('parent-guardian')

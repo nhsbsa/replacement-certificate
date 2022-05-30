@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  You cannot apply for a Provisional Replacement Certificate
+{% endblock %}
+
+{% block beforeContent %}
+
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>You cannot apply for a Provisional Replacement Certificate</h1>
+
+      <p class="nhsuk-lede-text">
+        If you have paid towards the cost of medical treatment which doesn't include X, Y or Z, you need to pay the full amount of treatment and claim a refund.
+      </p>
+
+      <h2>Claiming a refund</h2>
+
+      <p>Depending on the country you visit you may be expected to pay all or part of your bill upfront and then claim a refund afterwards.</p>
+      <p>Some countries ask patients to pay a contribution towards the cost of their care, such as for prescription costs. This is known as a co-payment or patient share.</p>
+      <p>You can claim back the difference between the total bill and the co-payment, but the actual co-payment is not refundable.</p>
+      <p>Keep all receipts and any paperwork. You or your insurance company may need them if you're applying for a refund.</p>
+
+
+
+      {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>  
+
+  </div>
+{% endblock %}
