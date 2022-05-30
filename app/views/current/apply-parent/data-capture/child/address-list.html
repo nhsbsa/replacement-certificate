@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is {{ data['child-first-name'] }}'s home address?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <form action="../cya" method="post">
+
+        <h2>What is {{ data['child-firstname'] }}'s home address?</h2>
+
+        {% call fieldset({
+          legend: {
+            text: "",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <h3>Select an address</h3>
+
+        {{ select({
+          "id": "select-1",
+          "name": "select-1",
+          "label": {
+          },
+          "items": [
+            {
+              "value": 1,
+              "text": "6 addresses found",
+              "selected": true
+            },
+            {
+              "value": 2,
+              "text": "1 Hadrian Park, Leeds, LS12 9AA"
+            },
+            {
+              "value": 3,
+              "text": "2 Hadrian Park, Leeds, LS12 9AA"
+            },
+            {
+              "value": 4,
+              "text": "3 Hadrian Park, Leeds, LS12 9AA"
+            },
+            {
+              "value": 5,
+              "text": "4 Hadrian Park, Leeds, LS12 9AA"
+            },
+            {
+              "value": 6,
+              "text": "5 Hadrian Park, Leeds, LS12 9AA"
+            },
+            {
+              "value": 7,
+              "text": "6 Hadrian Park, Leeds, LS12 9AA"
+            }
+          ]
+        }) }}
+
+
+        {% endcall %}
+
+
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+                <p><a href="address-manual">I can't find my address in the list</a></p>
+
+
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

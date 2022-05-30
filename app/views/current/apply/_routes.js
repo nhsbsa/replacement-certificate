@@ -22,15 +22,15 @@ const axios = require('axios');
 // })
 
 // Who are you applying for? 
-router.post('/applyFor', function (req, res) {
-  var applyFor = req.session.data['who-apply-for']
-  if (applyFor == "Myself") {
-    res.redirect('receiving-treatment')
-  }
-  else {
-    res.redirect('who-apply-for')
-  }
-})
+// router.post('/applyFor', function (req, res) {
+//   var applyFor = req.session.data['who-apply-for']
+//   if (applyFor == "Myself") {
+//     res.redirect('receiving-treatment')
+//   }
+//   else {
+//     res.redirect('who-apply-for')
+//   }
+// })
 
 // Are you receiving medical care at the moment?
 router.post('/receivingTreatment', function (req, res) {

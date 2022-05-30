@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    What date did the patient start receiving treatment?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+        <form action="ordinarily-live" method="post">
+            <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
+                <legend class="nhsuk-fieldset__legend nhsuk-label--l">
+                    <h1 class="nhsuk-fieldset__heading">
+                      What date did the patient start receiving treatment?
+                    </h1>
+                </legend>
+
+                <p>
+                    Your PRC will last for 28 days starting from the first day of treatment. If the treatment lasts for longer than 28 days you will need to reapply.
+                <p>
+
+                {% from 'radios/macro.njk' import radios %}
+                {% from 'input/macro.njk' import input %}
+
+                {% set emailHtml %}
+                  {{ input({
+                    id: "start-today",
+                    name: "start-today",
+                    classes: "nhsuk-u-width-two-thirds",
+                    label: {
+                      text: "Today"
+                    }
+                  }) }}
+                {% endset -%}
+
+                {% set chooseDateHtml %}
+                    {{ dateInput({
+                      "id": "example",
+                      "namePrefix": "choose-start-date",
+                      "fieldset": {
+                        "legend": {
+                          "classes": "nhsuk-label--l",
+                          "isPageHeading": true
+                        }
+                      },
+                      "hint": {
+                        "text": "For example, 19 2 2022"
+                      },
+                      "items": [
+                        {
+                          "name": "day",
+                          "classes": "nhsuk-input--width-2"
+                        },
+                        {
+                          "name": "month",
+                          "classes": "nhsuk-input--width-2"
+                        },
+                        {
+                          "name": "year",
+                          "classes": "nhsuk-input--width-4"
+                        }
+                      ]
+                    }) }}
+                {% endset -%}
+
+
+                {{ radios({
+                  "idPrefix": "start-date",
+                  "name": "start-date",
+                  "fieldset": {
+                    "legend": {
+
+                      "classes": "nhsuk-fieldset__legend--l",
+                      "isPageHeading": "false"
+                    }
+                  },
+                  "items": [
+                    {
+                      "value": "start-today",
+                      "text": "Today"
+                    },
+                    {
+                      "value": "text",
+                      "text": "Choose another date",
+                      "conditional": {
+                        "html": chooseDateHtml
+                      }
+                    }
+                  ]
+                }) }}
+
+
+               <!--  "hint": {
+                    "text": ""
+                  }, -->
+
+            </fieldset>
+
+            <button class="nhsuk-button" type="submit">Continue</button>
+        </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+      
+    </div>
+  </div>
+{% endblock %}
