@@ -227,7 +227,7 @@ router.post('/additionalTreatment', function (req, res) {
   }
 })
 
-// Have you lived at this address for the past 2 years?
+// Have you lived at this address for the past 6 months?
 router.post('/twoYearsAddress', function (req, res) {
   var twoYearsAddress = req.session.data['two-years-address']
   if (twoYearsAddress == "Yes") {

@@ -40,13 +40,16 @@
         <!-- <p>Your NHS number is a 10 digit number. For example, <span class=\"nhsuk-u-nowrap\">485 777 3456</span>.</p>
         <p>You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.</p> -->
 
-        <p>It’s on your National Insurance card, benefit letter, payslip or P60. For example,
-          <span class="nhsuk-u-nowrap\">‘QQ 12 34 56 C’</span>.</p>
+        <p>
+          Providing your National Insurance number helps us find your record.
+          It’s on your National Insurance card, benefit letter, payslip or P60. For example,
+          <nobr>‘QQ 12 34 56 C’</nobr>.
+        </p>
         
 
         {{ radios({
           "idPrefix": "know-nino",
-          "name": "parent-know-nino",
+          "name": "patient-know-nino",
           "items": [
             {
               "value": "Yes",
