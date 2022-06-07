@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    Have you lived at this address for the past 6 months?
+
+  Have you paid towards the cost of medical treatment?
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,19 +29,23 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="twoYearsAddress" method="post">
+      <form action="coPayment" method="post">
 
         {% call fieldset({
           legend: {
-            text: "Have you lived at this address for the past 6 months?",
+            text: "Did you pay a patient contribution?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex augue, facilisis nec lacus sed, tristique ornare nisi.</p>
+
+
+
         {{ radios({
-          "idPrefix": "two-years-address",
-          "name": "two-years-address",
+          "idPrefix": "co-payment",
+          "name": "co-payment",
           "items": [
             {
               "value": "Yes",
@@ -68,3 +74,4 @@
     </div>
   </div>
 {% endblock %}
+

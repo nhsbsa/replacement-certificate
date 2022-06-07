@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    Have you lived at this address for the past 6 months?
+  Do you know your OHS reference number?
 {% endblock %}
 
 {% block beforeContent %}
+
 
   <!-- Phase banner -->
   <div class="app-phase-banner">
@@ -26,20 +27,26 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="twoYearsAddress" method="post">
+      <form action="knowOhs" method="post">
 
         {% call fieldset({
           legend: {
-            text: "Have you lived at this address for the past 6 months?",
+            text: "Do you know your OHS reference number?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
+      
+        <p>
+          Your OHS reference number is a X digit number. For example, <nobr>20001234</nobr>. Providing your OHS reference number helps us find your record.
+        </p>
+
+        <p>You can find it on your UK GHIC or UK EHIC confirmation email. </p>
+        
 
         {{ radios({
-          "idPrefix": "two-years-address",
-          "name": "two-years-address",
+          "idPrefix": "know-ohs",
+          "name": "patient-know-ohs",
           "items": [
             {
               "value": "Yes",
@@ -54,17 +61,33 @@
 
         {% endcall %}
 
+
+        <!-- {{ details({
+          "text": "Where to find your NHS number",
+          "HTML": "
+          <p>You can find your NHS number:</p>
+
+        <ul>
+          <li>on any letter the NHS has sent you</li>
+          <li>on a prescription</li>
+          <li>by logging in to a GP practice online service</li>
+          <li>by downloading and logging into the NHS App on your smartphone or tablet</li>
+        </ul>
+          "
+        }) }} -->
+
         {{ button({
           "text": "Continue"
         }) }}
 
       </form>
 
-     {{ backLink({
+      {{ backLink({
         "href": "javascript:history.go(-1)",
         "text": "Change my previous answer"
       }) }}
-      
+
     </div>
   </div>
+
 {% endblock %}

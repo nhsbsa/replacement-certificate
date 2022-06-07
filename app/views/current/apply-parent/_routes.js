@@ -39,13 +39,28 @@ router.post('/sixMonths', function (req, res) {
 router.post('/paidTreatment', function (req, res) {
   var paidTreatment = req.session.data['paid-treatment']
   if (paidTreatment == "Yes") {
-    res.redirect('kickouts/ineligible-paid')
+    // res.redirect('kickouts/ineligible-paid')
+    res.redirect('paid-treatment-details')
   }
   if (paidTreatment == "No") {
     res.redirect('treatment-facility-name-1')
   }
   else {
     res.redirect('paid-treatment')
+  }
+})
+
+// Co-payment
+router.post('/coPayment', function (req, res) {
+  var coPayment = req.session.data['co-payment']
+  if (coPayment == "Yes") {
+    res.redirect('treatment-facility-name-1')
+  }
+  if (coPayment == "No") {
+    res.redirect('kickouts/ineligible-paid')
+  }
+  else {
+    res.redirect('paid-treatment-details')
   }
 })
 
@@ -123,6 +138,20 @@ router.post('/regS1', function (req, res) {
   }
 })
 
+// Do you know your OHS reference number?
+router.post('/data-capture/knowOhs', function (req, res) {
+  var knowOhs = req.session.data['patient-know-ohs']
+  if (knowOhs == "Yes") {
+    res.redirect('ohs')
+  }
+  if (knowOhs == "No") {
+    res.redirect('know-nino')
+  }
+  else {
+    res.redirect('know-ohs')
+  }
+})
+
 // Do you know your National Insurance number?
 router.post('/data-capture/knowNino', function (req, res) {
   var knowNino = req.session.data['parent-know-nino']
@@ -137,7 +166,7 @@ router.post('/data-capture/knowNino', function (req, res) {
   }
 })
 
-// Have you lived at this address for the past 2 years?
+// Have you lived at this address for the past 6 months?
 router.post('/data-capture/twoYearsAddress', function (req, res) {
   var twoYearsAddress = req.session.data['two-years-address']
   if (twoYearsAddress == "Yes") {
