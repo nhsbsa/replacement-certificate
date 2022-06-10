@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the name of the hospital, clinic or treatment facility?
+  What is the email address of the hospital, clinic or treatment facility?
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,7 +14,7 @@
           Prototype
         </strong>
         <span class="app-phase-banner__text">
-        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+          This is a prototype - your <a href="#">feedback</a> will help us improve it.
         </span>
       </p>
     </div>
@@ -26,32 +26,30 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="treatment-facility-email-1" method="post">
+      <form action="additional-facility" method="post">
 
         {% call fieldset({
           legend: {
-            text: "What is the name of the hospital, clinic or treatment facility?",
+            text: "What is the email address of the hospital, clinic or treatment facility?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <p>Make sure that you spell the hospital name correctly.</p>
-        <!-- Ospedale Santobono Entrata Pronto Soccorso -->
-
         {{ input({
           "label": {
-            "text": "Name"
+            "text": "Email address"
           },
           "id": "input-width-30",
-          "name": "treatment-name-1",
-          "classes": "nhsuk-input--width-30"
+          "name": "treatment-email",
+          "classes": "nhsuk-input--width-30",
+          "value": ""
         }) }}
+
 
         {% endcall %}
 
         {{ button({
-          "href": "treatment-facility-email-1",
           "text": "Continue"
         }) }}
 

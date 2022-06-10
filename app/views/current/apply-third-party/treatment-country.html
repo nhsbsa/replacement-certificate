@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What country is the patient receiving medical treatment?
+  What country are you receiving medical treatment?
 {% endblock %}
 
 {% block beforeContent %}
@@ -35,11 +35,11 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="facilityDetails" method="post">
+      <form action="treatment-country" method="post">
 
         {% call fieldset({
           legend: {
-            text: "What country is the patient receiving medical treatment?",
+            text: "What country are you receiving medical treatment?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
@@ -100,9 +100,9 @@
       }) }} -->
       
       {{ details({
-        "text": "They're receiving treatment in a different country",
+        "text": "I'm receiving treatment in a different country",
         "HTML": "
-        <p>If the patient is receiving treatment outside the EU, Norway, Iceland, Liechtenstein or Switzerland, they cannot get a PRC. You need to contact their travel insurance provider to find out what to do next.</p>
+        <p>If you are receiving treatment outside the EU, Norway, Iceland, Liechtenstein or Switzerland, you cannot get a PRC. You need to contact your travel insurance provider to find out what to do next.</p>
         "
       }) }}
 
@@ -110,7 +110,6 @@
         {% endcall %}
 
         {{ button({
-          "href": "receiving-treatment",
           "text": "Continue"
         }) }}
 

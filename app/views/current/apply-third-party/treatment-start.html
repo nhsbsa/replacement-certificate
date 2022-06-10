@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    What date did the patient start receiving treatment?
+    What date did you start receiving treatment?
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,7 +30,7 @@
             <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
                 <legend class="nhsuk-fieldset__legend nhsuk-label--l">
                     <h1 class="nhsuk-fieldset__heading">
-                      What date did the patient start receiving treatment?
+                      What date did you start receiving treatment?
                     </h1>
                 </legend>
 
@@ -95,7 +95,7 @@
                   },
                   "items": [
                     {
-                      "value": "start-today",
+                      "value": todayDate,
                       "text": "Today"
                     },
                     {
