@@ -43,9 +43,10 @@
         <!-- <p>Your NHS number is a 10 digit number. For example, <span class=\"nhsuk-u-nowrap\">485 777 3456</span>.</p>
         <p>You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.</p> -->
 
-        <!-- <p>It’s on their National Insurance card, benefit letter, payslip or P60.
-         For example,
-          <span class="nhsuk-u-nowrap\">‘QQ 12 34 56 C’</span>.</p> -->
+        <p>
+          It’s on their National Insurance card, benefit letter, payslip or P60. For example,
+          <nobr>‘QQ 12 34 56 C’</nobr>.
+        </p>
         
 
         {{ radios({
@@ -54,11 +55,11 @@
           "items": [
             {
               "value": "Yes",
-              "text": "Yes"
+              "text": "Yes, I know their National Insurance number"
             },
             {
               "value": "No",
-              "text": "No"
+              "text": "No, I do not know their National Insurance number"
             }
           ]
         }) }}
@@ -66,24 +67,21 @@
         {% endcall %}
 
 
-
-        <!-- {{ details({
-          "text": "Where to find your NHS number",
-          "HTML": "
-          <p>You can find your NHS number:</p>
-
-        <ul>
-          <li>on any letter the NHS has sent you</li>
-          <li>on a prescription</li>
-          <li>by logging in to a GP practice online service</li>
-          <li>by downloading and logging into the NHS App on your smartphone or tablet</li>
-        </ul>
-          "
-        }) }} -->
-
         {{ button({
           "text": "Continue"
         }) }}
+
+        <details class="nhsuk-details">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Why we ask for {{ data['patient-firstname'] }}'s National Insurance number
+            </span>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p>We can use {{ data['patient-firstname'] }}'s National Insurance number to see if they currently hold a record with us. This may help us process their application faster.</p>
+            <p>Providing this is optional and does not affect their eligibility to apply for a PRC.</p>
+          </div>
+        </details>
 
       </form>
 

@@ -45,10 +45,12 @@
    <div class="nhsuk-grid-column-two-thirds">
       <h1>Apply for a Provisional Replacement Certificate (PRC)</h1>
 
-      <p>Use this service to:</p>
+      <!-- <p>Use this service to:</p>
       <ul>
          <li>apply for healthcare cover if you are receiving emergency treatment in the EU, Norway, Iceland, Liechtenstein or Switzerland and do not have your UK GHIC or UK EHIC</li>
-      </ul>
+      </ul> -->
+
+      <p>Use this service to apply for healthcare cover if you or someone else is receiving emergency treatment in the EU, Norway, Iceland, Liechtenstein, or Switzerland and do not have a UK Global Health Insurance Card (UK GHIC) or UK European Health Insurance Card (UK EHIC).</p>
 
       {{ details({
         "text": " What countries are in the European Union (EU)?",
@@ -64,10 +66,10 @@
 
       {{ warningCallout({
         "heading": "Important",
-        "HTML": "<p>You only need a PRC at the point of receving medical treament while abroad. To make sure you have healthcare cover before you travel, <a href=\"https://www.nhs.uk/nhs-services/online-services/find-nhs-number/\" target=\"_blank\">apply for a UK Global Health insurance Card (UK GHIC) or UK European Health insurance Card (UK EHIC)</a>.</p>"
+        "HTML": "<p>You only need a PRC at the point of receiving medical treatment while abroad. To make sure you have healthcare cover before you travel, <a href=\"https://ehic-prototype.herokuapp.com/nhs-landing/get-healthcare-hub/ghic-ehic/overview-home\" target=\"_blank\">apply for a UK Global Health insurance Card (UK GHIC) or UK European Health insurance Card (UK EHIC)</a>.</p>"
       }) }}
 
-      <h2>What is covered</h2>
+      <h2>What is covered by a PRC</h2>
 
       <p>A PRC will cover you for medically necessary healthcare that cannot reasonably wait until you return home.</p>
 
@@ -86,17 +88,29 @@
          <p>A PRC only covers you for treatment you receive at a public hospital, clinic or other treatment facility. If you are receiving private treatment, you need to consult your travel insurance.</p>
       </div>
 
+      <p>A PRC cannot be issued to a pharmacy.</p>
+
       <h2>Before you start</h2>
 
-      <p>You'll need:</p>
+      <p>We’ll ask you for your details, including:</p>
 
       <ul>
-        <li>The name of the hospital, clinic or facility where you are receiving medical treatment</li>
-        <li>The email address for the specific department of the organisation providing your treatment</li>
-        <li>Your email address</li>
+        <li>your email address</li>
+        <li>your National Insurance number</li>
+        <li>your OHS reference number, if you have one</li>
       </ul>
 
-      <p>Medical staff will be able to provide you with a valid email address.</p>
+      <p>We’ll also ask for details about your medical treatment, including:</p>
+
+      <ul>
+        <li>the country where you’re receiving treatment</li>
+        <li>the name of the hospital, clinic or treatment facility</li>
+        <li>the email address for the department providing your treatment, which can be provided by medical staff</li>
+      </ul>
+
+      <p>If you’re applying on behalf of someone else, we’ll ask for their details too.</p>
+
+      <!-- <p>Medical staff will be able to provide you with a valid email address.</p> -->
 
 
       <!-- <div class="nhsuk-inset-text">
@@ -133,7 +147,7 @@
             <p>To process your application, we may share your information (where appropriate) with:</p>
             <ul>
                <li>Indesser and LexisNexis, third party data providers acting on our behalf who will make a UK residency check</li>
-               <li>NHS Digital to validate EU Settlement Scheme status</li>
+               <!-- <li>NHS Digital to validate EU Settlement Scheme status</li> -->
             </ul>
             <p>For more information about how we use your information please read our privacy notice.</p>
          </div>

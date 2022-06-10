@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Applying for a Provisional Replacement Certificate (PRC) for your child
+  Applying for a PRC for your child
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,14 +29,18 @@
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
       <form action="ordinarily-live" method="post">
 
-        <h2>Applying for a Provisional Replacement Certificate (PRC) for your child</h2>
+        <h2>Applying for a PRC for your child</h2>
 
-        <p>In order to process your application we need to:</p>
+        <p>In order to process your application, we need to:</p>
         
         <ul>
           <li>take your details</li>
-          <li>take your childs details</li>
+          <li>take your child's details</li>
         </ul>
+
+        <p>The next questions will be about you.</p>
+
+        <p>We will ask for your child’s details afterwards.</p>
 
         {{ button({
           "text": "Continue"

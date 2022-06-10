@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is {{ data['patient-firstname'] }}'s contact telephone number?
+  What is {{ data['patient-firstname'] }}'s telephone number?
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,7 +28,7 @@
     <div class="nhsuk-grid-column-three-quarters">
       <form action="email-address" method="post">
 
-        <h2>What is {{ data['patient-firstname'] }}'s contact telephone number?</h2> 
+        <h2>What is {{ data['patient-firstname'] }}'s telephone number?</h2> 
 
         {% call fieldset({
           legend: {
@@ -38,11 +38,11 @@
           }
         }) %}
 
-        <p>We ask for this in case we need to contact you about your application.</p>
+        <p>We ask for this in case we need to contact them about their application.</p>
         
         {{ input({
           "label": {
-            "text": "Enter your contact telephone number (optional)"
+            "text": "Enter their telephone number (optional)"
           },
           "id": "input-width-30",
           "name": "phone-number",

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the name of the hospital, clinic, or treatment facility?
+  What is your OHS reference number?
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,38 +26,30 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="treatment-facility-email" method="post">
+      <form action="know-nino" method="post">
 
         {% call fieldset({
           legend: {
-            text: "What is the name of the hospital, clinic, or treatment facility?",
+            text: "What is your OHS reference number?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <p>Make sure that you spell this name correctly.</p>
-        <!-- Ospedale Santobono Entrata Pronto Soccorso -->
-
-        {{ details({
-          "text": "My child is receiving treatment at a pharmacy",
-          "HTML": "
-          <p>A PRC does not cover prescriptions obtained from a pharmacy, even if they were prescribed by someone else. A PRC cannot be issued to a pharmacy.</p>
-
-          <p>A PRC can only be issued and used at healthcare centres.</p>
-          "
-        }) }}
+        <p>You can find it on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC). </p>
 
         {{ input({
           "label": {
-            "text": "Name"
+            "text": "OHS reference number (optional)"
           },
-          "id": "input-width-30",
-          "name": "treatment-name",
-          "classes": "nhsuk-input--width-30"
+          "id": "input-width-10",
+          "name": "patient-ohs",
+          "classes": "nhsuk-input--width-10"
         }) }}
 
+
         {% endcall %}
+        <!-- <p><a href="nhs-number">I don't have a National Insurance number</a></p> -->
 
         {{ button({
           "text": "Continue"

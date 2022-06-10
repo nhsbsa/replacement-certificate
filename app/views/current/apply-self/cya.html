@@ -213,7 +213,23 @@
                </dd>
             </div>
 
-                  {% if data['parent-know-nino'] == "Yes" %}
+                  {% if data['patient-know-ohs'] == "Yes" %}
+                    <div class="nhsuk-summary-list__row">
+                       <dt class="nhsuk-summary-list__key">
+                          OHS reference number
+                       </dt>
+                       <dd class="nhsuk-summary-list__value">
+                          {{ data['patient-ohs'] }}
+                       </dd>
+                       <dd class="nhsuk-summary-list__actions">
+                          <a href="data-capture/ohs">
+                          Change<span class="nhsuk-u-visually-hidden"> OHS reference number</span>
+                          </a>
+                       </dd>
+                    </div>
+                  {% endif %}
+
+                  {% if data['patient-know-nino'] == "Yes" %}
                     <div class="nhsuk-summary-list__row">
                        <dt class="nhsuk-summary-list__key">
                           National Insurance number

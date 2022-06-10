@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    Has {{ data['patient-firstname'] }} lived at this address for the past 2 years?
+    Has {{ data['patient-firstname'] }} lived at this address for the past 6 months?
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,7 +29,7 @@
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
       <form action="twoYearsAddress" method="post">
 
-        <h2>Has {{ data['patient-firstname'] }} lived at this address for the past 2 years?</h2>
+        <h2>Has {{ data['patient-firstname'] }} lived at this address for the past 6 months?</h2>
 
         {% call fieldset({
           legend: {
