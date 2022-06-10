@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the name of the hospital, clinic or treatment facility?
+  What is the name of the hospital, clinic, or treatment facility?
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,13 +30,21 @@
 
         {% call fieldset({
           legend: {
-            text: "What is the name of the hospital, clinic or treatment facility?",
+            text: "What is the name of the hospital, clinic, or treatment facility?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <p>Make sure that you spell the hospital name correctly.</p>
+        <p>Make sure that you spell this name correctly.</p>
+        <!-- Ospedale Santobono Entrata Pronto Soccorso -->
+
+        {{ details({
+          "text": "I’m receiving treatment at a pharmacy",
+          "HTML": "
+          <p>If this is related to a prescription cost, you should use the name of the prescriber that issued the prescription. You should not use the name of the pharmacy.</p>
+          "
+        }) }}
 
         {{ input({
           "label": {

@@ -54,10 +54,10 @@ router.post('/paidTreatment', function (req, res) {
 router.post('/coPayment', function (req, res) {
   var coPayment = req.session.data['co-payment']
   if (coPayment == "Yes") {
-    res.redirect('treatment-facility-name-1')
+    res.redirect('kickouts/ineligible-paid')
   }
   if (coPayment == "No") {
-    res.redirect('kickouts/ineligible-paid')
+    res.redirect('treatment-facility-name-1')
   }
   else {
     res.redirect('paid-treatment-details')
@@ -198,7 +198,7 @@ router.post('/data-capture/child/knowNino', function (req, res) {
 router.post('/data-capture/child/childAddress', function (req, res) {
   var childAddress = req.session.data['child-address']
   if (childAddress == "Yes") {
-    res.redirect('../cya')
+    res.redirect('../../cya')
   }
   if (childAddress == "No") {
     res.redirect('address-lookup')

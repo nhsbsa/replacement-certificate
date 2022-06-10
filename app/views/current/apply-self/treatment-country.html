@@ -39,7 +39,7 @@
 
         {% call fieldset({
           legend: {
-            text: "What country are you receiving medical treatment?",
+            text: "What country are you receiving medical treatment in?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
@@ -99,13 +99,7 @@
         "
       }) }} -->
       
-      {{ details({
-        "text": "I'm receiving treatment in a different country",
-        "HTML": "
-        <p>If you are receiving treatment in Norway, Iceland or Liechtenstein, you cannot use this online service. Please <a href=\"#\">contact us</a>.</p>
-        <p>If you are receiving treatment outside the EU, Norway, Iceland, Liechtenstein or Switzerland, you cannot get a PRC. You need to contact your travel insurance provider to find out what to do next.</p>
-        "
-      }) }}
+      
 
 
         {% endcall %}
@@ -114,6 +108,14 @@
           "href": "paid-treatment",
           "text": "Continue"
         }) }}
+
+        {{ details({
+        "text": "I'm receiving treatment in a different country",
+        "HTML": "
+        <p>If you are receiving treatment in Norway, Iceland or Liechtenstein, you cannot use this online service. You need to <a href=\"#\">contact us</a>.</p>
+        <p>If you are receiving treatment outside the EU, Norway, Iceland, Liechtenstein or Switzerland, you cannot get a PRC. You need to contact your travel insurance provider to find out what to do next.</p>
+        "
+      }) }}
 
       </form>
 

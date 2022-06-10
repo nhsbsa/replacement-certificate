@@ -2,7 +2,7 @@
 
 {% block pageTitle %}
 
-  Have you paid towards the cost of medical treatment?
+  Have you paid more than a co-payment or patient contribution?
 
 {% endblock %}
 
@@ -33,15 +33,13 @@
 
         {% call fieldset({
           legend: {
-            text: "Did you pay a patient contribution?",
+            text: "Have you paid more than a co-payment or patient contribution?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex augue, facilisis nec lacus sed, tristique ornare nisi.</p>
-
-
+       <!--  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex augue, facilisis nec lacus sed, tristique ornare nisi.</p> -->
 
         {{ radios({
           "idPrefix": "co-payment",
@@ -58,10 +56,22 @@
           ]
         }) }}
 
+
         {% endcall %}
 
         {{ button({
           "text": "Continue"
+        }) }}
+
+        {{ details({
+          "text": "What we mean by a co-payment or patient contribution",
+          "HTML": "
+          <p>Not all state healthcare is free in other countries.</p>
+          <p>In some countries, a resident of that country may have to pay a co-payment, also known as a patient contribution, towards the cost of their treatment. This means that you may need to pay for services that you would get for free on the NHS.</p>
+          <p>These payments are typically for services like GP or dentist consultations, prescriptions, or hospital stays.</p>
+          <p><a href=\"https://www.gov.uk/government/collections/healthcare-in-the-eu-norway-iceland-liechtenstein-and-switzerland\" target=\"_blank\">Check the Foreign Office country guides on GOV.UK for information on how to access treatment in the country you’re visiting and what may be required</a></p>
+          <p>You cannot apply for a refund for a co-payment. You can only claim a refund for costs which would have been covered by a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), or Provisional Replacement Certificate (PRC).</p>
+          "
         }) }}
 
       </form>

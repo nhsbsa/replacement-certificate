@@ -54,10 +54,10 @@ router.post('/paidTreatment', function (req, res) {
 router.post('/coPayment', function (req, res) {
   var coPayment = req.session.data['co-payment']
   if (coPayment == "Yes") {
-    res.redirect('treatment-facility-name-1')
+    res.redirect('kickouts/ineligible-paid')
   }
   if (coPayment == "No") {
-    res.redirect('kickouts/ineligible-paid')
+    res.redirect('treatment-facility-name-1')
   }
   else {
     res.redirect('paid-treatment-details')
