@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the email address of the hospital, clinic or treatment facility?
+  What is the name of the hospital, clinic, or treatment facility?
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,7 +14,7 @@
           Prototype
         </strong>
         <span class="app-phase-banner__text">
-          This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
         </span>
       </p>
     </div>
@@ -26,33 +26,40 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="additional-facility" method="post">
+      <form action="treatment-facility-email" method="post">
 
         {% call fieldset({
           legend: {
-            text: "What is the email address of the hospital, clinic or treatment facility?",
+            text: "What is the name of the hospital, clinic, or treatment facility?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <!-- <p></p> -->
+        <p>Make sure that you spell this name correctly.</p>
+        <!-- Ospedale Santobono Entrata Pronto Soccorso -->
+
+        {{ details({
+          "text": "They're receiving treatment at a pharmacy",
+          "HTML": "
+          <p>A PRC does not cover prescriptions obtained from a pharmacy, even if they were prescribed by someone else. A PRC cannot be issued to a pharmacy.</p>
+
+          <p>A PRC can only be issued and used at healthcare centres.</p>
+          "
+        }) }}
 
         {{ input({
           "label": {
-            "text": "Email address"
+            "text": "Name"
           },
           "id": "input-width-30",
-          "name": "treatment-email-1",
-          "classes": "nhsuk-input--width-30",
-          "value": ""
+          "name": "treatment-name",
+          "classes": "nhsuk-input--width-30"
         }) }}
-
 
         {% endcall %}
 
         {{ button({
-          "href": "additional-facility",
           "text": "Continue"
         }) }}
 
@@ -66,3 +73,4 @@
     </div>
   </div>
 {% endblock %}
+

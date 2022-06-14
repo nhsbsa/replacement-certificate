@@ -42,7 +42,6 @@
         <p>You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.</p> -->
 
         <p>
-          Providing your National Insurance number helps us find your record.
           It’s on your National Insurance card, benefit letter, payslip or P60. For example,
           <nobr>‘QQ 12 34 56 C’</nobr>.
         </p>
@@ -54,11 +53,11 @@
           "items": [
             {
               "value": "Yes",
-              "text": "Yes"
+              "text": "Yes, I know my National Insurance number"
             },
             {
               "value": "No",
-              "text": "No"
+              "text": "No, I do not know my National Insurance number"
             }
           ]
         }) }}
@@ -66,23 +65,17 @@
         {% endcall %}
 
 
-
-        <!-- {{ details({
-          "text": "Where to find your NHS number",
-          "HTML": "
-          <p>You can find your NHS number:</p>
-
-        <ul>
-          <li>on any letter the NHS has sent you</li>
-          <li>on a prescription</li>
-          <li>by logging in to a GP practice online service</li>
-          <li>by downloading and logging into the NHS App on your smartphone or tablet</li>
-        </ul>
-          "
-        }) }} -->
-
         {{ button({
           "text": "Continue"
+        }) }}
+
+        {{ details({
+          "text": "Why we ask for your National Insurance number",
+          "HTML": "
+          <p>We can use your National Insurance number to see if you currently hold a record with us. This may help us process your application faster.</p>
+          <p>Providing this is optional and does not affect your eligibility to apply for a PRC.</p>
+
+          "
         }) }}
 
       </form>

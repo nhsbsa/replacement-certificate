@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Do you know your OHS reference number?
+  Do you have an Overseas Healthcare Services (OHS) reference number?
 {% endblock %}
 
 {% block beforeContent %}
@@ -31,17 +31,15 @@
 
         {% call fieldset({
           legend: {
-            text: "Do you know your OHS reference number?",
+            text: "Do you have an Overseas Healthcare Services (OHS) reference number?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
       
-        <p>
-          Your OHS reference number is a X digit number. For example, <nobr>20001234</nobr>. Providing your OHS reference number helps us find your record.
-        </p>
+        <p>An OHS reference number is a number we use to identify your record.</p>
 
-        <p>You can find it on your UK GHIC or UK EHIC confirmation email. </p>
+        <p>You can find it on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC).</p>
         
 
         {{ radios({
@@ -50,11 +48,11 @@
           "items": [
             {
               "value": "Yes",
-              "text": "Yes"
+              "text": "Yes, I know my OHS reference number"
             },
             {
               "value": "No",
-              "text": "No"
+              "text": "No, I do not know my OHS reference number"
             }
           ]
         }) }}
@@ -62,22 +60,17 @@
         {% endcall %}
 
 
-        <!-- {{ details({
-          "text": "Where to find your NHS number",
-          "HTML": "
-          <p>You can find your NHS number:</p>
-
-        <ul>
-          <li>on any letter the NHS has sent you</li>
-          <li>on a prescription</li>
-          <li>by logging in to a GP practice online service</li>
-          <li>by downloading and logging into the NHS App on your smartphone or tablet</li>
-        </ul>
-          "
-        }) }} -->
-
         {{ button({
           "text": "Continue"
+        }) }}
+
+
+        {{ details({
+          "text": "Why we ask for your OHS reference number",
+          "HTML": "
+          <p>We can use your OHS reference number to see if you currently hold a record with us. This may help us process your application faster.</p>
+          <p>Providing this is optional and does not affect your eligibility to apply for a PRC.</p>
+          "
         }) }}
 
       </form>

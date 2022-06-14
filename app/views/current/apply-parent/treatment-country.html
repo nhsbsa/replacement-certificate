@@ -35,7 +35,7 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="facilityDetails" method="post">
+      <form action="treatment-country" method="post">
 
         {% call fieldset({
           legend: {
@@ -99,21 +99,22 @@
         "
       }) }} -->
       
-      {{ details({
-        "text": "They're receiving treatment in a different country",
-        "HTML": "
-        <p>If your child is receiving treatment in Norway, Iceland or Liechtenstein, you cannot use this online service. Please <a href=\"#\">contact us</a>.</p>
-        <p>If your child is receiving treatment outside the EU, Norway, Iceland, Liechtenstein or Switzerland, they cannot get a PRC. You need to contact their travel insurance provider to find out what to do next.</p>
-        "
-      }) }}
+      
 
 
         {% endcall %}
 
         {{ button({
-          "href": "paid-treatment",
           "text": "Continue"
         }) }}
+
+        {{ details({
+        "text": "They're receiving treatment in a different country",
+        "HTML": "
+        <p>If your child is receiving treatment in Norway, Iceland or Liechtenstein, you cannot use this online service. You need to <a href=\"#\">contact us</a>.</p>
+        <p>If your child is receiving treatment outside the EU, Norway, Iceland, Liechtenstein or Switzerland, you cannot get a PRC. You need to contact your travel insurance provider to find out what to do next.</p>
+        "
+      }) }}
 
       </form>
 

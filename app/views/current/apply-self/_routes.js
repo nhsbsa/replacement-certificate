@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-
 const axios = require('axios');
+const path = require('path');
 
 // Add your routes here - above the module.exports line
 
@@ -43,7 +43,7 @@ router.post('/paidTreatment', function (req, res) {
     res.redirect('paid-treatment-details')
   }
   if (paidTreatment == "No") {
-    res.redirect('treatment-facility-name-1')
+    res.redirect('treatment-facility-name')
   }
   else {
     res.redirect('paid-treatment')
@@ -54,10 +54,10 @@ router.post('/paidTreatment', function (req, res) {
 router.post('/coPayment', function (req, res) {
   var coPayment = req.session.data['co-payment']
   if (coPayment == "Yes") {
-    res.redirect('treatment-facility-name-1')
+    res.redirect('kickouts/ineligible-paid')
   }
   if (coPayment == "No") {
-    res.redirect('kickouts/ineligible-paid')
+    res.redirect('treatment-facility-name-1')
   }
   else {
     res.redirect('paid-treatment-details')
@@ -95,12 +95,34 @@ router.post('/coverAnother', function (req, res) {
   }
 })
 
+router.post('/treatment-country', function (req, res) {
 
+  var Country = require(path.resolve("app/model/country.js"));
+  const ReferenceDataService = require(path.resolve("app/service/referenceData.js"));
+
+  // Make this better later
+  if(req.session.data['location-picker-1']) {
+    var countryName = ReferenceDataService.getCountrynameByCode(req.session.data['location-picker-1']);
+    req.session.data['location-picker-1'] = new Country(req.session.data['location-picker-1'], countryName[0].name);
+  }
+
+  res.render(__dirname + '/receiving-treatment');
+})
+
+var treatmentFacilities = [];
 // Do you require treatment from additional facilities?
 router.post('/additionalTreatment', function (req, res) {
+
+  var Treatment = require(path.resolve("app/model/treatment.js"));
+
+  if(req.session.data['treatment-name'] && req.session.data['treatment-email']) {
+    var treatment1 = new Treatment(req.session.data['treatment-name'], req.session.data['treatment-email']);
+    treatmentFacilities.push(treatment1);
+  }
+
   var additionalTreatment = req.session.data['additional-facility']
   if (additionalTreatment == "Yes") {
-    res.redirect('treatment-facility-name-2')
+    res.redirect('treatment-facility-name')
   }
   if (additionalTreatment == "No") {
     res.redirect('treatment-start')
@@ -108,6 +130,15 @@ router.post('/additionalTreatment', function (req, res) {
   else {
     res.redirect('additional-facility')
   }
+})
+router.get('/cya', function (req, res) {
+  const ReferenceDataService = require(path.resolve("app/service/referenceData.js"));
+
+  var countryList = ReferenceDataService.getCountries();
+
+  console.log(ReferenceDataService.getMemberStates());
+
+  res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
 })
 
 // Do you require treatment from additional facilities? 2
@@ -207,5 +238,17 @@ router.post('/data-capture/twoYearsAddress', function (req, res) {
 //     res.redirect('same-address')
 //   }
 // })
+
+router.get('/treatment-start', function (req, res) {
+  let today = new Date();
+
+  let date = today.getDate();
+  let month = today.getMonth() + 1;
+  let year = today.getFullYear();
+
+  let todayDate = date + "/" + month + "/" + year;
+
+  res.render(__dirname + '/treatment-start', {todayDate: todayDate});
+})
 
 module.exports = router
