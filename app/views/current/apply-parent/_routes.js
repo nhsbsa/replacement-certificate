@@ -57,7 +57,7 @@ router.post('/coPayment', function (req, res) {
     res.redirect('kickouts/ineligible-paid')
   }
   if (coPayment == "No") {
-    res.redirect('treatment-facility-name-1')
+    res.redirect('treatment-facility-name')
   }
   else {
     res.redirect('paid-treatment-details')
@@ -121,7 +121,6 @@ router.post('/additionalTreatment', function (req, res) {
     var treatment1 = new Treatment(req.session.data['treatment-name'], req.session.data['treatment-email']);
     treatmentFacilities.push(treatment1);
   }
-  console.log(treatmentFacilities);
 
   var additionalTreatment = req.session.data['additional-facility']
   if (additionalTreatment == "Yes") {

@@ -57,7 +57,7 @@ router.post('/coPayment', function (req, res) {
     res.redirect('kickouts/ineligible-paid')
   }
   if (coPayment == "No") {
-    res.redirect('treatment-facility-name-1')
+    res.redirect('treatment-facility-name')
   }
   else {
     res.redirect('paid-treatment-details')
@@ -106,7 +106,7 @@ router.post('/treatment-country', function (req, res) {
     req.session.data['location-picker-1'] = new Country(req.session.data['location-picker-1'], countryName[0].name);
   }
 
-  res.render(__dirname + '/receiving-treatment');
+  res.redirect('paid-treatment')
 })
 
 var treatmentFacilities = [];
@@ -136,23 +136,7 @@ router.get('/cya', function (req, res) {
 
   var countryList = ReferenceDataService.getCountries();
 
-  console.log(ReferenceDataService.getMemberStates());
-
   res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
-})
-
-// Do you require treatment from additional facilities? 2
-router.post('/secondAdditionalTreatment', function (req, res) {
-  var additionalTreatment = req.session.data['additional-facility-2']
-  if (additionalTreatment == "Yes") {
-    res.redirect('treatment-facility-name-2')
-  }
-  if (additionalTreatment == "No") {
-    res.redirect('treatment-start')
-  }
-  else {
-    res.redirect('additional-facility-2')
-  }
 })
 
 // Do you have a registerd S1?
