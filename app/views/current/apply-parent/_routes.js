@@ -108,7 +108,7 @@ router.post('/treatment-country', function (req, res) {
     req.session.data['location-picker-1'] = new Country(req.session.data['location-picker-1'], countryName[0].name);
   }
 
-  res.render(__dirname + '/receiving-treatment');
+  res.redirect('paid-treatment')
 })
 
 var treatmentFacilities = [];
@@ -235,7 +235,7 @@ router.get('/treatment-start', function (req, res) {
   let month = today.getMonth() + 1;
   let year = today.getFullYear();
 
-  let todayDate = date + "/" + month + "/" + year;
+  let todayDate = date + " / " + month + " / " + year;
 
   res.render(__dirname + '/treatment-start', {todayDate: todayDate});
 })

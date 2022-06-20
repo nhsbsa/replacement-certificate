@@ -124,7 +124,7 @@
                            {{ treatment.name }}
                         </dd>
                         <dd class="nhsuk-summary-list__actions">
-                           <a class="nhsuk-link" href="treatment-facility-name-2">
+                           <a class="nhsuk-link" href="treatment-facility-name">
                               Change <span class="nhsuk-u-visually-hidden">name</span>
                            </a>
                         </dd>
@@ -137,7 +137,7 @@
                            {{ treatment.email }}
                         </dd>
                         <dd class="nhsuk-summary-list__actions">
-                           <a class="nhsuk-link" href="treatment-facility-email-2">
+                           <a class="nhsuk-link" href="treatment-facility-email">
                               Change <span class="nhsuk-u-visually-hidden">name</span>
                            </a>
                         </dd>
@@ -156,7 +156,23 @@
                   Nationality
                </dt>
                <dd class="nhsuk-summary-list__value">
-                  -
+                  {% if data['nationality'] %}
+                  
+                     {% if 'UK' in data['nationality'] %}
+                        UK
+                     {% endif %}
+
+                     {% if 'EU, EEA or Swiss' in data['nationality'] %}
+                        EU
+                     {% endif %}
+
+                     {% if 'Other' in data['nationality'] %}
+                        Other
+                     {% endif %}
+
+                  {% else %}
+                     &#8212;
+                  {% endif %}
                </dd>
                <dd class="nhsuk-summary-list__actions">
                   <a class="nhsuk-link" href="nationality">

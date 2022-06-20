@@ -230,7 +230,7 @@ router.get('/treatment-start', function (req, res) {
   let month = today.getMonth() + 1;
   let year = today.getFullYear();
 
-  let todayDate = date + "/" + month + "/" + year;
+  let todayDate = date + " / " + month + " / " + year;
 
   res.render(__dirname + '/treatment-start', {todayDate: todayDate});
 })
