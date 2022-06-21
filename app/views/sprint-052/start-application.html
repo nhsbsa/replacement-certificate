@@ -1,0 +1,102 @@
+<!-- Start here -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout-nhs-uk.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  Content page example - NHS.UK prototype kit
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+   <!-- Phase banner -->
+   <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Breadcrumb -->
+ {{ breadcrumb({
+  items: [
+    {
+      href: "#",
+      text: "Home"
+    },
+    {
+      href: "#",
+      text: "Services"
+    }
+  ],
+  href: "#",
+  text: "Healthcare abroad"
+ }) }}
+  
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <h1>Healthcare cover for travelling abroad (GHIC and EHIC)</h1>
+    <p>Advice about applying for healthcare cover abroad</p>
+  </div>
+</div>
+
+<ul class="nhsuk-grid-row nhsuk-card-group">
+  <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+
+    <div class="nhsuk-card nhsuk-card--clickable">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-m">
+          <a class="nhsuk-card__link" href="https://ehic-prototype.herokuapp.com/nhs-landing/get-healthcare-hub/ghic-ehic/overview-home">Apply for healthcare cover abroad (GHIC and EHIC)</a>
+        </h2>
+        <p class="nhsuk-card__description">Find out if you're eligible to apply for a new UK European Health Insurance Card (EHIC) or UK Global Health Insurance Card (GHIC)</p>
+      </div>
+    </div>
+
+  </li>
+  <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+
+    <div class="nhsuk-card nhsuk-card--clickable">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-m">
+          <a class="nhsuk-card__link" href="start">Apply for the Provisional Replacement Certificate (PRC)</a>
+        </h2>
+        <p class="nhsuk-card__description">If you are having an accident or injury abroad and don't have your healthcare insurance card, you can qualify for a temporary replacement card to cover for medical state-funded treatment up to 28 days.</p>
+      </div>
+    </div>
+
+  </li>
+  <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+
+    <div class="nhsuk-card nhsuk-card--clickable">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-m">
+          <a class="nhsuk-card__link" href="#">Claiming a refund</a>
+        </h2>
+        <p class="nhsuk-card__description">Apply for a refund if you are having an accident or injury while travelling abroad and have paid or started paying towards your treatment.</p>
+      </div>
+    </div>
+
+  </li>
+</ul>
+
+{% endblock %}

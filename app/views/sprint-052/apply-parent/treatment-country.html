@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What country is your child receiving medical treatment in?
+{% endblock %}
+
+{% block beforeContent %}
+
+<style>
+
+  @media (min-width: 40.0625em) {
+    .nhsuk-form-group .autocomplete__wrapper {
+       max-width: 74ex;
+    }}
+
+  </style>
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <form action="treatment-country" method="post">
+
+        {% call fieldset({
+          legend: {
+            text: "What country is your child receiving medical treatment in?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <p>This must be an EU country or Switzerland.</p>
+
+        <!-- <p>The EU countries are:</p>
+        <p>Austria, Belgium, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden.</p> -->
+
+        <div class="nhsuk-form-group">
+
+        <label class="nhsuk-label" for="eu-nationality">
+            Country
+          </label>
+          <select id="eu-location-picker" class="nhsuk-input nhsuk-input--width-30" name="location-picker-1" type="text">
+            <option value=""></option>
+            <option value="at">Austria</option>
+            <option value="be">Belgium</option>
+            <option value="bg">Bulgaria</option>
+            <option value="hr">Croatia</option>
+            <option value="cy">Cyprus</option>
+            <option value="cz">Czech Republic</option>
+            <option value="dk">Denmark</option>
+            <option value="ee">Estonia</option>
+            <option value="fi">Finland</option>
+            <option value="fr">France</option>
+            <option value="de">Germany</option>
+            <option value="gr">Greece</option>
+            <option value="hu">Hungary</option>
+            <!-- <option value="is">Iceland</option> -->
+            <option value="ie">Ireland</option>
+            <option value="it">Italy</option>
+            <option value="lv">Latvia</option>
+            <!-- <option value="li">Liechtenstein</option> -->
+            <option value="lt">Lithuania</option>
+            <option value="lu">Luxemburg</option>
+            <option value="mt">Malta</option>
+            <option value="nl">Netherlands</option>
+            <!-- <option value="no">Norway</option> -->
+            <option value="pl">Poland</option>
+            <option value="pt">Portugal</option>
+            <option value="ro">Romania</option>
+            <option value="sk">Slovakia</option>
+            <option value="si">Slovenia</option>
+            <option value="es">Spain</option>
+            <option value="se">Sweden</option>
+            <option value="cf">Switzerland</option>
+          </select>
+        </div>
+
+      <!-- {{ details({
+        "text": " What countries are in the European Union (EU)?",
+        "HTML": "
+        <p>The EU countries are:</p>
+        <p>Austria, Belgium, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain and Sweden.</p>
+        "
+      }) }} -->
+      
+      
+
+
+        {% endcall %}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+        {{ details({
+        "text": "They're receiving treatment in a different country",
+        "HTML": "
+        <p>If your child is receiving treatment in Norway, Iceland or Liechtenstein, you cannot use this online service. You need to <a href=\"#\">contact us</a>.</p>
+        <p>If your child is receiving treatment outside the EU, Norway, Iceland, Liechtenstein or Switzerland, you cannot get a PRC. You need to contact your travel insurance provider to find out what to do next.</p>
+        "
+      }) }}
+
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
