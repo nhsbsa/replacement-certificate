@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What document is this?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Step 2</span> -->
+      <form action="upload-res-uk-another" method="post">
+
+        {% call fieldset({
+          legend: {
+            text: "What document is this?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <p>example_file_name_01.jpg, 2MB</p>
+
+        {{ radios({
+          "idPrefix": "file-type-3",
+          "name": "file-type-3",
+          "items": [
+            {
+              "value": "Utility bill",
+              "text": "Utility bill"
+            },
+            {
+              "value": "Council Tax bill",
+              "text": "Council Tax bill"
+            },
+            {
+              "value": "Tenancy information",
+              "text": "Tenancy information"
+            },
+            {
+              "value": "Benefit letter",
+              "text": "Benefit letter"
+            },
+            {
+              "value": "HMRC letter",
+              "text": "HMRC letter"
+            },
+            {
+              "value": "NHS or GP letter",
+              "text": "NHS or GP letter"
+            },
+             {
+              "value": "Bank statement",
+              "text": "Bank statement"
+            },
+             {
+              "value": "Mortgage letter",
+              "text": "Mortgage letter"
+            },
+            {
+              "value": "Other",
+              "text": "Other"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+      
+    </div>
+  </div>
+{% endblock %}

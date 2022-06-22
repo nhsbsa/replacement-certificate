@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Proof of residency in the UK evidence uploaded
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      {{ errorSummary({
+        "titleText": "There is a problem",
+        "descriptionText": "",
+        "errorList": [
+          {
+            "text": "You must upload 2 documents as proof of residency in the UK",
+            "href": "#example-error-1"
+          }
+        ]
+      }) }}
+
+      <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Step 2</span> -->
+      <form action="addEvidResUKWithError" method="post">
+
+        {% call fieldset({
+          legend: {
+            text: "Proof of residency in the UK evidence uploaded",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <p>We need 2 of the documents we asked for in the email we sent you as proof of residency in the UK. If you cannot provide 2 of the documents listed, upload all alternative evidence that you have available.</p>
+
+        <p>You’ll get a chance tell us why you couldn’t provide the documents we asked for.</p>
+        
+        <br>
+
+        <h3>Files added</h3>
+
+
+        <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            <!-- Passport -->
+            {{ data['file-type-3'] }}
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <a href="">example_file_name_01.jpg</a>, 2MB
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="upload-res-uk">
+              Delete<span class="nhsuk-u-visually-hidden"> </span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+
+        <!-- {{ radios({
+          "idPrefix": "add-evid-res-uk",
+          "name": "add-evid-res-uk",
+          "errorMessage": {
+            "text": "You must upload 2 documents as proof of residency in the UK."
+          },
+          "fieldset": {
+            "legend": {
+              "text": "Have you changed your name?",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "classes": "nhsuk-radios--inline",
+          "hint": {
+            "text": "You must upload 2 documents as proof of residency in the UK."
+          },
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        {% endcall %} -->
+
+
+
+
+      <div class="nhsuk-form-group nhsuk-form-group--error">
+
+      <fieldset class="nhsuk-fieldset" aria-describedby="example-error-hint example-error-error">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <h3 class="nhsuk-fieldset__heading-medium">
+            Do you need to add more evidence of {{ data['upload-firstname'] }}'s residency in the UK?
+          </h3>
+        </legend>
+
+        <div class="nhsuk-hint" id="example-error-hint">
+          You must upload 2 documents as proof of residency in the UK.
+        </div>
+
+        <span class="nhsuk-error-message" id="example-error-error">
+          <span class="nhsuk-u-visually-hidden">Error:</span> Select yes to add a second piece of evidence.
+        </span>
+
+        <div class="nhsuk-radios--inline">
+
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example-error-1" name="add-evid-res-uk" type="radio" value="Yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="example-error-1">
+              Yes
+            </label>
+          </div>
+
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example-error-2" name="add-evid-res-uk" type="radio" value="No">
+            <label class="nhsuk-label nhsuk-radios__label" for="example-error-2">
+              No
+            </label>
+          </div>
+
+        </div>
+      </fieldset>
+
+      </div>
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+      
+    </div>
+  </div>
+{% endblock %}

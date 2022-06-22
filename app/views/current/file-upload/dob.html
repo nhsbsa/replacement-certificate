@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is your date of birth?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <!-- <form action="nino" method="post"> -->
+      <!-- <form action="address-lookup" method="post"> -->
+      <form action="uk-address" method="post">
+
+        <h2>What is {{ data['upload-firstname'] }}'s date of birth?</h2>
+
+        {{ dateInput({
+        "id": "example",
+        "namePrefix": "replace-dob",
+        "fieldset": {
+          "legend": {
+            "text": "",
+            "classes": "nhsuk-label--l",
+            "isPageHeading": true
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 1984"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
