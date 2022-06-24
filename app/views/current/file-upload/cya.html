@@ -95,7 +95,7 @@
 
 
 
-   {% if data['evidence-yn'] == "yes" %}
+   {% if data['evidence-yn'] == "Yes" %}
 
          <h2 class="nhsuk-heading-m">
             Evidence of the applicant's UK residency
@@ -116,6 +116,7 @@
                </dd>
             </div>
 
+            {% if data['add-evid-res-uk-another'] == "No" %}
                <div class="nhsuk-summary-list__row">
                   <dt class="nhsuk-summary-list__key nhsuk-!-width-one-third">
                      {{ data['file-type-4'] }}
@@ -129,16 +130,14 @@
                      </a>
                   </dd>
                </div>
-               
-            <!-- {% if data['add-evid-res-uk'] == "yes" %} -->
-            <!-- {% endif %}  -->
+            {% endif %} 
          </dl>
 
    {% endif %} 
 
 
 
-   {% if data['evidence-yn'] == "no" %}
+   
          <h2 class="nhsuk-heading-m">
             Alternative evidence
          </h2>
@@ -147,17 +146,22 @@
 
             <div class="nhsuk-summary-list__row">
                <dt class="nhsuk-summary-list__key nhsuk-!-width-one-third">
-                  Reason for alternative evidence
+                  Reason for alternative evidence (if applicable)
                </dt>
                <dd class="nhsuk-summary-list__value">
-                  {{ data['additional-info'] }}
+                  {% if data['additional-info'] %}
+                     {{ data['additional-info'] }}
+                  {% else %}
+                     –
+                  {% endif %}
                <dd class="nhsuk-summary-list__actions">
                   <a class="nhsuk-link" href="additional-info">
                   Change <span class="nhsuk-u-visually-hidden"></span>
                   </a>
                </dd>
             </div>
-      {% endif %} 
+            <!-- {% if data['evidence-yn'] == "no" %} -->
+      <!-- {% endif %}  -->
 
          </dl>
 

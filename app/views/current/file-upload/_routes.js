@@ -23,10 +23,10 @@ router.post('/ukAddress', function (req, res) {
 // Do you have the evidence requested for [Name]? - evidence.html
 router.post('/evidenceYN', function (req, res) {
   var evidenceYN = req.session.data['evidence-yn']
-  if (evidenceYN == "yes") {
+  if (evidenceYN == "Yes") {
     res.redirect('upload-res-uk')
   }
-  else if (evidenceYN == "no") {
+  else if (evidenceYN == "No") {
     res.redirect('additional-info')
   }
   else {
@@ -109,30 +109,44 @@ router.post('/provideStudent', function (req, res) {
 
 // Do you want to add another? (evidence for Right to Reside in UK) 
 // - upload-reside-another.html, upload-reside-another2.html
-router.post('/addEvidRight', function (req, res) {
-  var addEvidRight = req.session.data['add-evid-right']
-  if (addEvidRight == "Yes") {
-    res.redirect('upload-reside2')
-  }
-  else if (addEvidRight == "No") {
-    // res.redirect('upload-res-uk')
-    // res.redirect('provide-res-uk-evid')
-    res.redirect('provide-dual-nationality')
-  }
-  else {
-    res.redirect('upload-reside-another')
-  }
-})
+// router.post('/addEvidRight', function (req, res) {
+//   var addEvidRight = req.session.data['add-evid-right']
+//   if (addEvidRight == "Yes") {
+//     res.redirect('upload-reside2')
+//   }
+//   else if (addEvidRight == "No") {
+
+//     res.redirect('provide-dual-nationality')
+//   }
+//   else {
+//     res.redirect('upload-reside-another')
+//   }
+// })
 
 // Do you want to add another? (evidence for UK residency) - 1 file added 
 // - upload-res-uk-another.html
-router.post('/addEvidResUKWithError', function (req, res) {
-  var addEvidResUKWithError = req.session.data['add-evid-res-uk']
-  if (addEvidResUKWithError == "Yes") {
+// router.post('/addEvidResUKWithError', function (req, res) {
+//   var addEvidResUKWithError = req.session.data['add-evid-res-uk']
+//   if (addEvidResUKWithError == "Yes") {
+//     res.redirect('upload-res-uk2')
+//   }
+//   else if (addEvidResUKWithError == "No") {
+//     res.redirect('upload-res-uk-another-error')
+//   }
+//   else {
+//     res.redirect('upload-res-uk-another')
+//   }
+// })
+
+// Do you want to add another? (evidence for UK residency) - 1 file added 
+// upload-res-uk-another.html
+router.post('/addEvidResUK', function (req, res) {
+  var addEvidResUK = req.session.data['add-evid-res-uk']
+  if (addEvidResUK == "Yes") {
     res.redirect('upload-res-uk2')
   }
-  else if (addEvidResUKWithError == "No") {
-    res.redirect('upload-res-uk-another-error')
+  else if (addEvidResUK == "No") {
+    res.redirect('additional-info')
   }
   else {
     res.redirect('upload-res-uk-another')
@@ -141,13 +155,13 @@ router.post('/addEvidResUKWithError', function (req, res) {
 
 // Do you want to add another? (evidence for UK residency) - 2 files added 
 // upload-res-uk-another2.html
-router.post('/addEvidResUK', function (req, res) {
-  var addEvidResUK = req.session.data['add-evid-res-uk']
+router.post('/addEvidResUKAnother', function (req, res) {
+  var addEvidResUK = req.session.data['add-evid-res-uk-another']
   if (addEvidResUK == "Yes") {
     res.redirect('upload-res-uk2')
   }
   else if (addEvidResUK == "No") {
-    res.redirect('cya')
+    res.redirect('additional-info')
   }
   else {
     res.redirect('upload-res-uk-another2')

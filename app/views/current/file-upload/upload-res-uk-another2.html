@@ -27,7 +27,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Step 2</span> -->
-      <form action="addEvidResUK" method="post">
+      <form action="addEvidResUKAnother" method="post">
 
         {% call fieldset({
           legend: {
@@ -83,8 +83,8 @@
         <p>You must upload 2 documents as proof of residency in the UK.</p>
 
         {{ radios({
-          "idPrefix": "add-evid-res-uk",
-          "name": "add-evid-res-uk",
+          "idPrefix": "add-evid-res-uk-another",
+          "name": "add-evid-res-uk-another",
           "classes": "nhsuk-radios--inline",
           "items": [
             {
