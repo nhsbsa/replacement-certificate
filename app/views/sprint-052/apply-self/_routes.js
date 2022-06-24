@@ -112,7 +112,7 @@ router.post('/treatment-country', function (req, res) {
 
 var treatmentFacilities = [];
 // Do you require treatment from additional facilities?
-router.post('/additionalTreatment', function (req, res) {
+router.post('/treatment-facility-details', function (req, res) {
 
   var Treatment = require(path.resolve("app/model/treatment.js"));
 
@@ -120,6 +120,16 @@ router.post('/additionalTreatment', function (req, res) {
     var treatment1 = new Treatment(req.session.data['treatment-name'], req.session.data['treatment-email']);
     treatmentFacilities.push(treatment1);
   }
+
+  res.redirect('additional-facility')
+})
+router.get('/additional-facility', function (req, res) {
+
+  res.render(__dirname + '/additional-facility', {treatmentFacilities: treatmentFacilities});
+})
+
+// Do you require treatment from additional facilities?
+router.post('/additionalTreatment', function (req, res) {
 
   var additionalTreatment = req.session.data['additional-facility']
   if (additionalTreatment == "Yes") {
