@@ -30,14 +30,6 @@
 
       <form action="additionalTreatment" method="post">
 
-        {% call fieldset({
-          legend: {
-            text: "Do you need to get a PRC for any other treatment facilities?",
-            classes: "nhsuk-fieldset__legend--l",
-            isPageHeading: true
-          }
-        }) %}
-
          {% for treatment in treatmentFacilities %}
             {% if loop.first %}
    
@@ -154,9 +146,10 @@
          {% if treatmentFacilities | length > 1 %}
 
             <h2>Additional treatment facilities</h2>
-            <dl class="nhsuk-summary-list">
+            <dl style="margin-bottom: 10px;" class="nhsuk-summary-list">
                {% for treatment in treatmentFacilities %}
                   {% if not loop.first %}
+                  <h3>Facility details</h3>
                      <div class="nhsuk-summary-list__row">
                         <dt class="nhsuk-summary-list__key nhsuk-!-width-one-third">
                            Hospital, clinic or treatment facility
@@ -181,12 +174,21 @@
                            <a class="nhsuk-link" href="treatment-facility-email">
                               Change <span class="nhsuk-u-visually-hidden">name</span>
                            </a>
-                        </dd>
+                        </dd> 
                      </div>
+                     <br>
                   {% endif %}
                {% endfor %}
             </dl>
          {% endif %}
+
+          {% call fieldset({
+          legend: {
+            text: "Do you need to get a PRC for any other treatment facilities?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
 
         {{ radios({
           "idPrefix": "additional-facility",

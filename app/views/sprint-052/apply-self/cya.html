@@ -113,9 +113,10 @@
          {% if treatmentFacilities | length > 1 %}
 
             <h2>Additional treatment facilities</h2>
-            <dl class="nhsuk-summary-list">
+            <dl style="margin-bottom: 10px;" class="nhsuk-summary-list">
                {% for treatment in treatmentFacilities %}
                   {% if not loop.first %}
+                  <h3>Facility details</h3>
                      <div class="nhsuk-summary-list__row">
                         <dt class="nhsuk-summary-list__key nhsuk-!-width-one-third">
                            Hospital, clinic or treatment facility
@@ -142,6 +143,7 @@
                            </a>
                         </dd>
                      </div>
+                     <br>
                   {% endif %}
                {% endfor %}
             </dl>
