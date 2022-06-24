@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What evidence are you uploading for {{ data['upload-firstname'] }}’s proof of residency?
+{% endblock %}
+
+{% block beforeContent %}
+
+<style>
+.nhsuk-file-upload {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+#file-chosen {
+    margin: 0 10px;
+    position: relative;
+    top: 16px;
+    font-size: 18px;
+  }
+</style>
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <!-- <form action="add-another-yn" method="post"> -->
+       <!-- <form action="upload-reside-another" method="post"> -->
+       <form action="upload-res-uk-another2" method="post">
+       <!-- <form action="upload-res-uk-file-type2" method="post"> -->
+        <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Step 2</span> -->
+
+
+        {% call fieldset({
+          legend: {
+            text: "Upload your evidence of UK residency",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+         {% endcall %}
+
+         <p>You must <strong>upload 2 documents</strong> as proof of residency in the UK. You can add a second document after you select continue.</p>
+
+         {{ radios({
+          "idPrefix": "file-type-4",
+          "name": "file-type-4",
+          "items": [
+            {
+              "value": "Utility bill",
+              "text": "Utility bill"
+            },
+            {
+              "value": "Council Tax bill",
+              "text": "Council Tax bill"
+            },
+            {
+              "value": "Tenancy information",
+              "text": "Tenancy information"
+            },
+            {
+              "value": "Benefit letter",
+              "text": "Benefit letter"
+            },
+            {
+              "value": "HMRC letter",
+              "text": "HMRC letter"
+            },
+            {
+              "value": "NHS or GP letter",
+              "text": "NHS or GP letter"
+            },
+             {
+              "value": "Bank statement",
+              "text": "Bank statement"
+            },
+             {
+              "value": "Mortgage letter",
+              "text": "Mortgage letter"
+            },
+            {
+              "value": "Other",
+              "text": "Other"
+            }
+          ]
+        }) }}
+
+        <br>
+
+        <!-- <p>You can upload your evidence as scanned copies or photos of the originals. This can be a:</p>
+        <ul>
+          <li>utility bill</li>
+          <li>Council Tax bill</li>
+          <li>tenancy information</li>
+          <li>benefit letter</li>
+          <li>HMRC letter</li>
+          <li>NHS or GP letter</li>
+          <li>bank statement</li>
+          <li>mortgage letter</li>
+          <li>Other</li>
+        </ul> -->
+
+        <h3>Upload a file</h3>
+
+       <div class="nhsuk-form-group">
+
+        <p>The file must be in jpeg, jpg, png, or pdf format and must not be bigger than 10MB.</p>
+
+        <div>
+          <label for="choose-file" class="nhsuk-button nhsuk-button--secondary">Choose file</label>
+          <input id="choose-file" style="display:none;" type="file">
+          <span id="file-chosen">No file chosen</span>
+        </div>
+
+        </div>
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+        <!-- {{ details({
+          "text": "I don't have evidence",
+          "HTML": "
+
+          "
+        }) }} -->
+      
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
+
