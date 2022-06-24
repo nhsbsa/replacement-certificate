@@ -43,7 +43,7 @@ router.post('/paidTreatment', function (req, res) {
     res.redirect('paid-treatment-details')
   }
   if (paidTreatment == "No") {
-    res.redirect('treatment-facility-name')
+    res.redirect('treatment-facility-details')
   }
   else {
     res.redirect('paid-treatment')
@@ -57,12 +57,13 @@ router.post('/coPayment', function (req, res) {
     res.redirect('kickouts/ineligible-paid')
   }
   if (coPayment == "No") {
-    res.redirect('treatment-facility-name')
+    res.redirect('treatment-facility-detailsS')
   }
   else {
     res.redirect('paid-treatment-details')
   }
 })
+
 
 // Where do you ordinarily live?
 router.post('/ordinaryResidence', function (req, res) {
@@ -122,7 +123,7 @@ router.post('/additionalTreatment', function (req, res) {
 
   var additionalTreatment = req.session.data['additional-facility']
   if (additionalTreatment == "Yes") {
-    res.redirect('treatment-facility-name')
+    res.redirect('treatment-facility-details')
   }
   if (additionalTreatment == "No") {
     res.redirect('treatment-start')
