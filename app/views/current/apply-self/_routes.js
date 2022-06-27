@@ -1,3 +1,5 @@
+// START
+
 const express = require('express')
 const router = express.Router()
 const axios = require('axios');
@@ -43,7 +45,7 @@ router.post('/paidTreatment', function (req, res) {
     res.redirect('paid-treatment-details')
   }
   if (paidTreatment == "No") {
-    res.redirect('treatment-facility-name')
+    res.redirect('treatment-facility-details')
   }
   else {
     res.redirect('paid-treatment')
@@ -57,12 +59,13 @@ router.post('/coPayment', function (req, res) {
     res.redirect('kickouts/ineligible-paid')
   }
   if (coPayment == "No") {
-    res.redirect('treatment-facility-name')
+    res.redirect('treatment-facility-detailsS')
   }
   else {
     res.redirect('paid-treatment-details')
   }
 })
+
 
 // Where do you ordinarily live?
 router.post('/ordinaryResidence', function (req, res) {
@@ -111,7 +114,7 @@ router.post('/treatment-country', function (req, res) {
 
 var treatmentFacilities = [];
 // Do you require treatment from additional facilities?
-router.post('/additionalTreatment', function (req, res) {
+router.post('/treatment-facility-details', function (req, res) {
 
   var Treatment = require(path.resolve("app/model/treatment.js"));
 
@@ -120,9 +123,19 @@ router.post('/additionalTreatment', function (req, res) {
     treatmentFacilities.push(treatment1);
   }
 
+  res.redirect('additional-facility')
+})
+router.get('/additional-facility', function (req, res) {
+
+  res.render(__dirname + '/additional-facility', {treatmentFacilities: treatmentFacilities});
+})
+
+// Do you require treatment from additional facilities?
+router.post('/additionalTreatment', function (req, res) {
+
   var additionalTreatment = req.session.data['additional-facility']
   if (additionalTreatment == "Yes") {
-    res.redirect('treatment-facility-name')
+    res.redirect('treatment-facility-details')
   }
   if (additionalTreatment == "No") {
     res.redirect('treatment-start')
