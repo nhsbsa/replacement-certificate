@@ -59,7 +59,7 @@ router.post('/coPayment', function (req, res) {
     res.redirect('kickouts/ineligible-paid')
   }
   if (coPayment == "No") {
-    res.redirect('treatment-facility-detailsS')
+    res.redirect('treatment-facility-details')
   }
   else {
     res.redirect('paid-treatment-details')

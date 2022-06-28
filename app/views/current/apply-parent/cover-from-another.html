@@ -31,18 +31,15 @@
 
         {% call fieldset({
           legend: {
-            text: "Do you have healthcare cover from another country that is not the UK, such as:",
+            text: "Do you have healthcare cover from an EU country, Iceland, Norway, Liechtenstein, or Switzerland?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <ul>
-          <li>a European Health Insurance Card (EHIC) </li>
-          <li>an S1, E121, E106 or E109?</li>
-        </ul>
+        <p>This may be an S1, E121, E106, or E109 to cover your health costs in the UK. For example, you've previously lived in another country outside the UK and you're receiving a state pension or benefit from that country.</p>
 
-        <p>If you have previously lived in another country, you may have been given a certificate that entitles you to healthcare cover in the UK. For example, if you're receiving a state pension or benefit from that country.</p>
+        <p>If you're temporarily studying in the UK but normally live in another country, you may have a European Health Insurance Card (EHIC) from that country to cover your healthcare costs while you are studying.</p>
 
         {{ radios({
           "idPrefix": "cover-from-another",
@@ -98,24 +95,11 @@
             </li>
           </ul>
 
-          <p>
+          <!-- <p>
             You will need to ask the country who issued this certificate for healthcare cover, such as an EHIC, if you intend to visit another EU country, Norway, Iceland, Liechtenstein or Switzerland.
-          </p>
+          </p> -->
 
-          <p>
-            If your certificate has not been registered with the NHS, you should send it to:
-          </p>
-
-          <p>
-            Cost Recovery <br>
-            Overseas Healthcare Services <br>
-            NHSBSA  <br>
-            Bridge House <br> 
-            152 Pilgrim Street <br> 
-            Newcastle upon Tyne <br> 
-            NE1 6SN <br>
-            UK
-          </p>
+          
           "
         }) }}
 
