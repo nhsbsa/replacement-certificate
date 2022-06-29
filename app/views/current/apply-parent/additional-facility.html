@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    Do you need to get a PRC for any other treatment facilities?
+  Do you need a PRC for any other hospitals, clinics, or treatment facilities?
 {% endblock %}
 
 {% block beforeContent %}
@@ -186,11 +186,15 @@
 
           {% call fieldset({
           legend: {
-            text: "Do you need to get a PRC for any other treatment facilities?",
+            text: "Do you need a PRC for any other hospitals, clinics, or treatment facilities?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
-          }
+          }  
         }) %}
+
+        <div class="nhsuk-hint" id="contact-hint">
+          If you've had treatment in multiple departments at the same place, you do not need to tell us about these.
+        </div>
 
         {{ radios({
           "idPrefix": "additional-facility",
