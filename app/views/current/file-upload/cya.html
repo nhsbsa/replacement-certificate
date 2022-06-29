@@ -137,16 +137,15 @@
 
 
 
-   
+  <!-- SOME EVIDENCE PROVIDED  -->
          <h2 class="nhsuk-heading-m">
-            Alternative evidence
+            Supporting information
          </h2>
 
          <dl class="nhsuk-summary-list">
-
             <div class="nhsuk-summary-list__row">
                <dt class="nhsuk-summary-list__key nhsuk-!-width-one-third">
-                  Reason for alternative evidence (if applicable)
+                  
                </dt>
                <dd class="nhsuk-summary-list__value">
                   {% if data['additional-info'] %}
@@ -154,12 +153,39 @@
                   {% else %}
                      –
                   {% endif %}
+               </dd>
                <dd class="nhsuk-summary-list__actions">
                   <a class="nhsuk-link" href="additional-info">
                   Change <span class="nhsuk-u-visually-hidden"></span>
                   </a>
                </dd>
             </div>
+         </dl>
+
+   <!-- NO EVIDENCE PROVIDED -->
+          <h2 class="nhsuk-heading-m">
+            Supporting information
+         </h2>
+
+         <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+               <dt class="nhsuk-summary-list__key nhsuk-!-width-one-third">
+                  Reason you cannot provide the evidence we ask for
+               </dt>
+               <dd class="nhsuk-summary-list__value">
+                  {% if data['additional-info'] %}
+                     {{ data['additional-info'] }}
+                  {% else %}
+                     –
+                  {% endif %}
+               </dd>
+               <dd class="nhsuk-summary-list__actions">
+                  <a class="nhsuk-link" href="additional-info">
+                  Change <span class="nhsuk-u-visually-hidden"></span>
+                  </a>
+               </dd>
+            </div>
+
             <!-- {% if data['evidence-yn'] == "no" %} -->
       <!-- {% endif %}  -->
 
