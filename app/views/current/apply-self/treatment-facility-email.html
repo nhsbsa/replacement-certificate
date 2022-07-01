@@ -28,6 +28,9 @@
     <div class="nhsuk-grid-column-three-quarters">
       <form action="additional-facility" method="post">
 
+        <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 1</span>
+        <br>
+
         {% call fieldset({
           legend: {
             text: "What is the email address of the hospital, clinic, or treatment facility?",
@@ -35,15 +38,18 @@
             isPageHeading: true
           }
         }) %}
+        <div class="nhsuk-hint">
+          It's important that this email address is accurate. Medical staff will be able to provide you with this.  
 
-        <p>Medical staff will be able to provide you with this.</p>
+          You should not search for this online as this information may not be correct.
+        </div>
 
         {{ input({
           "label": {
             "text": "Email address"
           },
           "id": "input-width-30",
-          "name": "treatment-email",
+          "name": "treatment-facility-email",
           "classes": "nhsuk-input--width-30",
           "value": ""
         }) }}

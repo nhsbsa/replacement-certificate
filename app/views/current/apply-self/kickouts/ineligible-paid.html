@@ -31,17 +31,43 @@
       <h1>You cannot apply for a Provisional Replacement Certificate</h1>
 
       <p class="nhsuk-lede-text">
-        If you have paid towards the cost of medical treatment which doesn't include X, Y or Z, you need to pay the full amount of treatment and claim a refund.
+        You cannot use this service to apply for a PRC as you've told us that you've paid more than a co-payment or patient contribution for your treatment.
       </p>
+
+      <p>You need to pay the full amount of treatment costs and then claim a refund.</p>
 
       <h2>Claiming a refund</h2>
 
       <p>Depending on the country you visit you may be expected to pay all or part of your bill upfront and then claim a refund afterwards.</p>
-      <p>Some countries ask patients to pay a contribution towards the cost of their care, such as for prescription costs. This is known as a co-payment or patient share.</p>
+      <!-- <p>Some countries ask patients to pay a contribution towards the cost of their care, such as for prescription costs. This is known as a co-payment or patient share.</p> -->
       <p>You can claim back the difference between the total bill and the co-payment, but the actual co-payment is not refundable.</p>
-      <p>Keep all receipts and any paperwork. You or your insurance company may need them if you're applying for a refund.</p>
+      <p>You should keep all invoices, receipts, and any other paperwork. You or your insurance company may need them if you apply for a refund.</p>
 
+      {{ details({
+        "text": "I cannot afford to pay the rest of my treatment",
+        "HTML": "
+        <p>In exceptional circumstances, we may be able to consider your application for a PRC.</p>
 
+        <p>If you cannot afford the rest of your treatment costs, email us at [email address] with the following information:</p>
+
+        <ul>
+          <li>Patient's name</li>
+          <li>Patient's date of birth</li>
+          <li>Patient nationality</li>
+          <li>Patient's current UK address</li>
+          <li>Start date of treatment</li>
+          <li>Country they received treatment in</li>
+          <li>Treatment facility name</li>
+          <li>Treatment facility email address</li>
+          <li>The total cost of treatment</li>
+          <li>The amount of costs paid to date</li>
+          <li>The type of treatments the costs relate to</li>
+          <li>Reason the patient cannot pay in full</li>
+          <li>Name of person making the application, if this is different</li>
+          <li>Relationship to the patient, if you have one</li>
+        </ul>
+        "
+      }) }}
 
       {{ backLink({
         "href": "javascript:history.go(-1)",
