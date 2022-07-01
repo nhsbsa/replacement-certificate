@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Evidence submitted
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-panel nhsuk-panel--confirmation nhsuk-u-margin-bottom-4">
+        <h1 class="nhsuk-panel__title">
+            Evidence submitted
+        </h1>
+      </div>
+
+      <p>Thank you for submitting evidence for {{ data['upload-firstname'] }} {{ data['upload-lastname'] }}.</p>
+
+      <p>We have sent confirmation to the email address we hold for you.</p>
+
+      <h2>What happens next</h2>
+
+      <!-- <p>We will now review the evidence you have given to us.</p> -->
+
+      <p>Once we have reviewed and accepted the evidence you gave us, the hospital or treatment facility will receive the PRC by email. We will also send a copy of the PRC to the email address you provided. This usually take 2 working days.</p> 
+
+      <p>You do not need to do anything else.</p>
+
+      <p>If we need any further information to process your application, we’ll contact you and let you know.</p>
+
+
+      
+      <p>For information on how we use your data, please refer to our <a href="https://www.nhsbsa.nhs.uk/our-policies/privacy">privacy notice</a>.</p>
+
+      <h3>What did you think of this service?</h3>
+
+      <p>Your comments are extremely helpful and will help us to provide a better service.</p>
+
+      <p>
+        <a href="#">Give feedback</a> (Takes 30 seconds)
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

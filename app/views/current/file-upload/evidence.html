@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have all the evidence requested for {{ data['upload-firstname'] }}?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
+      <form action="evidenceYN" method="post">
+
+        <h2>Do you have the evidence requested to prove {{ data['upload-firstname'] }}'s residency in the UK?</h2>
+
+        {% call fieldset({
+          legend: {
+            text: "",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <p>If you are unable to provide the evidence we've asked for, select no.</p>
+
+        {{ radios({
+          "idPrefix": "evidence-yn",
+          "name": "evidence-yn",
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+     <!-- {{ backLink({
+        "href": "",
+        "text": "Change my previous answer"
+      }) }} -->
+      
+    </div>
+  </div>
+{% endblock %}
