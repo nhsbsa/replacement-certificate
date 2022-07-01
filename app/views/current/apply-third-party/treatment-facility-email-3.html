@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the name of the hospital, clinic, or treatment facility?
+  What is the email address of the hospital, clinic or treatment facility?
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,7 +14,7 @@
           Prototype
         </strong>
         <span class="app-phase-banner__text">
-        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+          This is a prototype - your <a href="#">feedback</a> will help us improve it.
         </span>
       </p>
     </div>
@@ -26,39 +26,32 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="treatment-facility-email" method="post">
+      <form action="additional-facility-3" method="post">
 
         {% call fieldset({
           legend: {
-            text: "What is the name of the hospital, clinic, or treatment facility?",
+            text: "What is the email address of the hospital, clinic, or treatment facility?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
         <div class="nhsuk-hint">
-          If your child had treatment in more than one place, you'll be able to add these later.
+          It's important that this email address is accurate. Medical staff will be able to provide you with this.  
+
+          You should not search for this online as this information may not be correct.
         </div>
-        
-        <!-- Ospedale Santobono Entrata Pronto Soccorso -->
-
-        {{ details({
-          "text": "What medical facilities are not covered?",
-          "HTML": "
-          <p>A PRC does not cover treatment provided by pharmacies or private healthcare providers.</p>
-
-          <p>If this is related to a prescription cost, you should use the name of the prescriber that issued the prescription. You should not use the name of the pharmacy. </p>
-          "
-         }) }}
 
         {{ input({
           "label": {
-            "text": "Name"
+            "text": "Email address"
           },
           "id": "input-width-30",
-          "name": "treatment-facility-name",
-          "classes": "nhsuk-input--width-30"
+          "name": "treatment-facility-email-3",
+          "classes": "nhsuk-input--width-30",
+          "value": ""
         }) }}
+
 
         {% endcall %}
 
@@ -76,4 +69,3 @@
     </div>
   </div>
 {% endblock %}
-

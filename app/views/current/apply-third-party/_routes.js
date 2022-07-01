@@ -43,7 +43,7 @@ router.post('/paidTreatment', function (req, res) {
     res.redirect('paid-treatment-details')
   }
   if (paidTreatment == "No") {
-    res.redirect('treatment-facility-details')
+    res.redirect('treatment-start')
   }
   else {
     res.redirect('paid-treatment')
@@ -57,7 +57,7 @@ router.post('/coPayment', function (req, res) {
     res.redirect('kickouts/ineligible-paid')
   }
   if (coPayment == "No") {
-    res.redirect('treatment-facility-details')
+    res.redirect('treatment-start')
   }
   else {
     res.redirect('paid-treatment-details')
@@ -109,47 +109,92 @@ router.post('/treatment-country', function (req, res) {
   res.redirect('paid-treatment')
 })
 
-// Do you require treatment from additional facilities?
+// Do you require treatment from additional facilities (1)?
 
-var treatmentFacilities = [];
-
-router.post('/treatment-facility-details', function (req, res) {
-
-  var Treatment = require(path.resolve("app/model/treatment.js"));
-
-  if(req.session.data['treatment-name'] && req.session.data['treatment-email']) {
-    var treatment1 = new Treatment(req.session.data['treatment-name'], req.session.data['treatment-email']);
-    treatmentFacilities.push(treatment1);
+router.post('/additionalFacilityOne', function (req, res) {
+  var additionalFacilityOne = req.session.data['additional-facility']
+  if (additionalFacilityOne == "Yes") {
+    res.redirect('treatment-facility-name-2')
   }
-
-  res.redirect('additional-facility')
-})
-router.get('/additional-facility', function (req, res) {
-
-  res.render(__dirname + '/additional-facility', {treatmentFacilities: treatmentFacilities});
-})
-
-// Do you require treatment from additional facilities?
-router.post('/additionalTreatment', function (req, res) {
-
-  var additionalTreatment = req.session.data['additional-facility']
-  if (additionalTreatment == "Yes") {
+  if (additionalFacilityOne == "No") {
     res.redirect('treatment-facility-details')
-  }
-  if (additionalTreatment == "No") {
-    res.redirect('treatment-start')
   }
   else {
     res.redirect('additional-facility')
   }
 })
-router.get('/cya', function (req, res) {
-  const ReferenceDataService = require(path.resolve("app/service/referenceData.js"));
 
-  var countryList = ReferenceDataService.getCountries();
+// Do you require treatment from additional facilities (2)?
 
-  res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
+router.post('/additionalFacilityTwo', function (req, res) {
+  var additionalFacilityTwo = req.session.data['additional-facility-2']
+  if (additionalFacilityTwo == "Yes") {
+    res.redirect('treatment-facility-name-3')
+  }
+  if (additionalFacilityTwo == "No") {
+    res.redirect('treatment-facility-details-2')
+  }
+  else {
+    res.redirect('additional-facility-2')
+  }
 })
+
+// Do you require treatment from additional facilities (3)?
+
+router.post('/additionalFacilityThree', function (req, res) {
+  var additionalFacilityThree = req.session.data['additional-facility-3']
+  if (additionalFacilityThree == "Yes") {
+    res.redirect('additional-facility-3')
+  }
+  if (additionalFacilityThree == "No") {
+    res.redirect('treatment-facility-details-3')
+  }
+  else {
+    res.redirect('additional-facility-3')
+  }
+})
+
+// // Do you require treatment from additional facilities?
+
+// var treatmentFacilities = [];
+
+// router.post('/treatment-facility-details', function (req, res) {
+
+//   var Treatment = require(path.resolve("app/model/treatment.js"));
+
+//   if(req.session.data['treatment-name'] && req.session.data['treatment-email']) {
+//     var treatment1 = new Treatment(req.session.data['treatment-name'], req.session.data['treatment-email']);
+//     treatmentFacilities.push(treatment1);
+//   }
+
+//   res.redirect('additional-facility')
+// })
+// router.get('/additional-facility', function (req, res) {
+
+//   res.render(__dirname + '/additional-facility', {treatmentFacilities: treatmentFacilities});
+// })
+
+// // Do you require treatment from additional facilities?
+// router.post('/additionalTreatment', function (req, res) {
+
+//   var additionalTreatment = req.session.data['additional-facility']
+//   if (additionalTreatment == "Yes") {
+//     res.redirect('treatment-facility-details')
+//   }
+//   if (additionalTreatment == "No") {
+//     res.redirect('ordinarily-live')
+//   }
+//   else {
+//     res.redirect('additional-facility')
+//   }
+// })
+// router.get('/cya', function (req, res) {
+//   const ReferenceDataService = require(path.resolve("app/service/referenceData.js"));
+
+//   var countryList = ReferenceDataService.getCountries();
+
+//   res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
+// })
 
 
 // Do you have a registerd S1?

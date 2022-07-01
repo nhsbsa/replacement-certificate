@@ -28,34 +28,45 @@
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
 
-      <form action="additionalFacilityOne" method="post">
+      <form action="additionalFacilityTwo" method="post">
+
 
           {% call fieldset({
           legend: {
             text: "Do you need a PRC for any other hospitals, clinics, or treatment facilities?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
-          }  
+          }
         }) %}
 
-        <div class="nhsuk-inset-text" style="margin-top: 10px; margin-bottom: 10px;">
-         <span class="nhsuk-u-visually-hidden">Information:</span>
-         <p>
-           <span>
-             <b>Treatment facility 1</b>
-           </span>
-           <br>
-           {{ data['treatment-facility-name']}}
-         </p>
-        </div>
+       
+            <div class="nhsuk-inset-text" style="margin-top: 10px; margin-bottom: 10px;">
+              <span class="nhsuk-u-visually-hidden">Information:</span>
+              <p>
+               <span>
+                 <b>Treatment facility 1</b>
+               </span>
+               <br>
+               {{ data['treatment-facility-name']}}  
+             </p>
+           
+              <p>
+                <span>
+                  <b>Treatment facility 2</b>
+                </span>
+                <br>
+               {{ data['treatment-facility-name-2']}}   
+              </p>
+            </div>
+            
 
         <div class="nhsuk-hint" id="contact-hint">
           If you've had treatment in multiple departments at the same place, you do not need to tell us about these.
         </div>
 
         {{ radios({
-          "idPrefix": "additional-facility",
-          "name": "additional-facility",
+          "idPrefix": "additional-facility-2",
+          "name": "additional-facility-2",
           "items": [
             {
               "value": "Yes",
