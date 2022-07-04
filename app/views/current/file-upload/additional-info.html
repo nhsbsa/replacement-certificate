@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  If you cannot provide the evidence we asked for, tell us why
+  If you cannot provide the evidence we asked for, tell us why 
 {% endblock %}
 
 {% block beforeContent %}
@@ -36,14 +36,22 @@
           }
         }) %}
 
-        <!-- <p>If you have provided all the requested evidence, select continue.</p> -->
+        <p>Let us know any other information which can be used to support your application. This could be anything which you think could be explained further. </p>
+
+        <p>You should tell us if: </p>
+
+        <ul>
+          <li>you’ve not been able to upload 2 pieces of evidence</li> 
+          <li>you’ve uploaded documents using the ‘Other’ option</li> 
+          <li>your evidence shows a different address to the address on the application</li>
+          </ul> 
 
 
         {{ textarea({
           "name": "additional-info",
           "id": "example",
           "label": {
-            "text": ""
+            "text": "Supporting information"
           },
           "hint": {
             "text": ""
