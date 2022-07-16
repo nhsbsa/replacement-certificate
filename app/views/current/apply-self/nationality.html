@@ -26,11 +26,7 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-
-        <!-- have commented out the nationality routing as we no longer need to ask all the nationality follow-up questions -->
-        <!-- <form action="nationality" method="post"> -->
-        <form action="data-capture/full-name" method="post">
+        <form action="nationality" method="post">
 
           <div class="nhsuk-form-group">
         
@@ -61,9 +57,9 @@
                 <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
 
                   <div class="nhsuk-checkboxes__item">
-                    <input class="nhsuk-checkboxes__input" id="eu-nationality" name="nationality" type="checkbox" value="EU" aria-describedby="nationality-3-item-hint" aria-controls="conditional-nationality-3" aria-expanded="false">
+                    <input class="nhsuk-checkboxes__input" id="eu-nationality" name="nationality" type="checkbox" value="EU, EEA" aria-describedby="nationality-3-item-hint" aria-controls="conditional-nationality-3" aria-expanded="false">
                     <label class="nhsuk-label nhsuk-checkboxes__label" for="eu-nationality">
-                      An EU citizen, or a national of Switzerland, Norway, Iceland, or Liechtenstein
+                      An EU citizen, or a national of Norway, Iceland, or Liechtenstein
                     </label>
                   </div>
           
@@ -106,7 +102,6 @@
                           <option value="si">Slovenia</option>
                           <option value="es">Spain</option>
                           <option value="se">Sweden</option>
-                          <option value="cf">Switzerland</option>
                         </select>
                     </div>
 
@@ -117,10 +112,19 @@
 
                 </div>
 
+                <div class="nhsuk-checkboxes">
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="other-nationality" name="nationality" type="checkbox" value="Switzerland">
+                    <label class="nhsuk-label nhsuk-checkboxes__label">
+                      A national of Switzerland
+                    </label>
+                  </div>
+
                 <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
 
                   <div class="nhsuk-checkboxes__item">
-                    <input class="nhsuk-checkboxes__input" id="other-nationality" name="nationality" type="checkbox" value="OTHER" aria-controls="conditional-nationality-4" aria-expanded="false">
+                    <input class="nhsuk-checkboxes__input" id="other-nationality" name="nationality" type="checkbox" value="Other" aria-controls="conditional-nationality-4" aria-expanded="false">
                     <label class="nhsuk-label nhsuk-checkboxes__label" for="other-nationality">
                       Any other nationality not listed
                     </label>
@@ -370,7 +374,7 @@
           "text": "More information about dual nationality",
           "HTML": "
           <p>If you are a national of at least one EU country, or any of the other European countries 
-            listed, you should select <strong>EU citizen or a national of Switzerland, Norway, Iceland, or 
+            listed, you should select <strong>EU citizen or a national of Norway, Iceland, or 
               Liechtenstein</strong> and tell us which countries.</p>
           <p>If you are also a UK national, select <strong>United Kingdom (UK) national</strong> as well.</p>
           <p>If you have dual or multiple nationalities involving nationality of the UK and another 

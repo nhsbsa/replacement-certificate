@@ -43,7 +43,7 @@ router.post('/paidTreatment', function (req, res) {
     res.redirect('paid-treatment-details')
   }
   if (paidTreatment == "No") {
-    res.redirect('treatment-start')
+    res.redirect('ordinarily-live')
   }
   else {
     res.redirect('paid-treatment')
@@ -57,7 +57,7 @@ router.post('/coPayment', function (req, res) {
     res.redirect('kickouts/ineligible-paid')
   }
   if (coPayment == "No") {
-    res.redirect('treatment-start')
+    res.redirect('ordinarily-live')
   }
   else {
     res.redirect('paid-treatment-details')
@@ -95,6 +95,46 @@ router.post('/coverAnother', function (req, res) {
   }
 })
 
+// What is your nationality?
+function arraysContainSame(a, b) {
+  a = Array.isArray(a) ? a : [];
+  b = Array.isArray(b) ? b : [];
+  return a.length === b.length && a.every(el => b.includes(el));
+}
+
+router.post('/nationality', function (req, res) {
+
+  var nationality = req.session.data['nationality'];
+  console.log(nationality);
+
+  if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
+    res.redirect('treatment-country')
+  }
+  else if (nationality == 'UK') {
+    res.redirect('treatment-country')
+  }
+  else if (arraysContainSame(nationality, ['UK', 'EU, EEA or Swiss', 'Other']) == true) {
+    res.redirect('treatment-country')
+  }
+  else if (arraysContainSame(nationality, ['EU, EEA or Swiss', 'Other']) == true) {
+    res.redirect('treatment-country')
+  }
+  else if (nationality == 'EU, EEA or Swiss') {
+    res.redirect('treatment-country')
+  }
+  else if (nationality == 'Other') {
+    res.redirect('treatment-country')
+  }
+  else if (arraysContainSame(nationality, ['UK', 'EU, EEA or Swiss']) == true) {
+    res.redirect('treatment-country')
+  }
+  else {
+    res.redirect('treatment-country')
+  }
+})
+
+//What country is the patient receiving medical treatment in?
+
 router.post('/treatment-country', function (req, res) {
 
   var Country = require(path.resolve("app/model/country.js"));
@@ -114,7 +154,7 @@ router.post('/treatment-country', function (req, res) {
 router.post('/additionalFacilityOne', function (req, res) {
   var additionalFacilityOne = req.session.data['additional-facility']
   if (additionalFacilityOne == "Yes") {
-    res.redirect('treatment-facility-name-2')
+    res.redirect('treatment-start-2')
   }
   if (additionalFacilityOne == "No") {
     res.redirect('treatment-facility-details')
@@ -129,7 +169,7 @@ router.post('/additionalFacilityOne', function (req, res) {
 router.post('/additionalFacilityTwo', function (req, res) {
   var additionalFacilityTwo = req.session.data['additional-facility-2']
   if (additionalFacilityTwo == "Yes") {
-    res.redirect('treatment-facility-name-3')
+    res.redirect('treatment-start-3')
   }
   if (additionalFacilityTwo == "No") {
     res.redirect('treatment-facility-details-2')

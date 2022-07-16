@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Do you have healthcare cover from another country besides the UK, such as having an S1, E121, E106 or E109?
+  Does the patient have healthcare cover from an EU country, Iceland, Norway, Liechtenstein, or Switzerland?
 {% endblock %}
 
 {% block beforeContent %}
@@ -31,15 +31,15 @@
 
         {% call fieldset({
           legend: {
-            text: "Do you have healthcare cover from an EU country, Iceland, Norway, Liechtenstein, or Switzerland?",
+            text: "Does the patient have healthcare cover from an EU country, Iceland, Norway, Liechtenstein, or Switzerland?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <p>This may be an S1, E121, E106, or E109 to cover your health costs in the UK. For example, you've previously lived in another country outside the UK and you're receiving a state pension or benefit from that country.</p>
+        <p>This may be an S1, E121, E106, or E109 to cover the patient's health costs in the UK. For example, they've previously lived in another country outside the UK and they're receiving a state pension or benefit from that country.</p>
 
-        <p>If you're temporarily studying in the UK but normally live in another country, you may have a European Health Insurance Card (EHIC) from that country to cover your healthcare costs while you are studying.</p>
+        <p>If the patient is temporarily studying in the UK but normally lives in another country, they may have a health insurance card from that country to cover their healthcare costs while they are studying. </p>
 
         {{ radios({
           "idPrefix": "cover-from-another",
@@ -63,7 +63,7 @@
           "text": "What is an S1, E121, E106 or E109?",
           "HTML": "
           <p>
-            An S1, E121, E106 or E109 certificate issued by an EU country, Norway, Iceland, Liechtenstein or Switzerland for a person living in the UK entitles them to access the NHS in the same way as a UK resident. You may be entitled to one of these certificates if you:
+            An S1, E121, E106 or E109 certificate issued by an EU country, Norway, Iceland, Liechtenstein or Switzerland for a person living in the UK entitles them to access the NHS in the same way as a UK resident. The patient may be entitled to one of these certificates if they:
           </p>
 
           <ul>
@@ -74,24 +74,24 @@
               are a frontier worker (someone who lives in the UK and works in one of those countries)
             </li>
             <li>
-              are assessed by the issuing country that you are entitled to a certificate for another reason
+              are assessed by the issuing country that they are entitled to a certificate for another reason
             </li>
             <li>
               are the family member of someone who has been awarded an S1, E121 or E106 certificate
             </li>
           </ul>
 
-          <p>Answer yes if you:</p>
+          <p>Answer yes if the patient:</p>
 
           <ul>
             <li>
-              are entitled to an S1, E121, E106 or E109 certificate even if one has not been issued to you
+              is entitled to an S1, E121, E106 or E109 certificate even if one has not been issued to them
             </li>
             <li>
-              have been provided with an S1, E121, E106 or E109 certificate that you have not yet registered with the NHS 
+              has been provided with an S1, E121, E106 or E109 certificate that they have not yet registered with the NHS 
             </li>
             <li>
-              have an S1, E121, E106 or E109 certificate which is registered with the NHS
+              has an S1, E121, E106 or E109 certificate which is registered with the NHS
             </li>
           </ul>
 
