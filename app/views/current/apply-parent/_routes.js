@@ -5,6 +5,38 @@ const path = require('path');
 
 // Add your routes here - above the module.exports line
 
+// Where is your child receiving medical treatment?
+
+router.post('/treatmentCountry', function (req, res) {
+
+  var treatmentCountry = req.session.data['location-picker-1'];
+  console.log(treatmentCountry);
+
+  if (treatmentCountry == 'Austria' || treatmentCountry == 'Belgium' || treatmentCountry == 'Bulgaria' || treatmentCountry == 'Denmark') {
+    res.redirect('paid-treatment')
+  }
+  if (treatmentCountry == 'Czech Republic' || treatmentCountry == 'Estonia' || treatmentCountry == 'Finland' || treatmentCountry == 'France') {
+    res.redirect('paid-treatment')
+  }
+  if (treatmentCountry == 'Germany' || treatmentCountry == 'Greece' || treatmentCountry == 'Hungary' || treatmentCountry == 'Ireland' || treatmentCountry == 'Italy') {
+    res.redirect('paid-treatment')
+  }
+  if (treatmentCountry == 'Latvia' || treatmentCountry == 'Lithuania' || treatmentCountry == 'Luxemburg' || treatmentCountry == 'Malta' || treatmentCountry == 'Montenegro') {
+    res.redirect('paid-treatment')
+  }
+  if (treatmentCountry == 'Netherlands' || treatmentCountry == 'Poland' || treatmentCountry == 'Portugal' || treatmentCountry == 'Romania' || treatmentCountry == 'Slovakia') {
+    res.redirect('paid-treatment')
+  }
+  if (treatmentCountry == 'Slovenia' || treatmentCountry == 'Spain' || treatmentCountry == 'Sweden' || treatmentCountry == 'Switzerland') {
+    res.redirect('paid-treatment')
+  }
+  if (treatmentCountry == 'Norway' || treatmentCountry == 'Liechtenstein' || treatmentCountry == 'Iceland') {
+    res.redirect('kickouts/ineligible-treatment-efta')
+  }
+  else {
+    res.redirect('kickouts/ineligible-treatment-other')
+  }
+})
 
 // Are you receiving medical care at the moment?
 router.post('/receivingTreatment', function (req, res) {
@@ -71,7 +103,7 @@ router.post('/ordinaryResidence', function (req, res) {
     res.redirect('cover-from-another')
   }
   if (ordinaryResidence == "EU, Norway, Iceland, Liechtenstein or Switzerland") {
-    res.redirect('registered-s1')
+    res.redirect('ineligible-living-efta')
   }
   if (ordinaryResidence == "Other") {
     res.redirect('kickouts/ineligible-living-other')
@@ -84,10 +116,10 @@ router.post('/ordinaryResidence', function (req, res) {
 // Do you have healthcare cover from another country??
 router.post('/coverAnother', function (req, res) {
   var coverAnother = req.session.data['cover-from-another']
-  if (coverAnother == "Yes") {
+  if (coverAnother == "yes") {
     res.redirect('kickouts/ineligible-another-cover')
   }
-  if (coverAnother == "No") {
+  if (coverAnother == "no") {
     res.redirect('nationality')
   }
   else {
@@ -108,30 +140,34 @@ router.post('/nationality', function (req, res) {
   console.log(nationality);
 
   if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
-    res.redirect('treatment-country')
+    res.redirect('treatment-start')
   }
   else if (nationality == 'UK') {
-    res.redirect('treatment-country')
+    res.redirect('treatment-start')
   }
-  else if (arraysContainSame(nationality, ['UK', 'EU, EEA or Swiss', 'Other']) == true) {
-    res.redirect('treatment-country')
+  else if (arraysContainSame(nationality, ['UK', 'EU, EEA', 'Other']) == true) {
+    res.redirect('treatment-start')
   }
-  else if (arraysContainSame(nationality, ['EU, EEA or Swiss', 'Other']) == true) {
-    res.redirect('treatment-country')
+  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true) {
+    res.redirect('treatment-start')
   }
-  else if (nationality == 'EU, EEA or Swiss') {
-    res.redirect('treatment-country')
+  else if (nationality == 'EU, EEA') {
+    res.redirect('treatment-start')
+  }
+  else if (nationality == 'Switzerland') {
+    res.redirect('kickouts/ineligible-swiss')
   }
   else if (nationality == 'Other') {
-    res.redirect('treatment-country')
+    res.redirect('treatment-start')
   }
-  else if (arraysContainSame(nationality, ['UK', 'EU, EEA or Swiss']) == true) {
-    res.redirect('treatment-country')
+  else if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true) {
+    res.redirect('treatment-start')
   }
   else {
-    res.redirect('treatment-country')
+    res.redirect('nationality')
   }
 })
+
 
 router.post('/treatment-country', function (req, res) {
 

@@ -36,24 +36,36 @@ router.post('/sixMonths', function (req, res) {
   }
 })
 
-// What country are you receiving medical treatment in?
+// Where are you receiving medical treatment?
 
 router.post('/treatmentCountry', function (req, res) {
 
   var treatmentCountry = req.session.data['location-picker-1'];
   console.log(treatmentCountry);
 
-  if (treatmentCountry == 'Norway') {
-    res.redirect('kickouts/ineligible-treatment-efta')
+  if (treatmentCountry == 'Austria' || treatmentCountry == 'Belgium' || treatmentCountry == 'Bulgaria' || treatmentCountry == 'Denmark') {
+    res.redirect('paid-treatment')
   }
-  else if (treatmentCountry == 'Liechtenstein') {
-    res.redirect('kickouts/ineligible-treatment-efta')
+  if (treatmentCountry == 'Czech Republic' || treatmentCountry == 'Estonia' || treatmentCountry == 'Finland' || treatmentCountry == 'France') {
+    res.redirect('paid-treatment')
   }
-  else if (treatmentCountry == 'Iceland') {
+  if (treatmentCountry == 'Germany' || treatmentCountry == 'Greece' || treatmentCountry == 'Hungary' || treatmentCountry == 'Ireland' || treatmentCountry == 'Italy') {
+    res.redirect('paid-treatment')
+  }
+  if (treatmentCountry == 'Latvia' || treatmentCountry == 'Lithuania' || treatmentCountry == 'Luxemburg' || treatmentCountry == 'Malta' || treatmentCountry == 'Montenegro') {
+    res.redirect('paid-treatment')
+  }
+  if (treatmentCountry == 'Netherlands' || treatmentCountry == 'Poland' || treatmentCountry == 'Portugal' || treatmentCountry == 'Romania' || treatmentCountry == 'Slovakia') {
+    res.redirect('paid-treatment')
+  }
+  if (treatmentCountry == 'Slovenia' || treatmentCountry == 'Spain' || treatmentCountry == 'Sweden' || treatmentCountry == 'Switzerland') {
+    res.redirect('paid-treatment')
+  }
+  if (treatmentCountry == 'Norway' || treatmentCountry == 'Liechtenstein' || treatmentCountry == 'Iceland') {
     res.redirect('kickouts/ineligible-treatment-efta')
   }
   else {
-    res.redirect('paid-treatment')
+    res.redirect('kickouts/ineligible-treatment-other')
   }
 })
 
@@ -107,10 +119,10 @@ router.post('/ordinaryResidence', function (req, res) {
 // Do you have healthcare cover from another country??
 router.post('/coverAnother', function (req, res) {
   var coverAnother = req.session.data['cover-from-another']
-  if (coverAnother == "Yes") {
+  if (coverAnother == "yes") {
     res.redirect('kickouts/ineligible-another-cover')
   }
-  if (coverAnother == "No") {
+  if (coverAnother == "no") {
     res.redirect('nationality')
   }
   else {
@@ -142,7 +154,6 @@ function arraysContainSame(a, b) {
 router.post('/nationality', function (req, res) {
 
   var nationality = req.session.data['nationality'];
-  var otherNational = req.session.data['other-location-picker'];
   console.log(nationality);
 
   if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
