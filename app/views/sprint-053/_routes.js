@@ -9,8 +9,8 @@ const axios = require('axios');
 // Who are you applying for? 
 router.post('/applyFor', function (req, res) {
   var applyFor = req.session.data['who-apply-for']
+  
   if (applyFor == "Myself") {
-    // res.redirect('apply/receiving-treatment')
     res.redirect('apply-self/treatment-country')
   }
   else if (applyFor == "Someone else") {
