@@ -96,7 +96,7 @@ router.post('/coPayment', function (req, res) {
   }
 })
 
-// Where do you ordinarily live?
+// //Where do you ordinarily live?
 router.post('/ordinaryResidence', function (req, res) {
   var ordinaryResidence = req.session.data['ordinarily-live']
   if (ordinaryResidence == "UK") {
