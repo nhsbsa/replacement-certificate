@@ -1,0 +1,277 @@
+{% extends 'layout.html' %}
+{% block pageTitle %}
+
+   Page by page breakdown
+
+{% endblock %}
+{% block beforeContent %}
+{% endblock %}
+{% block content %}
+
+<style>
+  .nhsuk-table__cell:nth-child(1) {
+    width: 20%;
+  }
+
+  .nhsuk-table__cell:nth-child(2) {
+    width: 50%;
+  }
+  .nhsuk-table__cell:nth-child(3) {
+    width: 15%;
+  }
+
+  .nhsuk-table__cell:nth-child(4) {
+    width: 15%;
+  }
+</style>
+
+<div class="nhsuk-grid-row">
+   <div class="nhsuk-grid-column-full">
+      <h1>
+         Page by page breakdown
+         <span class="nhsuk-caption-xl nhsuk-caption--bottom">Apply for a Provisional Replacement Certificate (PRC)</span>
+      </h1>
+
+      <!-- <h2>Pre-registration</h2> -->
+
+      <h3>Start pages</h3>
+
+      <div class="nhsuk-table-responsive">
+        <table class="nhsuk-table">
+          <!-- <caption class="nhsuk-table__caption">Page by page breakdown</caption> -->
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Page</th>
+              <th class="nhsuk-table__header" scope="col">Title</th>
+              <th class="nhsuk-table__header" scope="col">URL</th>
+              <th class="nhsuk-table__header" scope="col">JIRA</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="start">Start</a></td>
+              <td class="nhsuk-table__cell">Apply for a Provisional Replacement Certificate (PRC)</td>
+              <td class="nhsuk-table__cell">/start</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Eligibility questions</h3>
+
+      <div class="nhsuk-table-responsive">
+        <table class="nhsuk-table">
+          <!-- <caption class="nhsuk-table__caption">Page by page breakdown</caption> -->
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Page</th>
+              <th class="nhsuk-table__header" scope="col">Title</th>
+              <th class="nhsuk-table__header" scope="col">URL</th>
+              <th class="nhsuk-table__header" scope="col">JIRA</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="apply/nationality">Nationality</a></td>
+              <td class="nhsuk-table__cell">What is your nationality?</td>
+              <td class="nhsuk-table__cell">/nationality</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Data capture questions</h3>
+
+      <div class="nhsuk-table-responsive">
+        <table class="nhsuk-table">
+          <!-- <caption class="nhsuk-table__caption">Page by page breakdown</caption> -->
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Page</th>
+              <th class="nhsuk-table__header" scope="col">Title</th>
+              <th class="nhsuk-table__header" scope="col">URL</th>
+              <th class="nhsuk-table__header" scope="col">JIRA</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="apply/full-name">Name</a><br>(Patient)</td>
+              <td class="nhsuk-table__cell">What is your name?</td>
+              <td class="nhsuk-table__cell">/full-name</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="#">Name</a><br>(Third party)</td>
+              <td class="nhsuk-table__cell">What is their name?</td>
+              <td class="nhsuk-table__cell">/full-name</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="apply/dob">Date of birth</a><br>(Patient)</td>
+              <td class="nhsuk-table__cell">What is your date of birth?</td>
+              <td class="nhsuk-table__cell">/date-of-birth</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="">Date of birth</a><br>(Third party)</td>
+              <td class="nhsuk-table__cell">What is [Firstname]'s date of birth?</td>
+              <td class="nhsuk-table__cell">/date-of-birth</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="apply/email-address">Email</a><br>(Patient)</td>
+              <td class="nhsuk-table__cell">What is your email address?</td>
+              <td class="nhsuk-table__cell">/email-address</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="">Email</a><br>(Third party)</td>
+              <td class="nhsuk-table__cell">What is [Firstname]'s email address?</td>
+              <td class="nhsuk-table__cell">/email-address</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="apply/phone-number">Telephone</a><br>(Patient)</td>
+              <td class="nhsuk-table__cell">What is your contact telephone number?</td>
+              <td class="nhsuk-table__cell">/phone-number</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="">Telephone</a><br>(Third party)</td>
+              <td class="nhsuk-table__cell">What is [Firstname]'s contact telephone number?</td>
+              <td class="nhsuk-table__cell">/phone-number</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+      
+
+      <!-- <h3>Information pages</h3>
+
+      <div class="nhsuk-table-responsive">
+        <table class="nhsuk-table">
+          <caption class="nhsuk-table__caption">Page by page breakdown</caption>
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Page</th>
+              <th class="nhsuk-table__header" scope="col">Title</th>
+              <th class="nhsuk-table__header" scope="col">URL</th>
+              <th class="nhsuk-table__header" scope="col">JIRA</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+
+          </tbody>
+        </table>
+      </div> -->
+      
+      <h3>Check your answers</h3>
+
+      <div class="nhsuk-table-responsive">
+        <table class="nhsuk-table">
+          <!-- <caption class="nhsuk-table__caption">Page by page breakdown</caption> -->
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Page</th>
+              <th class="nhsuk-table__header" scope="col">Title</th>
+              <th class="nhsuk-table__header" scope="col">URL</th>
+              <th class="nhsuk-table__header" scope="col">JIRA</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="">Patient applying for self</a></td>
+              <td class="nhsuk-table__cell">Check your answers before sending your application</td>
+              <td class="nhsuk-table__cell">/check-your-answers</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="">Person applying for another adult</a></td>
+              <td class="nhsuk-table__cell">Check your answers before sending your application</td>
+              <td class="nhsuk-table__cell">/check-your-answers</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="">Parent or guardian applying for child under 18</a></td>
+              <td class="nhsuk-table__cell">Check your answers before sending your application</td>
+              <td class="nhsuk-table__cell">/check-your-answers</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Application submitted</h3>
+
+      <div class="nhsuk-table-responsive">
+        <table class="nhsuk-table">
+          <!-- <caption class="nhsuk-table__caption">Page by page breakdown</caption> -->
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Page</th>
+              <th class="nhsuk-table__header" scope="col">Title</th>
+              <th class="nhsuk-table__header" scope="col">URL</th>
+              <th class="nhsuk-table__header" scope="col">JIRA</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="">Patient applying for self</a></td>
+              <td class="nhsuk-table__cell">Application submitted</td>
+              <td class="nhsuk-table__cell">/</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="">Person applying for another adult</a></td>
+              <td class="nhsuk-table__cell">Application submitted</td>
+              <td class="nhsuk-table__cell">/</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="">Parent or guardian applying for child under 18</a></td>
+              <td class="nhsuk-table__cell">Application submitted</td>
+              <td class="nhsuk-table__cell">/</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+
+           
+          </tbody>
+        </table>
+      </div>
+
+     <h3>Kickout pages</h3>
+
+      <div class="nhsuk-table-responsive">
+        <table class="nhsuk-table">
+          <!-- <caption class="nhsuk-table__caption">Page by page breakdown</caption> -->
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Page</th>
+              <th class="nhsuk-table__header" scope="col">Title</th>
+              <th class="nhsuk-table__header" scope="col">URL</th>
+              <th class="nhsuk-table__header" scope="col">JIRA</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell"><a href="e">Ineligible</a></td>
+              <td class="nhsuk-table__cell"></td>
+              <td class="nhsuk-table__cell">/</td>
+              <td class="nhsuk-table__cell"><a href="#">JIRA ticket #</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+     
+   </div>
+</div>
+{% endblock %}
