@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is {{ data['upload-firstname'] }}'s address?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <!-- <form action="corres-address" method="post"> -->
+      <form action="latency" method="post">
+
+        <h2>What is {{ data['upload-firstname'] }}'s address?</h2>
+
+        {% call fieldset({
+          legend: {
+            text: "",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="input-width-20">
+            Address line 1
+          </label>
+          <input class="nhsuk-input nhsuk-input--width-20" id="input-width-20" name="address-eu-line-1" type="text">
+        </div>
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="input-width-20">
+            Address line 2 (optional)
+          </label>
+          <input class="nhsuk-input nhsuk-input--width-20" id="input-width-20" name="address-eu-line-2" type="text">
+        </div>
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="input-width-20">
+            Town or city
+          </label>
+          <input class="nhsuk-input nhsuk-input--width-20" id="input-width-20" name="address-eu-line-3" type="text">
+        </div>
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="input-width-20">
+            State, province or region
+          </label>
+          <input class="nhsuk-input nhsuk-input--width-20" id="input-width-20" name="address-eu-line-4" type="text">
+        </div>
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="input-width-20">
+            Post code (optional)
+          </label>
+          <input class="nhsuk-input nhsuk-input--width-20" id="input-width-20" name="address-eu-line-5" type="text">
+        </div>
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="input-width-20">
+            Country
+          </label>
+          <input class="nhsuk-input nhsuk-input--width-20" id="input-width-20" name="address-eu-line-6" type="text">
+        </div>
+
+
+        {% endcall %}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
