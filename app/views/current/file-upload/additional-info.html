@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  If you cannot provide the evidence we asked for, tell us why 
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <form action="cya" method="post">
+
+        {% call fieldset({
+          legend: {
+            text: "If you cannot provide the evidence we asked for, tell us why",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <p>Let us know any other information which can be used to support your application. This could be anything which you think could be explained further. </p>
+
+        <p>You should tell us if: </p>
+
+        <ul>
+          <li>you’ve not been able to upload 2 pieces of evidence</li> 
+          <li>you’ve uploaded documents using the ‘Other’ option</li> 
+          <li>your evidence shows a different address to the address on the application</li>
+          </ul> 
+
+
+        {{ textarea({
+          "name": "additional-info",
+          "id": "example",
+          "label": {
+            "text": "Supporting information"
+          },
+          "hint": {
+            "text": ""
+          }
+        }) }}
+
+        <!-- Explain any missing documents or  -->
+
+
+        
+
+
+        {% endcall %}
+
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
