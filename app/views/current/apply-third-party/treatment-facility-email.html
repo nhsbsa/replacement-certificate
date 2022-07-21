@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the email address of the hospital, clinic or treatment facility?
+  What is the email address of the hospital, clinic, or treatment facility?
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,8 +27,9 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <form action="additional-facility" method="post">
+
         <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 1</span>
-          <br>
+        <br>
 
         {% call fieldset({
           legend: {
@@ -37,7 +38,6 @@
             isPageHeading: true
           }
         }) %}
-
         <div class="nhsuk-hint">
           It's important that this email address is accurate. Medical staff will be able to provide you with this.  
 

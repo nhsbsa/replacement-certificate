@@ -27,18 +27,20 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
         <form action="treatment-facility-name" method="post">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 1</span>
+          <br>
+          <h1>Treatment date</h1>
+          <p>You can only apply for a PRC from the time you need treatment. This includes treatment you've had already.</p>
+          <p>Your PRC will last for 28 days starting from the first day of treatment. If the treatment lasts for longer than 28 days, you will need to reapply.</p>
+          <p>You cannot apply for a PRC in advance.</p>
+
             <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
                 <legend class="nhsuk-fieldset__legend nhsuk-label--l">
-                    <h1 class="nhsuk-fieldset__heading">
-                      What date did you start receiving treatment?
-                    </h1>
+                    <h2 class="nhsuk-fieldset__heading">
+                      What date did your treatment start? 
+                    </h2>
                 </legend>
 
-                <p>You can only apply for a PRC from the time you need treatment. This includes treatment you have had already.</p>
-
-                <p>You cannot apply for a PRC in advance of any treatment.</p>
-
-                <p>Your PRC will last for 28 days starting from the first day of treatment. If the treatment lasts for longer than 28 days, you will need to reapply.</p>
 
                 {% from 'radios/macro.njk' import radios %}
                 {% from 'input/macro.njk' import input %}

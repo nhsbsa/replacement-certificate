@@ -27,6 +27,8 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <form action="treatment-facility-email-2" method="post">
+        <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 2</span>
+        <br>
 
         {% call fieldset({
           legend: {
@@ -39,15 +41,13 @@
         <div class="nhsuk-hint">
           If your child had treatment in more than one place, you'll be able to add these later.
         </div>
-        
-        <!-- Ospedale Santobono Entrata Pronto Soccorso -->
 
         {{ details({
           "text": "What medical facilities are not covered?",
           "HTML": "
           <p>A PRC does not cover treatment provided by pharmacies or private healthcare providers.</p>
 
-          <p>If this is related to a prescription cost, you should use the name of the prescriber that issued the prescription. You should not use the name of the pharmacy. </p>
+          <p>A PRC does not cover prescription costs.</p>
           "
          }) }}
 
@@ -76,4 +76,3 @@
     </div>
   </div>
 {% endblock %}
-
