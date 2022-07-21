@@ -25,6 +25,7 @@ router.use('/current', require('./views/current/_routes'));
 router.use('/current/apply-self', require('./views/current/apply-self/_routes'));
 router.use('/current/apply-parent', require('./views/current/apply-parent/_routes'));
 router.use('/current/apply-third-party', require('./views/current/apply-third-party/_routes'));
+router.use('/current/file-upload', require('./views/current/file-upload/_routes'));
 
 
 // Start folder specific routes
