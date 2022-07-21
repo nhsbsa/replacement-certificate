@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have healthcare cover from an EU country, Iceland, Norway, Liechtenstein, or Switzerland?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+        <h1>Healthcare cover from another country</h1>
+
+        <p>This may be an S1, E121, E106, or E109 to cover the patient's health costs in the UK. For example, the patient has previously lived in another country outside the UK and they're receiving a state pension or benefit from that country.</p>
+
+        <p>If the patient is temporarily studying in the UK but normally lives in another country, they may have a health insurance card from that country to cover their healthcare costs while they are studying.</p>
+
+        <details class="nhsuk-details">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              What is an S1, E121, E106, or E109?
+            </span>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p>
+              An S1, E121, E106, or E109 certificate issued by an EU country, Iceland, Norway, Liechtenstein, or Switzerland for a person living in the UK entitles them to access the NHS in the same way as a UK resident. The patient may be entitled to one of these certificates if they:
+            </p>
+            
+            <ul>
+              <li>
+                receive a qualifying benefit or state pension from one of the above countries, and do not receive a UK State Pension
+              </li>
+              <li>
+                are a frontier worker (someone who lives in the UK and works in one of those countries) 
+              </li>
+              <li>
+                are assessed by the issuing country that they are entitled to a certificate for another reason
+              </li>
+              <li>
+                are the family member of someone who has been awarded an S1, E121, or E106 certificate
+              </li>
+            </ul>
+  
+            <p>Answer yes if the patient:</p>
+  
+            <ul>
+              <li>
+                is entitled to an S1, E121, E106, or E109 certificate even if one has not been issued to them
+              </li>
+              <li>
+                has been provided with an S1, E121, E106, or E109 certificate that they have not yet registered with the NHS
+              </li>
+              <li>
+                has an S1, E121, E106, or E109 certificate which is registered with the NHS
+              </li>
+            </ul>
+  
+            <p>
+              If their certificate has not been registered with the NHS, you should send it to:
+            </p>
+      
+            <p>
+              Cost Recovery <br>
+              Overseas Healthcare Services <br>
+              NHSBSA  <br>
+              Bridge House <br> 
+              152 Pilgrim Street <br> 
+              Newcastle upon Tyne <br> 
+              NE1 6SN <br>
+              UK
+            </p>
+          </div>
+        </details>
+
+        <br>
+        
+        <form action="coverAnother" method="post">
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h2 class="nhsuk-fieldset__heading">
+                Does the patient have healthcare cover from an EU country, Iceland, Norway, Liechtenstein, or Switzerland?
+              </h2>
+            </legend>
+
+            <div class="nhsuk-radios">
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="cover-from-another" name="cover-from-another" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="cover-from-another">
+                  No, they only have healthcare cover from the UK 
+                </label>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="cover-from-another" name="cover-from-another" type="radio" value="yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="cover-from-another">
+                  Yes, they have healthcare cover from outside the UK
+                </label>
+              </div>
+        
+            </div>
+        </fieldset>
+
+        <br>
+
+        <button class="nhsuk-button">
+          Continue
+        </button>
+
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+      
+    </div>
+  </div>
+{% endblock %}
