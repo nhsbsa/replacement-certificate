@@ -103,7 +103,7 @@ router.post('/ordinaryResidence', function (req, res) {
     res.redirect('cover-from-another')
   }
   if (ordinaryResidence == "EU, Norway, Iceland, Liechtenstein or Switzerland") {
-    res.redirect('ineligible-living-efta')
+    res.redirect('kickouts/ineligible-living-efta')
   }
   if (ordinaryResidence == "Other") {
     res.redirect('kickouts/ineligible-living-other')
