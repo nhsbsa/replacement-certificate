@@ -279,17 +279,6 @@ router.get('/treatment-start-date-error', function (req, res) {
   res.render(__dirname + '/treatment-start-date-error', {todayDate: todayDate});
 })
 
-// Check if string contains number
-// const paragraph = 'The quick brown fox jumps over the lazy dog. It barked.';
-// const regex = /[A-Z]/g;
-// const found = paragraph.match(regex);
-
-  //Example of implementing
-  // var matches = val.match(/\d+/g);
-  // if (matches != null) {
-  //     alert('number');
-  // }
-
 //Check if value is numeric
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
@@ -299,11 +288,6 @@ function isNumeric(n) {
 function hasNumber(myString) {
   return /\d/.test(myString);
 }
-
-  //Example of implementing
-  // var val = $('yourinputelement').val();
-  // if(isNumeric(val)) { alert('number'); } 
-  // else { alert('not number'); }
 
 router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '/treatmentStartDayErr', '/treatmentStartDayMonthErr', '/treatmentStartDayYearErr','/treatmentStartMonthErr', '/treatmentStartMonthYearErr', '/treatmentStartYearErr', '/treatmentStartErr', '/treatmentStartFutureErr', '/treatmentStartInvalidErr'], function (req, res) {
   var treatmentStart = req.session.data['start-date'];
@@ -349,6 +333,7 @@ router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '
   else {
     res.redirect('treatment-start-error')
   } 
+}
   
 // What is your date of birth?
 
@@ -356,9 +341,7 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr'], function 
   var birthDay = req.session.data['patient-day']
   var birthMonth = req.session.data['patient-month']
   var birthYear = req.session.data['patient-year']
-  console.log(birthDay);
-  console.log(birthMonth);
-  console.log(birthYear);
+
   if (isNumeric(birthDay, birthMonth, birthYear) == true) {
     res.redirect('know-ohs')
   }
@@ -588,48 +571,6 @@ router.post(['/data-capture/emailAddress', '/data-capture/emailAddressErr'], fun
 })
 
 
-// // Do you require treatment from additional facilities?
-
-// var treatmentFacilities = [];
-
-// router.post('/treatment-facility-details', function (req, res) {
-
-//   var Treatment = require(path.resolve("app/model/treatment.js"));
-
-//   if(req.session.data['treatment-name'] && req.session.data['treatment-email']) {
-//     var treatment1 = new Treatment(req.session.data['treatment-name'], req.session.data['treatment-email']);
-//     treatmentFacilities.push(treatment1);
-//   }
-
-//   res.redirect('additional-facility')
-// })
-// router.get('/additional-facility', function (req, res) {
-
-//   res.render(__dirname + '/additional-facility', {treatmentFacilities: treatmentFacilities});
-// })
-
-// // Do you require treatment from additional facilities?
-// router.post('/additionalTreatment', function (req, res) {
-
-//   var additionalTreatment = req.session.data['additional-facility']
-//   if (additionalTreatment == "Yes") {
-//     res.redirect('treatment-facility-details')
-//   }
-//   if (additionalTreatment == "No") {
-//     res.redirect('info')
-//   }
-//   else {
-//     res.redirect('additional-facility')
-//   }
-// })
-// router.get('/cya', function (req, res) {
-//   const ReferenceDataService = require(path.resolve("app/service/referenceData.js"));
-
-//   var countryList = ReferenceDataService.getCountries();
-
-//   res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
-// })
-
 // Do you have a registerd S1?
 router.post('/regS1', function (req, res) {
   var regS1 = req.session.data['reg-s1']
@@ -713,17 +654,5 @@ router.post('/data-capture/child/childAddress', function (req, res) {
     res.redirect('same-address')
   }
 })
-
-// router.get('/cya', function (req, res) {
-//   const ReferenceDataService = require(path.resolve("app/service/referenceData.js"));
-
-//   var countryList = ReferenceDataService.getCountries();
-
-//   console.log(ReferenceDataService.getMemberStates());
-
-//   res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
-// })
-
-
 
 module.exports = router
