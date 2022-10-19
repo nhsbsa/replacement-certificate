@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Does {{ data['patient-firstname'] }} have an Overseas Healthcare Services (OHS) reference number?
+{% endblock %}
+
+{% block beforeContent %}
+
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <form action="knowOhs" method="post">
+
+        <h2>Does {{ data['patient-firstname'] }} have an Overseas Healthcare Services (OHS) reference number?</h2>
+
+        {% call fieldset({
+          legend: {
+            text: "",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+      
+        <p>An OHS reference number is a number we use to identify a patient’s record.</p>
+
+        <p>You can find it on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC).</p>
+        
+
+        {{ radios({
+          "idPrefix": "know-ohs",
+          "name": "patient-know-ohs",
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes, I know their OHS reference number"
+            },
+            {
+              "value": "No",
+              "text": "No, I do not know their OHS reference number"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+        {{ details({
+          "text": "Why we ask for the patient's OHS reference number",
+          "HTML": "
+          <p>We can use the patient's OHS reference number to see if they currently hold a record with us. This may help us process your application faster.</p>
+          <p>Providing this is optional and does not affect their eligibility to apply for a PRC.</p>
+          "
+        }) }}
+
+      </form>
+
+      {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

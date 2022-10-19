@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the email address of the hospital, clinic, or treatment facility?
+  What is the email address of the hospital, clinic, or treatment facility where they're receiving treatment?
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,14 +26,14 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="additional-facility-3" method="post">
+      <form action="treatmentFacilityEmailThree" method="post">
 
         <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 3</span>
         <br>
 
         {% call fieldset({
           legend: {
-            text: "What is the email address of the hospital, clinic, or treatment facility?",
+            text: "What is the email address of the hospital, clinic, or treatment facility where they're receiving treatment?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
@@ -49,7 +49,7 @@
           "label": {
             "text": "Email address"
           },
-          "id": "input-width-30",
+          "id": "treatment-facility-email-3",
           "name": "treatment-facility-email-3",
           "classes": "nhsuk-input--width-30",
           "value": ""

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is {{ data['patient-firstname'] }}'s date of birth?
+  What is their date of birth?
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,9 +27,9 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <form action="nino" method="post"> -->
-      <form action="know-ohs" method="post">
+      <form action="dateBirth" method="post">
 
-        <h2>What is {{ data['patient-firstname'] }}'s date of birth?</h2>
+        <h2>What is their date of birth?</h2>
 
         {{ dateInput({
         "id": "example",

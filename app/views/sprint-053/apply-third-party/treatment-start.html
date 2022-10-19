@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    What date did their start receiving treatment?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+        <form action="treatment-facility-name" method="post">
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 1</span>
+          <br>
+          <h1>Treatment date</h1>
+          <p>You can only apply for a PRC from the time treatment is needed. This includes treatment that has already taken place.</p>
+          <p>A PRC will last for 28 days starting from the first day of treatment. If the treatment lasts for longer than 28 days, you will need to reapply.</p>
+          <p>You cannot apply for a PRC in advance.</p>
+            <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
+                <legend class="nhsuk-fieldset__legend nhsuk-label--l">
+                    <h2 class="nhsuk-fieldset__heading">
+                      What date did their treatment start?
+                    </h2>
+                </legend>
+
+                {% from 'radios/macro.njk' import radios %}
+                {% from 'input/macro.njk' import input %}
+
+                {% set emailHtml %}
+                  {{ input({
+                    id: "start-today",
+                    name: "start-today",
+                    classes: "nhsuk-u-width-two-thirds",
+                    label: {
+                      text: "Today"
+                    }
+                  }) }}
+                {% endset -%}
+
+                {% set chooseDateHtml %}
+                    {{ dateInput({
+                      "id": "example",
+                      "namePrefix": "choose-start-date",
+                      "fieldset": {
+                        "legend": {
+                          "classes": "nhsuk-label--l",
+                          "isPageHeading": true
+                        }
+                      },
+                      "hint": {
+                        "text": "For example, 19 2 2022"
+                      },
+                      "items": [
+                        {
+                          "name": "day",
+                          "classes": "nhsuk-input--width-2"
+                        },
+                        {
+                          "name": "month",
+                          "classes": "nhsuk-input--width-2"
+                        },
+                        {
+                          "name": "year",
+                          "classes": "nhsuk-input--width-4"
+                        }
+                      ]
+                    }) }}
+                {% endset -%}
+
+
+                {{ radios({
+                  "idPrefix": "start-date",
+                  "name": "start-date",
+                  "fieldset": {
+                    "legend": {
+
+                      "classes": "nhsuk-fieldset__legend--l",
+                      "isPageHeading": "false"
+                    }
+                  },
+                  "items": [
+                    {
+                      "value": todayDate,
+                      "text": "Today"
+                    },
+                    {
+                      "value": "text",
+                      "text": "Choose another date",
+                      "conditional": {
+                        "html": chooseDateHtml
+                      }
+                    }
+                  ]
+                }) }}
+
+
+               <!--  "hint": {
+                    "text": ""
+                  }, -->
+
+            </fieldset>
+
+            <button class="nhsuk-button" type="submit">Continue</button>
+        </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+      
+    </div>
+  </div>
+{% endblock %}

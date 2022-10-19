@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  You cannot apply for a Provisional Replacement Certificate
+{% endblock %}
+
+{% block beforeContent %}
+
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>You cannot apply for a Provisional Replacement Certificate</h1>
+
+      <p class="nhsuk-lede-text">
+        You cannot apply for a PRC if you are not a resident of the UK, an EU country, Iceland, Liechtenstein, Norway or Switzerland.
+      </p>
+
+      {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>  
+
+  </div>
+{% endblock %}

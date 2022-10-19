@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+
+  Have you paid more than a co-payment or patient contribution?
+
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
+      <form action="coPayment" method="post">
+
+        <h1>Co-payments or patient contributions</h1>
+        <p>Not all state healthcare is free in other countries.</p>
+        <p>In some countries, a resident of that country may have to pay towards the cost of their treatment. This is known as a co-payment or a patient contribution. This means that you may need to pay for services that you would get for free on the NHS.</p>
+        <p>These payments are typically for services like GP or dentist consultations, prescriptions, or hospital stays.</p>
+        <a href="https://www.gov.uk/government/collections/healthcare-in-the-eu-norway-iceland-liechtenstein-and-switzerland">Check the Foreign Office country guides on GOV.UK for information on how to access treatment in the country you're visiting and what may be required.</a>
+        <br><br>
+        <p>You cannot apply for a refund for a co-payment. You can only claim a refund for costs which would have been covered by a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), or Provisional Replacement Certificate (PRC).</p>
+        
+
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
+          <legend class="nhsuk-fieldset__legend nhsuk-label--l">
+              <h2 class="nhsuk-fieldset__heading">
+                Have you paid more than a co-payment or patient contribution?
+              </h2>
+          </legend>
+
+        {{ radios({
+          "idPrefix": "co-payment",
+          "name": "co-payment",
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        </fieldset>
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+      
+    </div>
+  </div>
+{% endblock %}
+

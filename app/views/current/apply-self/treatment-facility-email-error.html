@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is the email address of the hospital, clinic, or treatment facility?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+          This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+        <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="nhsuk-error-summary__body">
+          <ul class="nhsuk-list nhsuk-error-summary__list">
+            <li>
+              <a href="#treatment-facility-email">Enter the email address of the hospital, clinic, or treatment facility</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <form action="treatmentFacilityEmailErr" method="post">
+
+        <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 1</span>
+        <br>
+
+        {% call fieldset({
+          legend: {
+            text: "What is the email address of the hospital, clinic, or treatment facility?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+        <div class="nhsuk-hint">
+          It's important that this email address is accurate. Medical staff will be able to provide you with this.  
+
+          You should not search for this online as this information may not be correct.
+        </div>
+
+        {{ input({
+          "label": {
+            "text": "Email address"
+          },
+          "errorMessage": {
+            "text": "Enter the email address of the hospital, clinic, or treatment facility"
+          },
+          "id": "treatment-facility-email",
+          "name": "treatment-facility-email",
+          "classes": "nhsuk-input--width-30 nhsuk-input--error",
+          "value": ""
+        }) }}
+
+
+        {% endcall %}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-2)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

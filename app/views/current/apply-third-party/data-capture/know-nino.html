@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Do you know {{ data['patient-firstname'] }}'s National Insurance number?
+  Do you know their National Insurance number?
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,23 +29,21 @@
     <div class="nhsuk-grid-column-three-quarters">
       <form action="knowNino" method="post">
 
-        <h2>Do you know {{ data['patient-firstname'] }}'s National Insurance number?</h2>
+        <h2>Do you know their National Insurance number?</h2>
 
         {% call fieldset({
           legend: {
             text: "",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
+          },
+          hint: {
+            html: "It's on their National Insurance card, benefit letter, payslip or P60. For example, 'QQ 12 34 56 C'."
           }
         }) %}
       
         <!-- <p>Your NHS number is a 10 digit number. For example, <span class=\"nhsuk-u-nowrap\">485 777 3456</span>.</p>
         <p>You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.</p> -->
-
-        <p>
-          It’s on their National Insurance card, benefit letter, payslip or P60. For example,
-          <nobr>‘QQ 12 34 56 C’</nobr>.
-        </p>
 
 
         {{ radios({
@@ -74,11 +72,11 @@
         <details class="nhsuk-details">
           <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
-              Why we ask for {{ data['patient-firstname'] }}'s National Insurance number
+              Why we ask for their National Insurance number
             </span>
           </summary>
           <div class="nhsuk-details__text">
-            <p>We can use {{ data['patient-firstname'] }}'s National Insurance number to see if they currently hold a record with us. This may help us process their application faster.</p>
+            <p>We can use their National Insurance number to see if they currently hold a record with us. This may help us process their application faster.</p>
             <p>Providing this is optional and does not affect their eligibility to apply for a PRC.</p>
           </div>
         </details>

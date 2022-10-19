@@ -34,16 +34,11 @@
             text: "Do you know your National Insurance number?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
+          },
+          hint: {
+            html: "It's on your National Insurance card, benefit letter, payslip or P60. For example, 'QQ 12 34 56 C'."
           }
         }) %}
-      
-        <!-- <p>Your NHS number is a 10 digit number. For example, <span class=\"nhsuk-u-nowrap\">485 777 3456</span>.</p>
-        <p>You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.</p> -->
-
-        <p>
-          It’s on your National Insurance card, benefit letter, payslip or P60. For example,
-          <nobr>‘QQ 12 34 56 C’</nobr>.
-        </p>
         
 
         {{ radios({
@@ -52,7 +47,7 @@
           "items": [
             {
               "value": "Yes",
-              "text": "Yes, I know my National Insurance number"
+              "text": " Yes, I know my National Insurance number"
             },
             {
               "value": "No",

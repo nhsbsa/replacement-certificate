@@ -26,8 +26,8 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <!-- <form action="child/full-name" method="post"> -->
-      <form action="info-child" method="post">
+
+      <form action="emailAddress" method="post">
 
         {% call fieldset({
           legend: {
@@ -37,13 +37,13 @@
           }
         }) %}
 
-        <p>We’ll use this to send a copy of the Provisional Replacement Certificate to you.</p>
+        <p>We'll use this to send you a copy of the PRC or if we need to ask you for any more information to support your application. </p>
 
         {{ input({
           "label": {
-            "text": "Enter your email address"
+            "text": "Email address"
           },
-          "id": "input-width-30",
+          "id": "email-address",
           "name": "email-address",
           "classes": "nhsuk-input--width-30"
         }) }}

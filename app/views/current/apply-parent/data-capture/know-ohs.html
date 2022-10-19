@@ -34,13 +34,15 @@
             text: "Do you have an Overseas Healthcare Services (OHS) reference number?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
+          },
+          hint: {
+            html: "
+            <p>An OHS reference number is a number we use to identify your record.</p>
+            <p>You can find it on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC).</p>
+            "
           }
         }) %}
       
-        <p>An OHS reference number is a number we use to identify your record.</p>
-
-        <p>You can find it on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC).</p>
-        
 
         {{ radios({
           "idPrefix": "know-ohs",

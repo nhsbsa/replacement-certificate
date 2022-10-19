@@ -16,7 +16,21 @@ router.post('/applyFor', function (req, res) {
     res.redirect('apply-for-child')
   }
   else {
-    res.redirect('who-apply-for')
+    res.redirect('who-apply-for-error')
+  }
+})
+
+// Who are you applying for (error)? 
+router.post('/applyForErr', function (req, res) {
+  var applyForErr = req.session.data['who-apply-for-error']
+  if (applyForErr == "Myself") {
+    res.redirect('apply-self/treatment-country')
+  }
+  else if (applyForErr == "Someone else") {
+    res.redirect('apply-for-child')
+  }
+  else {
+    res.redirect('who-apply-for-error')
   }
 })
 

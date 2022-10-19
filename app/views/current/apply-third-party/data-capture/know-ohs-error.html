@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do they have an Overseas Healthcare Services (OHS) reference number?
+{% endblock %}
+
+{% block beforeContent %}
+
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+        <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="nhsuk-error-summary__body">
+          <ul class="nhsuk-list nhsuk-error-summary__list">
+            <li>
+              <a href="#know-ohs">Select yes if you are able to provide an OHS reference number</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <form action="knowOhsErr" method="post">
+
+        <h2>Do they have an Overseas Healthcare Services (OHS) reference number?</h2>
+
+        {% call fieldset({
+          legend: {
+            text: "",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          },
+          hint: {
+            html: "
+            <p>An OHS reference number is a number we use to identify their record.</p>
+            <p>It can be found on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC).</p>
+            <p>If you're not sure if they have one, select no.</p>
+            "
+          }
+        }) %}
+        
+
+        {{ radios({
+          "idPrefix": "know-ohs",
+          "name": "patient-know-ohs",
+          "errorMessage": {
+            "text": "Select yes if you are able to provide an OHS reference number"
+          },
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes, they have an OHS reference number"
+            },
+            {
+              "value": "No",
+              "text": "No, they do not have an OHS reference number"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+        {{ details({
+          "text": "Why we ask for their OHS reference number",
+          "HTML": "
+          <p>We can use their OHS reference number to see if they currently hold a record with us. This may help us process this application faster.</p>
+          <p>Providing this is optional and does not affect their eligibility to apply for a PRC.</p>
+          "
+        }) }}
+
+      </form>
+
+      {{ backLink({
+        "href": "javascript:history.go(-1)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

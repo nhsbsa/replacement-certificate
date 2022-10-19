@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Where does the patient ordinarily live?
+  Where do they ordinarily live?
 {% endblock %}
 
 {% block beforeContent %}
@@ -31,7 +31,7 @@
 
         {% call fieldset({
           legend: {
-            text: "Where does the patient ordinarily live?",
+            text: "Where do they ordinarily live?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
@@ -47,7 +47,7 @@
             },
             {
               "value": "EU, Norway, Iceland, Liechtenstein or Switzerland",
-              "text": "EU, Norway, Iceland, Liechtenstein or Switzerland"
+              "text": "EU, Iceland, Liechtenstein, Norway, or Switzerland"
             },
             {
               "value": "Other",
