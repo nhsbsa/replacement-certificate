@@ -26,7 +26,7 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="phone-number" method="post">
+      <form action="manualAddress" method="post">
 
         <h2>What is {{ data['patient-firstname'] }}'s home address?</h2>
 
@@ -40,19 +40,19 @@
 
         {{ input({
           "label": {
-          "text": "Building and street"
+          "text": "Address line 1"
           },
-          "id": "input-width-20",
-          "name": "test-width-20",
+          "id": "address-line-one",
+          "name": "address-line-one",
           "classes": "nhsuk-input--width-20"
         }) }}
 
         {{ input({
           "label": {
-          "text": ""
+          "text": "Address line 2 (optional)"
           },
-          "id": "input-width-20",
-          "name": "test-width-20",
+          "id": "address-line-two",
+          "name": "address-line-two",
           "classes": "nhsuk-input--width-20"
         }) }}
 
@@ -60,8 +60,8 @@
           "label": {
             "text": "Town or city"
           },
-          "id": "input-width-20",
-          "name": "test-width-20",
+          "id": "town-city",
+          "name": "town-city",
           "classes": "nhsuk-input--width-20"
         }) }}
 
@@ -69,8 +69,8 @@
           "label": {
             "text": "County"
           },
-          "id": "input-width-20",
-          "name": "test-width-20",
+          "id": "county",
+          "name": "county",
           "classes": "nhsuk-input--width-20"
         }) }}
 
@@ -78,8 +78,8 @@
           "label": {
             "text": "Postcode"
           },
-          "id": "input-width-10",
-          "name": "test-width-10",
+          "id": "postcode",
+          "name": "postcode",
           "classes": "nhsuk-input--width-10"
         }) }}
 

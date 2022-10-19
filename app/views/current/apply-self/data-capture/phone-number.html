@@ -40,9 +40,12 @@
         
         {{ input({
           "label": {
-            "text": "Enter your telephone number (optional)"
+            "text": "Telephone number (optional)"
           },
-          "id": "input-width-30",
+          hint: {
+            html: "For international numbers include the country code"
+          },
+          "id": "phone-number",
           "name": "phone-number",
           "classes": "nhsuk-input--width-30"
         }) }}

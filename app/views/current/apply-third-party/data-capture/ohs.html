@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is {{ data['patient-firstname'] }}'s OHS reference number?
+  What is their OHS reference number?
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,7 +28,7 @@
     <div class="nhsuk-grid-column-three-quarters">
       <form action="know-nino" method="post">
 
-        <h2>What is {{ data['patient-firstname'] }}'s OHS reference number?</h2>
+        <h2>What is their OHS reference number?</h2>
 
         {% call fieldset({
           legend: {
@@ -38,13 +38,13 @@
           }
         }) %}
 
-        <p>You can find it on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC).</p>
+        <p>This can be found on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC).</p>
 
         {{ input({
           "label": {
             "text": "OHS reference number (optional)"
           },
-          "id": "input-width-10",
+          "id": "patient-ohs",
           "name": "patient-ohs",
           "classes": "nhsuk-input--width-10"
         }) }}

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Do you have healthcare cover from an EU country, Iceland, Norway, Liechtenstein, or Switzerland?
+  Healthcare cover from another country
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,9 +29,9 @@
 
         <h1>Healthcare cover from another country</h1>
 
-        <p>This may be an S1, E121, E106, or E109 to cover the patient's health costs in the UK. For example, the patient has previously lived in another country outside the UK and they're receiving a state pension or benefit from that country.</p>
+        <p>We need to know if the person you're applying on behalf of has healthcare cover from another country. This may be an S1, E121, E106, or E109 which covers healthcare costs in the UK. For example, this could be if they have lived in another country outside the UK and receive a state pension or benefit from that country.</p>
 
-        <p>If the patient is temporarily studying in the UK but normally lives in another country, they may have a health insurance card from that country to cover their healthcare costs while they are studying.</p>
+        <p>If they're temporarily studying in the UK but normally live in another country, they may have a health insurance card from that country to cover healthcare costs while studying.</p>
 
         <details class="nhsuk-details">
           <summary class="nhsuk-details__summary">
@@ -41,7 +41,7 @@
           </summary>
           <div class="nhsuk-details__text">
             <p>
-              An S1, E121, E106, or E109 certificate issued by an EU country, Iceland, Norway, Liechtenstein, or Switzerland for a person living in the UK entitles them to access the NHS in the same way as a UK resident. The patient may be entitled to one of these certificates if they:
+              An S1, E121, E106, or E109 certificate issued by an EU country, Iceland, Norway, Liechtenstein, or Switzerland for a person living in the UK entitles them to access the NHS in the same way as a UK resident. A person may be entitled to one of these certificates if they:
             </p>
             
             <ul>
@@ -59,22 +59,22 @@
               </li>
             </ul>
   
-            <p>Answer yes if the patient:</p>
+            <p>Answer yes if they:</p>
   
             <ul>
               <li>
-                is entitled to an S1, E121, E106, or E109 certificate even if one has not been issued to them
+                are entitled to an S1, E121, E106, or E109 certificate even if one has not been issued
               </li>
               <li>
-                has been provided with an S1, E121, E106, or E109 certificate that they have not yet registered with the NHS
+                have been provided with an S1, E121, E106, or E109 certificate that has not yet been registered with the NHS
               </li>
               <li>
-                has an S1, E121, E106, or E109 certificate which is registered with the NHS
+                have an S1, E121, E106, or E109 certificate which is registered with the NHS
               </li>
             </ul>
   
             <p>
-              If their certificate has not been registered with the NHS, you should send it to:
+              If a certificate has not been registered with the NHS yet, they should send it to:
             </p>
       
             <p>
@@ -96,33 +96,24 @@
           <fieldset class="nhsuk-fieldset">
             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
               <h2 class="nhsuk-fieldset__heading">
-                Does the patient have healthcare cover from an EU country, Iceland, Norway, Liechtenstein, or Switzerland?
+                Do they have healthcare cover from an EU country, Iceland, Norway, Liechtenstein, or Switzerland?
               </h2>
             </legend>
 
-            <div class="nhsuk-radios">
               <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="cover-from-another" name="cover-from-another" type="radio" value="no">
+                <input class="nhsuk-radios__input" id="cover-from-another" name="cover-from-another" type="radio" value="yes">
                 <label class="nhsuk-label nhsuk-radios__label" for="cover-from-another">
-                  No
+                  Yes, they have healthcare cover from one of these countries
                 </label>
               </div>
 
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="cover-from-another" name="cover-from-another" type="radio" value="no">
                 <label class="nhsuk-label nhsuk-radios__label" for="cover-from-another">
-                  No, they only have healthcare cover from the UK 
+                  No, they're only able to apply for healthcare cover from the UK 
                 </label>
               </div>
-        
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="cover-from-another" name="cover-from-another" type="radio" value="yes">
-                <label class="nhsuk-label nhsuk-radios__label" for="cover-from-another">
-                  Yes, they have healthcare cover from outside the UK
-                </label>
-              </div>
-        
-            </div>
+
         </fieldset>
 
         <br>

@@ -1,11 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  You cannot apply for a Provisional Replacement Certificate
+  You may be able to apply by phone for healthcare in Switzerland
 {% endblock %}
 
 {% block beforeContent %}
-
 
   <!-- Phase banner -->
   <div class="app-phase-banner">
@@ -27,18 +26,28 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>You cannot apply for a Provisional Replacement Certificate</h1>
+      <h1>You may be able to apply by phone for healthcare in Switzerland</h1>
 
-      <p class="nhsuk-lede-text">
-        You cannot apply for a PRC if you are not a resident of the UK, an EU country, Iceland, Liechtenstein or Norway.
-      </p>
-
-      {{ backLink({
-        "href": "javascript:history.go(-1)",
-        "text": "Change my previous answer"
-      }) }}
+      <div class="nhsuk-lede-text">
+        <p>
+          A PRC only covers healthcare in Switzerland for:
+        </p>
+  
+        <ul>
+          <li>a UK national</li>
+          <li>a Swiss national</li>
+          <li>a national of an EU country</li>
+          <li>a stateless person or refugee</li>
+          <li>a family member of someone who holds one of these nationalities or statuses</li>
+        </ul>
+  
+      </div>
+      
+      <p>If any of these apply to you, you'll need to <a href="https://www.nhsbsa.nhs.uk/contact-us/overseas-healthcare-services-contact-us">contact us to apply for a PRC by phone</a>.</p>
+  
+      <p>If none of these apply, you cannot get a PRC for healthcare in Switzerland.</p>
 
     </div>  
 
   </div>
-{% endblock %}
+  {% endblock %}

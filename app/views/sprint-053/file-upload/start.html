@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Upload evidence for your [Entitlement type] application
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+   <div class="nhsuk-grid-column-two-thirds">
+      <h1>Upload evidence for your Provisional Replacement Certificate (PRC) application</h1>
+
+      <!-- <p>Use this service to provide evidence of:</p>
+      <ul>
+         <li>your residency in the UK</li>
+      </ul> -->
+
+      <p>Use this service to provide evidence of your residency in the UK.</p>
+
+      <div class="nhsuk-inset-text">
+         <span class="nhsuk-u-visually-hidden">Information: </span>
+         <p>If you’re providing evidence on behalf of someone else, answer the questions with their details rather than your own.</p>
+      </div>
+
+      <a href="ohs-number" class="nhsuk-button nhsuk-u-margin-bottom-8">
+        Start now
+      </a>
+
+   </div>
+</div>
+{% endblock %}

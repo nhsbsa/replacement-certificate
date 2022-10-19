@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the name of the hospital, clinic, or treatment facility?
+  What is the name of the hospital, clinic, or treatment facility where they're receiving treatment?
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,20 +26,20 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="treatment-facility-email-2" method="post">
+      <form action="treatmentFacilityNameTwo" method="post">
         <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 2</span>
           <br>
 
         {% call fieldset({
           legend: {
-            text: "What is the name of the hospital, clinic, or treatment facility?",
+            text: "What is the name of the hospital, clinic, or treatment facility where they're receiving treatment?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
         <div class="nhsuk-hint">
-          If the patient had treatment in more than one place, you'll be able to add these later.
+          If they've had treatment in more than one place, you'll be able to add these later.
         </div>
         
         {{ details({
@@ -55,7 +55,7 @@
           "label": {
             "text": "Name"
           },
-          "id": "input-width-30",
+          "id": "treatment-facility-name-2",
           "name": "treatment-facility-name-2",
           "classes": "nhsuk-input--width-30"
         }) }}

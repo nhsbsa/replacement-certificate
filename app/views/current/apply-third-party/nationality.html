@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    What is the patient's nationality?
+    What is their nationality?
 {% endblock %}
 
 {% block beforeContent %}
@@ -34,12 +34,12 @@
             <fieldset class="nhsuk-fieldset" aria-describedby="nationality-hint">
               <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
                 <h1 class="nhsuk-fieldset__heading">
-                  What is the patient's nationality?
+                  What is their nationality?
                 </h1>
               </legend>
         
               <div class="nhsuk-hint" id="nationality-hint">
-                If the patient has dual or multiple nationality, select all options that apply and then tell us what non-UK countries they are a national of.
+                If they have dual or multiple nationality, select all options that apply and then tell us what non-UK countries they are a national of.
               </div>
         
               <div class="nhsuk-checkboxes">
@@ -60,7 +60,7 @@
                   <div class="nhsuk-checkboxes__item">
                     <input class="nhsuk-checkboxes__input" id="eu-nationality" name="nationality" type="checkbox" value="EU, EEA or Swiss" aria-describedby="nationality-3-item-hint" aria-controls="conditional-nationality-3" aria-expanded="false">
                     <label class="nhsuk-label nhsuk-checkboxes__label" for="eu-nationality">
-                      An EU citizen, or a national of Norway, Iceland, Liechtenstein, or Switzerland
+                      An EU citizen, or a national of Iceland, Liechtenstein, Norway, or Switzerland
                     </label>
                   </div>
           
@@ -368,14 +368,13 @@
         {{ details({
           "text": "More information about dual nationality",
           "HTML": "
-          <p>If the patient is a national of at least one EU country, or any of the other European countries 
-            listed, you should select <strong>EU citizen or a national of Switzerland, Norway, Iceland, or 
-              Liechtenstein</strong> and tell us which countries.</p>
-          <p>If the patient is also a UK national, select <strong>United Kingdom (UK) national</strong> as well.</p>
-          <p>If the patient has dual or multiple nationalities involving nationality of the UK and another 
+          <p>If they are a national of at least one EU country, or any of the other European countries 
+            listed, you should select <strong>An EU citizen or a national of Iceland, Liechtenstein, Norway, or Switzerland</strong> and tell us which countries.</p>
+          <p>If they are also a UK national, select <strong>United Kingdom (UK) national</strong> as well.</p>
+          <p>If they have dual or multiple nationalities involving nationality of the UK and another 
             country not listed, select <strong>United Kingdom (UK) national</strong>, then select <strong>Any other nationality 
             not listed</strong> and tell us which countries.</p>
-          <p>If the patient has dual or multiple nationalities not involving the UK, the EU or any of the other 
+          <p>If they have dual or multiple nationalities not involving the UK, the EU or any of the other 
             European countries listed, select <strong>Any other nationality not listed</strong> and add each country in turn.</p>
           "
         }) }}

@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is the name of the hospital, clinic, or treatment facility?
+{% endblock %}
+
+{% block beforeContent %}
+
+  <!-- Phase banner -->
+  <div class="app-phase-banner">
+    <div class="nhsuk-width-container app-phase-banner__container">
+      <p class="app-phase-banner__content">
+        <strong class="nhsuk-tag app-phase-banner__tag">
+          Prototype
+        </strong>
+        <span class="app-phase-banner__text">
+        This is a prototype - your <a href="#">feedback</a> will help us improve it.
+        </span>
+      </p>
+    </div>
+  </div>
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+        <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="nhsuk-error-summary__body">
+          <ul class="nhsuk-list nhsuk-error-summary__list">
+            <li>
+              <a href="#treatment-facility-name-3">Enter the name of the hospital, clinic, or treatment facility</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <form action="treatmentFacilityNameThreeErr" method="post">
+
+       <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 3</span>
+       <br>
+        {% call fieldset({
+          legend: {
+            text: "What is the name of the hospital, clinic, or treatment facility?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <div class="nhsuk-hint">
+          If you've had treatment in more than one place, you'll be able to add these later.
+        </div>
+
+        {{ details({
+          "text": "What medical facilities are not covered?",
+          "HTML": "
+          <p>A PRC does not cover treatment provided by pharmacies or private healthcare providers.</p>
+
+          <p>A PRC does not cover prescription costs. </p>
+          "
+         }) }}
+
+        {{ input({
+          "label": {
+            "text": "Name"
+          },
+          "errorMessage": {
+            "text": "Enter the name of the hospital, clinic, or treatment facility"
+          },
+          "id": "treatment-facility-name-3",
+          "name": "treatment-facility-name-3",
+          "classes": "nhsuk-input--width-30"
+        }) }}
+
+        {% endcall %}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+     {{ backLink({
+        "href": "javascript:history.go(-2)",
+        "text": "Change my previous answer"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

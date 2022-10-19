@@ -7,7 +7,7 @@ const path = require('path');
 
 // Where is your child receiving medical treatment?
 
-router.post('/treatmentCountry', function (req, res) {
+router.post(['/treatmentCountry', '/treatmentCountryErr'], function (req, res) {
 
   var treatmentCountry = req.session.data['location-picker-1'];
   console.log(treatmentCountry);
@@ -32,6 +32,9 @@ router.post('/treatmentCountry', function (req, res) {
   }
   if (treatmentCountry == 'Norway' || treatmentCountry == 'Liechtenstein' || treatmentCountry == 'Iceland') {
     res.redirect('kickouts/ineligible-treatment-efta')
+  }
+  if (treatmentCountry == '') {
+    res.redirect('treatment-country-error')
   }
   else {
     res.redirect('kickouts/ineligible-treatment-other')
@@ -66,24 +69,22 @@ router.post('/receivingTreatment', function (req, res) {
 //   }
 // })
 
-
 // Have you paid towards the treatment?
-router.post('/paidTreatment', function (req, res) {
+router.post(['/paidTreatment', '/paidTreatmentErr'], function (req, res) {
   var paidTreatment = req.session.data['paid-treatment']
   if (paidTreatment == "Yes") {
-    // res.redirect('kickouts/ineligible-paid')
     res.redirect('paid-treatment-details')
   }
   if (paidTreatment == "No") {
     res.redirect('ordinarily-live')
   }
   else {
-    res.redirect('paid-treatment')
+    res.redirect('paid-treatment-error')
   }
 })
 
 // Co-payment
-router.post('/coPayment', function (req, res) {
+router.post(['/coPayment', '/coPaymentErr'], function (req, res) {
   var coPayment = req.session.data['co-payment']
   if (coPayment == "Yes") {
     res.redirect('kickouts/ineligible-paid')
@@ -92,12 +93,12 @@ router.post('/coPayment', function (req, res) {
     res.redirect('ordinarily-live')
   }
   else {
-    res.redirect('paid-treatment-details')
+    res.redirect('paid-treatment-details-error')
   }
 })
 
-// //Where do you ordinarily live?
-router.post('/ordinaryResidence', function (req, res) {
+// Where do you ordinarily live?
+router.post(['/ordinaryResidence', '/ordinaryResidenceErr'], function (req, res) {
   var ordinaryResidence = req.session.data['ordinarily-live']
   if (ordinaryResidence == "UK") {
     res.redirect('cover-from-another')
@@ -109,12 +110,12 @@ router.post('/ordinaryResidence', function (req, res) {
     res.redirect('kickouts/ineligible-living-other')
   }
   else {
-    res.redirect('ordinarily-live')
+    res.redirect('ordinarily-live-error')
   }
 })
 
 // Do you have healthcare cover from another country??
-router.post('/coverAnother', function (req, res) {
+router.post(['/coverAnother', '/coverAnotherErr'], function (req, res) {
   var coverAnother = req.session.data['cover-from-another']
   if (coverAnother == "yes") {
     res.redirect('kickouts/ineligible-another-cover')
@@ -123,7 +124,7 @@ router.post('/coverAnother', function (req, res) {
     res.redirect('nationality')
   }
   else {
-    res.redirect('cover-from-another')
+    res.redirect('cover-from-another-error')
   }
 })
 
@@ -134,40 +135,71 @@ function arraysContainSame(a, b) {
   return a.length === b.length && a.every(el => b.includes(el));
 }
 
-router.post('/nationality', function (req, res) {
+router.post(['/nationality','/nationalityErr', '/nationalityErrEU', '/nationalityErrOther', '/nationalityErrEUOther'], function (req, res) {
 
   var nationality = req.session.data['nationality'];
-  console.log(nationality);
+  var treatmentCountry = req.session.data['location-picker-1'];
+  var nationalityEUErr = req.session.data['myInputsEURT'];
+  var nationalityOtherErr = req.session.data['myInputsOther'];
 
-  if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
-    res.redirect('treatment-start')
+  if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr == '') {
+    res.redirect('nationality-eu-other-error')
   }
-  else if (nationality == 'UK') {
-    res.redirect('treatment-start')
+  else if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
+    res.redirect('nationality-eu-error')
+  }
+  else if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
+    res.redirect('nationality-other-error')
   }
   else if (arraysContainSame(nationality, ['UK', 'EU, EEA', 'Other']) == true) {
     res.redirect('treatment-start')
   }
+  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr == '') {
+    res.redirect('nationality-eu-other-error')
+  }
+  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
+    res.redirect('nationality-other-error')
+  }
+  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
+    res.redirect('nationality-eu-error')
+  }
   else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true) {
+    res.redirect('treatment-start')
+  }
+  else if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true && nationalityEUErr == '') {
+    res.redirect('nationality-eu-error')
+  }
+  else if (nationality == 'EU, EEA' && nationalityEUErr == '') {
+    res.redirect('nationality-eu-error')
+  }
+  else if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true) {
     res.redirect('treatment-start')
   }
   else if (nationality == 'EU, EEA') {
     res.redirect('treatment-start')
   }
-  else if (nationality == 'Switzerland') {
+  else if (arraysContainSame(nationality, ['UK', 'Other']) == true && nationalityOtherErr == '') {
+    res.redirect('nationality-other-error')
+  }
+  else if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
+    res.redirect('treatment-start')
+  }
+  else if (nationality == 'Other' && treatmentCountry == 'Switzerland') {
     res.redirect('kickouts/ineligible-swiss')
+  }
+  else if (nationality == 'Other' && nationalityOtherErr == '') {
+    res.redirect('nationality-other-error')
   }
   else if (nationality == 'Other') {
     res.redirect('treatment-start')
   }
-  else if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true) {
+  else if (nationality == 'UK') {
     res.redirect('treatment-start')
   }
   else {
-    res.redirect('nationality')
+    res.redirect('nationality-error')
   }
 })
-
 
 router.post('/treatment-country', function (req, res) {
 
@@ -185,39 +217,259 @@ router.post('/treatment-country', function (req, res) {
   res.redirect('paid-treatment')
 })
 
-// Do you require treatment from additional facilities (1)?
+//
 
-router.post('/additionalFacilityOne', function (req, res) {
-  var additionalFacilityOne = req.session.data['additional-facility']
-  if (additionalFacilityOne == "Yes") {
-    res.redirect('treatment-start-2')
+router.get('/treatment-start', function (req, res) {
+  let today = new Date();
+
+  let date = today.getDate();
+  let month = today.getMonth() + 1;
+  let year = today.getFullYear();
+
+  let todayDate = date + " / " + month + " / " + year;
+
+  res.render(__dirname + '/treatment-start', {todayDate: todayDate});
+})
+
+router.get('/treatment-start-error', function (req, res) {
+  let today = new Date();
+
+  let date = today.getDate();
+  let month = today.getMonth() + 1;
+  let year = today.getFullYear();
+
+  let todayDate = date + " / " + month + " / " + year;
+
+  res.render(__dirname + '/treatment-start-error', {todayDate: todayDate});
+})
+
+router.get('/treatment-start-future-error', function (req, res) {
+  let today = new Date();
+
+  let date = today.getDate();
+  let month = today.getMonth() + 1;
+  let year = today.getFullYear();
+
+  let todayDate = date + " / " + month + " / " + year;
+
+  res.render(__dirname + '/treatment-start-future-error', {todayDate: todayDate});
+})
+
+router.get('/treatment-start-invalid-error', function (req, res) {
+  let today = new Date();
+
+  let date = today.getDate();
+  let month = today.getMonth() + 1;
+  let year = today.getFullYear();
+
+  let todayDate = date + " / " + month + " / " + year;
+
+  res.render(__dirname + '/treatment-start-invalid-error', {todayDate: todayDate});
+})
+
+router.get('/treatment-start-date-error', function (req, res) {
+  let today = new Date();
+
+  let date = today.getDate();
+  let month = today.getMonth() + 1;
+  let year = today.getFullYear();
+
+  let todayDate = date + " / " + month + " / " + year;
+
+  res.render(__dirname + '/treatment-start-date-error', {todayDate: todayDate});
+})
+
+//Check if value is numeric
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+//Check if string has numbers
+function hasNumber(myString) {
+  return /\d/.test(myString);
+}
+
+router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '/treatmentStartDayErr', '/treatmentStartDayMonthErr', '/treatmentStartDayYearErr','/treatmentStartMonthErr', '/treatmentStartMonthYearErr', '/treatmentStartYearErr', '/treatmentStartErr', '/treatmentStartFutureErr', '/treatmentStartInvalidErr'], function (req, res) {
+  var treatmentStart = req.session.data['start-date'];
+  var chooseDay = req.session.data['choose-start-date-day'];
+  var chooseMonth = req.session.data['choose-start-date-month'];
+  var chooseYear = req.session.data['choose-start-date-year'];
+
+  var yearReg = /^(202[1-2])$/;            ///< Allows a number between 2021 and 2022
+  var monthReg = /^(0[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
+  var dayReg = /^(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
+
+  console.log(treatmentStart);
+  console.log(isNumeric(chooseDay, chooseMonth, chooseYear));
+  console.log(`Day: ${chooseDay}, month: ${chooseMonth}, year: ${chooseYear}.`);
+
+  if (treatmentStart == 'text' && isNumeric(chooseDay, chooseMonth, chooseYear) == true && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-facility-name')
   }
-  if (additionalFacilityOne == "No") {
-    res.redirect('treatment-facility-details')
+  else if (hasNumber(treatmentStart) == true && isNumeric(chooseDay, chooseMonth, chooseYear) == false) {
+    res.redirect('treatment-facility-name')
+  }
+  else if (treatmentStart == 'text' && !dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-day-error')
+  }
+  else if (treatmentStart == 'text' && !dayReg.test(chooseDay) && monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-day-year-error')
+  }
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-month-error')
+  }   
+  else if (treatmentStart == 'text' && !dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-day-month-error')
+  } 
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-month-year-error')
+  } 
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-year-error')
+  } 
+  else if (treatmentStart == 'text' && !dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-error')
+  }
+  else {
+    res.redirect('treatment-start-error')
+  } 
+}
+  
+// What is your date of birth?
+
+router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr'], function (req, res) {
+  var birthDay = req.session.data['patient-day']
+  var birthMonth = req.session.data['patient-month']
+  var birthYear = req.session.data['patient-year']
+
+  if (isNumeric(birthDay, birthMonth, birthYear) == true) {
+    res.redirect('know-ohs')
+  }
+  else {
+    res.redirect('dob-error')
+  }
+})
+
+
+// What is the name of the hospital, clinic, or treatment facility?
+router.post(['/treatmentFacilityName', '/treatmentFacilityNameErr', '/treatmentFacilityNameNrErr'], function (req, res) {
+  var treatmentFacilityName = req.session.data['treatment-facility-name']
+  if (treatmentFacilityName == '') {
+    res.redirect('treatment-facility-name-error')
+  }
+  else if (hasNumber(treatmentFacilityName) == true) {
+    res.redirect('treatment-facility-name-nr-error')
+  }
+  else {
+    res.redirect('treatment-facility-email')
+  }
+})
+
+// What is the name of the hospital, clinic, or treatment facility 2?
+router.post(['/treatmentFacilityNameTwo', '/treatmentFacilityNameTwoErr', '/treatmentFacilityNameTwoNrErr'], function (req, res) {
+  var treatmentFacilityNameTwo = req.session.data['treatment-facility-name-2']
+  if (treatmentFacilityNameTwo == '') {
+    res.redirect('treatment-facility-name-2-error')
+  }
+  else if (hasNumber(treatmentFacilityNameTwo) == true) {
+    res.redirect('treatment-facility-name-2-nr-error')
+  }
+  else {
+    res.redirect('treatment-facility-email-2')
+  }
+})
+
+// What is the name of the hospital, clinic, or treatment facility 3?
+router.post(['/treatmentFacilityNameThree', '/treatmentFacilityNameThreeErr', '/treatmentFacilityNameThreeNrErr'], function (req, res) {
+  var treatmentFacilityNameThree = req.session.data['treatment-facility-name-3']
+  if (treatmentFacilityNameThree == '') {
+    res.redirect('treatment-facility-name-3-error')
+  }
+  else if (hasNumber(treatmentFacilityNameThree) == true) {
+    res.redirect('treatment-facility-name-3-nr-error')
+  }
+  else {
+    res.redirect('treatment-facility-email-3')
+  }
+})
+
+// What is the email address of the hospital, clinic, or treatment facility??
+router.post('/treatmentFacilityEmail', function (req, res) {
+  var treatmentFacilityEmail = req.session.data['treatment-facility-email']
+  if (treatmentFacilityEmail == '') {
+    res.redirect('treatment-facility-email-error')
   }
   else {
     res.redirect('additional-facility')
   }
 })
 
-// Do you require treatment from additional facilities (2)?
-
-router.post('/additionalFacilityTwo', function (req, res) {
-  var additionalFacilityTwo = req.session.data['additional-facility-2']
-  if (additionalFacilityTwo == "Yes") {
-    res.redirect('treatment-start-3')
+// What is the email address of the hospital, clinic, or treatment facility (error)?
+router.post('/treatmentFacilityEmailErr', function (req, res) {
+  var treatmentFacilityEmailErr = req.session.data['treatment-facility-email-error']
+  if (treatmentFacilityEmailErr == '') {
+    res.redirect('treatment-facility-email-error')
   }
-  if (additionalFacilityTwo == "No") {
-    res.redirect('treatment-facility-details-2')
+  else {
+    res.redirect('additional-facility')
+  }
+})
+
+// What is the email address of the hospital, clinic, or treatment facility 2?
+router.post(['/treatmentFacilityEmailTwo', '/treatmentFacilityEmailTwoErr'], function (req, res) {
+  var treatmentFacilityEmailTwo = req.session.data['treatment-facility-email-2']
+  if (treatmentFacilityEmailTwo == '') {
+    res.redirect('treatment-facility-email-2-error')
   }
   else {
     res.redirect('additional-facility-2')
   }
 })
 
+// What is the email address of the hospital, clinic, or treatment facility 3?
+router.post(['/treatmentFacilityEmailThree', '/treatmentFacilityEmailThreeErr'], function (req, res) {
+  var treatmentFacilityEmailThree = req.session.data['treatment-facility-email-3']
+  if (treatmentFacilityEmailThree == '') {
+    res.redirect('treatment-facility-email-3-error')
+  }
+  else {
+    res.redirect('additional-facility-3')
+  }
+})
+
+// Do you require treatment from additional facilities (1)?
+
+router.post(['/additionalFacilityOne', '/additionalFacilityOneErr'], function (req, res) {
+  var additionalFacilityOne = req.session.data['additional-facility']
+  if (additionalFacilityOne == "Yes") {
+    res.redirect('treatment-facility-name-2')
+  }
+  if (additionalFacilityOne == "No") {
+    res.redirect('treatment-facility-details')
+  }
+  else {
+    res.redirect('additional-facility-error')
+  }
+})
+
+// Do you require treatment from additional facilities (2)?
+
+router.post(['/additionalFacilityTwo', '/additionalFacilityTwoErr'], function (req, res) {
+  var additionalFacilityTwo = req.session.data['additional-facility-2']
+  if (additionalFacilityTwo == "Yes") {
+    res.redirect('treatment-facility-name-3')
+  }
+  if (additionalFacilityTwo == "No") {
+    res.redirect('treatment-facility-details-2')
+  }
+  else {
+    res.redirect('additional-facility-2-error')
+  }
+})
+
 // Do you require treatment from additional facilities (3)?
 
-router.post('/additionalFacilityThree', function (req, res) {
+router.post(['/additionalFacilityThree', '/additionalFacilityThreeErr'], function (req, res) {
   var additionalFacilityThree = req.session.data['additional-facility-3']
   if (additionalFacilityThree == "Yes") {
     res.redirect('additional-facility-3')
@@ -226,51 +478,98 @@ router.post('/additionalFacilityThree', function (req, res) {
     res.redirect('treatment-facility-details-3')
   }
   else {
-    res.redirect('additional-facility-3')
+    res.redirect('additional-facility-3-error')
   }
 })
 
-// // Do you require treatment from additional facilities?
+// What is your name?
 
-// var treatmentFacilities = [];
+router.post(['/data-capture/fullName', '/data-capture/fullNameErr', '/data-capture/firstNameErr', '/data-capture/lastNameErr'], function (req, res) {
+  var firstName = req.session.data['parent-firstname']
+  var lastName = req.session.data['parent-lastname']
+  if (firstName == '' && lastName == '') {
+    res.redirect('full-name-error')
+  }
+  if (firstName == '') {
+    res.redirect('first-name-error')
+  }
+  if (lastName == '') {
+    res.redirect('last-name-error')
+  }
+  else {
+    res.redirect('dob')
+  }
+})
 
-// router.post('/treatment-facility-details', function (req, res) {
+// What is your home address (lookup)?
 
-//   var Treatment = require(path.resolve("app/model/treatment.js"));
+router.post(['/data-capture/addressLookup', '/data-capture/addressLookupErr'], function (req, res) {
+  var addressLookup = req.session.data['address-lookup']
+  if (addressLookup == '') {
+    res.redirect('address-lookup-error')
+  }
+  else {
+    res.redirect('address-list')
+  }
+})
 
-//   if(req.session.data['treatment-name'] && req.session.data['treatment-email']) {
-//     var treatment1 = new Treatment(req.session.data['treatment-name'], req.session.data['treatment-email']);
-//     treatmentFacilities.push(treatment1);
-//   }
+// What is your home address (list)?
 
-//   res.redirect('additional-facility')
-// })
-// router.get('/additional-facility', function (req, res) {
+router.post(['/data-capture/addressList', '/data-capture/addressListErr'], function (req, res) {
+  var addressList = req.session.data['select-1']
+  if (addressList == '') {
+    res.redirect('address-list-error')
+  }
+  else {
+    res.redirect('phone-number')
+  }
+})
 
-//   res.render(__dirname + '/additional-facility', {treatmentFacilities: treatmentFacilities});
-// })
+// What is your home address?
 
-// // Do you require treatment from additional facilities?
-// router.post('/additionalTreatment', function (req, res) {
+router.post(['/data-capture/manualAddress', '/data-capture/manualErr', '/data-capture/manualLineErr', '/data-capture/manualLineTownErr', '/data-capture/manualPostcodeErr', '/data-capture/manualLinePostcodeErr', '/data-capture/manualPostcodeTownErr', '/data-capture/manualTownErr'], function (req, res) {
+  var lineOne = req.session.data['address-line-one']
+  var townCity = req.session.data['town-city']
+  var postcode = req.session.data['postcode']
+  if (lineOne == '' && townCity == '' && postcode == '') {
+    res.redirect('address-manual-error')
+  }
+  else if (lineOne == '' && townCity == '') {
+    res.redirect('address-manual-line-town-error')
+  }
+  else if (lineOne == '' && postcode == '') {
+    res.redirect('address-manual-postcode-line-error')
+  }
+  else if (postcode == '' && townCity == '') {
+    res.redirect('address-manual-postcode-town-error')
+  }
+  else if (lineOne == '') {
+    res.redirect('address-manual-line-error')
+  }
+  else if (townCity == '') {
+    res.redirect('address-manual-town-error')
+  }
+  else if (postcode == '') {
+    res.redirect('address-manual-postcode-error')
+  }
+  else {
+    res.redirect('phone-number')
+  }
+})
 
-//   var additionalTreatment = req.session.data['additional-facility']
-//   if (additionalTreatment == "Yes") {
-//     res.redirect('treatment-facility-details')
-//   }
-//   if (additionalTreatment == "No") {
-//     res.redirect('info')
-//   }
-//   else {
-//     res.redirect('additional-facility')
-//   }
-// })
-// router.get('/cya', function (req, res) {
-//   const ReferenceDataService = require(path.resolve("app/service/referenceData.js"));
+// What is your email address?
 
-//   var countryList = ReferenceDataService.getCountries();
+router.post(['/data-capture/emailAddress', '/data-capture/emailAddressErr'], function (req, res) {
+  var emailAddress = req.session.data['email-address']
 
-//   res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
-// })
+  if (emailAddress == '') {
+    res.redirect('email-address-error')
+  }
+  else {
+    res.redirect('info-child')
+  }
+})
+
 
 // Do you have a registerd S1?
 router.post('/regS1', function (req, res) {
@@ -287,8 +586,8 @@ router.post('/regS1', function (req, res) {
 })
 
 // Do you know your OHS reference number?
-router.post('/data-capture/knowOhs', function (req, res) {
-  var knowOhs = req.session.data['patient-know-ohs']
+router.post(['/data-capture/knowOhs', '/data-capture/knowOhsErr'], function (req, res) {
+  var knowOhs = req.session.data['parent-know-ohs']
   if (knowOhs == "Yes") {
     res.redirect('ohs')
   }
@@ -296,12 +595,12 @@ router.post('/data-capture/knowOhs', function (req, res) {
     res.redirect('know-nino')
   }
   else {
-    res.redirect('know-ohs')
+    res.redirect('know-ohs-error')
   }
 })
 
 // Do you know your National Insurance number?
-router.post('/data-capture/knowNino', function (req, res) {
+router.post(['/data-capture/knowNino', '/data-capture/knowNinoErr'], function (req, res) {
   var knowNino = req.session.data['parent-know-nino']
   if (knowNino == "Yes") {
     res.redirect('nino')
@@ -310,7 +609,7 @@ router.post('/data-capture/knowNino', function (req, res) {
     res.redirect('address-lookup')
   }
   else {
-    res.redirect('know-nino')
+    res.redirect('know-nino-error')
   }
 })
 
@@ -354,28 +653,6 @@ router.post('/data-capture/child/childAddress', function (req, res) {
   else {
     res.redirect('same-address')
   }
-})
-
-// router.get('/cya', function (req, res) {
-//   const ReferenceDataService = require(path.resolve("app/service/referenceData.js"));
-
-//   var countryList = ReferenceDataService.getCountries();
-
-//   console.log(ReferenceDataService.getMemberStates());
-
-//   res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
-// })
-
-router.get('/treatment-start', function (req, res) {
-  let today = new Date();
-
-  let date = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
-
-  let todayDate = date + " / " + month + " / " + year;
-
-  res.render(__dirname + '/treatment-start', {todayDate: todayDate});
 })
 
 module.exports = router

@@ -42,6 +42,24 @@ a {
 }
 
 
+  .nhsuk-checkboxes__conditional--red {
+    border-left: 4px solid #d5281b;
+    margin-bottom: 0;
+  }
+
+  .nhsuk-radios__conditional--red {
+    border-left: 4px solid #d5281b;
+    margin-bottom: 0;
+  }
+
+  .nhsuk-checkboxes__conditional--red #eu-location-picker {
+    border: 4px solid #d5281b;
+  }
+
+  .nhsuk-checkboxes__conditional--red #other-location-picker {
+    border: 4px solid #d5281b;
+  }
+
 
 #expander__wrapper {
   background-color: #fff;

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is {{ data['patient-firstname'] }}'s National Insurance number?
+  What is their National Insurance number?
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,7 +28,7 @@
     <div class="nhsuk-grid-column-three-quarters">
       <form action="address-lookup" method="post">
 
-        <h2>What is {{ data['patient-firstname'] }}'s National Insurance number?</h2>
+        <h2>What is their National Insurance number?</h2>
 
         {% call fieldset({
           legend: {
@@ -38,16 +38,15 @@
           }
         }) %}
 
-        <p>It’s on their National Insurance card, benefit letter, payslip or P60.</p>
 
         {{ input({
           "label": {
             "text": "National Insurance number (optional)"
           },
           hint: {
-            html: "For example, 'QQ 12 34 56 C'"
+            html: "It's on their National Insurance card, benefit letter, payslip or P60. For example, 'QQ 12 34 56 C'."
           },
-          "id": "input-width-10",
+          "id": "patient-nino",
           "name": "patient-nino",
           "classes": "nhsuk-input--width-10"
         }) }}

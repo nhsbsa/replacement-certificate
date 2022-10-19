@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is your email address?
+  What is your own email address?
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,21 +26,24 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="../cya" method="post">
+      <form action="yourEmailAddress" method="post">
 
         {% call fieldset({
           legend: {
-            text: "What is your email address?",
+            text: "What is your own email address?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <p>We’ll use this to contact you if we need to ask for evidence to help with {{ data['patient-firstname'] }}'s application</p>
+        <p>As you're applying on behalf of someone else, we need your email address in case we need to ask for more information to help with this application.</p>
 
         {{ input({
           "label": {
             "text": "Enter your email address"
+          },
+          "hint": {
+            "text": "We'll only use this if we need to ask for more information"
           },
           "id": "input-width-30",
           "name": "your-email-address",

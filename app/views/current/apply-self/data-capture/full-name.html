@@ -26,7 +26,7 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="dob" method="post">
+      <form action="fullName" method="post">
 
         {% call fieldset({
           legend: {
@@ -40,7 +40,7 @@
           "label": {
             "text": "First name"
           },
-          "id": "input-width-30",
+          "id": "patient-firstname",
           "name": "patient-firstname",
           "classes": "nhsuk-input--width-30"
         }) }}
@@ -49,7 +49,7 @@
           "label": {
             "text": "Last name"
           },
-          "id": "input-width-30",
+          "id": "patient-lastname",
           "name": "patient-lastname",
           "classes": "nhsuk-input--width-30"
         }) }}

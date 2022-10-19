@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  You cannot apply for a Provisional Replacement Certificate
+  You cannot apply for a PRC
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,16 +27,15 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>You cannot apply for a Provisional Replacement Certificate</h1>
+      <h1>You cannot apply for a PRC</h1>
 
       <p class="nhsuk-lede-text">
-        A PRC does not cover treatment in {{ data['location-picker-1'] }}. If travel insurance is in place, you'll need to contact the provider of this to find out what to do next.
+        A PRC does not cover treatment in {{ data['location-picker-1'] }}.
       </p>
 
-      {{ backLink({
-        "href": "javascript:history.go(-1)",
-        "text": "Change my previous answer"
-      }) }}
+      <p class="nhsuk-lede-text">
+        If this treatment is covered by travel insurance, you should contact the provider to find out what you should do next.
+      </p>
 
     </div>  
 
