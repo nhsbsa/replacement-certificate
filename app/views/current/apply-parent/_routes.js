@@ -332,9 +332,102 @@ router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '
   }
   else {
     res.redirect('treatment-start-error')
-  } 
-}
+  }
+})
   
+router.post(['/treatmentStartTwo', '/treatmentStartTwoErr','/treatmentStartwoDateErr', '/treatmentStartTwoDayErr', '/treatmentStartTwoDayMonthErr', '/treatmentStartTwoDayYearErr','/treatmentStartTwoMonthErr', '/treatmentStartTwoMonthYearErr', '/treatmentStartTwoYearErr', '/treatmentStartTwoErr', '/treatmentStartTwoFutureErr', '/treatmentStartTwoInvalidErr'], function (req, res) {
+  var treatmentStartTwo = req.session.data['start-date'];
+  var chooseDay = req.session.data['choose-start-date-day'];
+  var chooseMonth = req.session.data['choose-start-date-month'];
+  var chooseYear = req.session.data['choose-start-date-year'];
+
+  var yearReg = /^(202[1-2])$/;            ///< Allows a number between 2021 and 2022
+  var monthReg = /^(0[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
+  var dayReg = /^(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
+
+  console.log(treatmentStartTwo);
+  console.log(isNumeric(chooseDay, chooseMonth, chooseYear));
+  console.log(`Day: ${chooseDay}, month: ${chooseMonth}, year: ${chooseYear}.`);
+
+  if (treatmentStartTwo == 'text' && isNumeric(chooseDay, chooseMonth, chooseYear) == true && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-facility-name')
+  }
+  else if (hasNumber(treatmentStartTwo) == true && isNumeric(chooseDay, chooseMonth, chooseYear) == false) {
+    res.redirect('treatment-facility-name')
+  }
+  else if (treatmentStartTwo == 'text' && !dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-day-error')
+  }
+  else if (treatmentStartTwo == 'text' && !dayReg.test(chooseDay) && monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-day-year-error')
+  }
+  else if (treatmentStartTwo == 'text' && dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-month-error')
+  }   
+  else if (treatmentStartTwo == 'text' && !dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-day-month-error')
+  } 
+  else if (treatmentStartTwo == 'text' && dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-month-year-error')
+  } 
+  else if (treatmentStartTwo == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-year-error')
+  } 
+  else if (treatmentStartTwo == 'text' && !dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-error')
+  }
+  else {
+    res.redirect('treatment-start-error')
+  }
+})
+
+router.post(['/treatmentStartThree', '/treatmentStartThreeErr','/treatmentStartThreeDateErr', '/treatmentStartThreeDayErr', '/treatmentStartThreeDayMonthErr', '/treatmentStartThreeDayYearErr','/treatmentStartThreeMonthErr', '/treatmentStartThreeMonthYearErr', '/treatmentStartThreeYearErr', '/treatmentStartThreeErr', '/treatmentStartThreeFutureErr', '/treatmentStartThreeInvalidErr'], function (req, res) {
+  var treatmentStartThree = req.session.data['start-date'];
+  var chooseDay = req.session.data['choose-start-date-day'];
+  var chooseMonth = req.session.data['choose-start-date-month'];
+  var chooseYear = req.session.data['choose-start-date-year'];
+
+  var yearReg = /^(202[1-2])$/;            ///< Allows a number between 2021 and 2022
+  var monthReg = /^(0[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
+  var dayReg = /^(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
+
+  console.log(treatmentStartThree);
+  console.log(isNumeric(chooseDay, chooseMonth, chooseYear));
+  console.log(`Day: ${chooseDay}, month: ${chooseMonth}, year: ${chooseYear}.`);
+
+  if (treatmentStartThree == 'text' && isNumeric(chooseDay, chooseMonth, chooseYear) == true && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-facility-name')
+  }
+  else if (hasNumber(treatmentStartThree) == true && isNumeric(chooseDay, chooseMonth, chooseYear) == false) {
+    res.redirect('treatment-facility-name')
+  }
+  else if (treatmentStartThree == 'text' && !dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-day-error')
+  }
+  else if (treatmentStartThree == 'text' && !dayReg.test(chooseDay) && monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-day-year-error')
+  }
+  else if (treatmentStartThree == 'text' && dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-month-error')
+  }   
+  else if (treatmentStartThree == 'text' && !dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-day-month-error')
+  } 
+  else if (treatmentStartThree == 'text' && dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-month-year-error')
+  } 
+  else if (treatmentStartThree == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-year-error')
+  } 
+  else if (treatmentStartThree == 'text' && !dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-error')
+  }
+  else {
+    res.redirect('treatment-start-error')
+  }
+})
+
+
 // What is your date of birth?
 
 router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr'], function (req, res) {

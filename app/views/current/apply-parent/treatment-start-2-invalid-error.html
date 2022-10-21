@@ -26,9 +26,7 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-
-      <form action="treatmentStartMonthYearErr" method="post">
-
+        
           <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
             <h2 class="nhsuk-error-summary__title" id="error-summary-title">
               There is a problem
@@ -37,13 +35,14 @@
               
               <ul class="nhsuk-list nhsuk-error-summary__list">
                 <li>
-                  <a href="#example">Treatment start date must include a month and a year</a>
+                  <a href="#start-date">Treatment start date must be a real date</a>
                 </li>
               </ul>
             </div>
           </div>
-          <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 1</span>
-          <br>
+
+          <form action="treatmentStartTwoInvalidErr" method="post">
+
           <h1>Treatment start date</h1>
           <p>You can only apply for a PRC from the time your child needs treatment. This includes treatment they've had already.</p>
           <p>Their PRC will last for 28 days starting from the first day of treatment. If the treatment lasts for longer than 28 days, you will need to reapply.</p>
@@ -55,8 +54,7 @@
                     </h2>
                 </legend>
 
-                {% from 'error-message/macro.njk' import errorMessage %}
-                {% from 'radios/macro.njk' import radios %}
+          {% from 'radios/macro.njk' import radios %}
                 {% from 'input/macro.njk' import input %}
 
                 {% set emailHtml %}
@@ -84,12 +82,12 @@
                         "text": "For example, 19 2 2022"
                       },
                       "errorMessage": {
-                          "text": "Treatment start date must include a month and a year"
+                        "text": "Treatment start date must be a real date"
                       },
                       "items": [
                         {
                           "name": "day",
-                          "classes": "nhsuk-input--width-2"
+                          "classes": "nhsuk-input--width-2 nhsuk-input--error"
                         },
                         {
                           "name": "month",
@@ -124,8 +122,7 @@
                       "text": "Choose another date",
                       "conditional": {
                         "html": chooseDateHtml
-                      },
-                      "checked": "true"
+                      }
                     }
                   ]
                 }) }}
@@ -147,5 +144,3 @@
   </div>
 {% endblock %}
           
-
-

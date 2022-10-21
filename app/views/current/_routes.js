@@ -35,7 +35,7 @@ router.post('/applyForErr', function (req, res) {
 })
 
 // Are you applying for a child under the age of 18? 
-router.post('/applyForChild', function (req, res) {
+router.post(['/applyForChild', '/applyForChildErr'], function (req, res) {
   var applyForChild = req.session.data['apply-for-child']
   if (applyForChild == "Yes") {
     res.redirect('parent-guardian')
@@ -44,12 +44,12 @@ router.post('/applyForChild', function (req, res) {
     res.redirect('apply-third-party/treatment-country')
   }
   else {
-    res.redirect('apply-for-child')
+    res.redirect('apply-for-child-err')
   }
 })
 
 // Are you the parent or legal guardian of the child?
-router.post('/parentGuardian', function (req, res) {
+router.post(['/parentGuardian', '/parentGuardianErr'], function (req, res) {
   var parentGuardian = req.session.data['parent-guardian']
   if (parentGuardian == "Yes") {
     res.redirect('apply-parent/treatment-country')
@@ -58,7 +58,7 @@ router.post('/parentGuardian', function (req, res) {
     res.redirect('apply-third-party/treatment-country')
   }
   else {
-    res.redirect('parent-guardian')
+    res.redirect('parent-guardian-err')
   }
 })
 

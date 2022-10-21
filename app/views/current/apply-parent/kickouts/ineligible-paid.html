@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  You cannot apply for a Provisional Replacement Certificate
+  You need to pay for the rest of your child's treatment and then claim a refund
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,44 +28,46 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>You cannot apply for a PRC</h1>
+      <h1>You need to pay for the rest of your child's treatment and then claim a refund</h1>
 
       <p class="nhsuk-lede-text">
-        You cannot use this service to apply for a PRC as you've told us that you've paid more than a co-payment or patient contribution for your treatment.
+        You cannot use this service to apply for a PRC as you've told us that you have paid more than a co-payment or patient contribution for your child's treatment.
       </p>
 
-      <p>You need to pay the full amount of treatment costs and then claim a refund.</p>
+      <p>You will need to pay the full amount of treatment costs and then claim a refund.</p>
 
       <h2>Claiming a refund</h2>
 
-      <p>Depending on the country you visit, you may be expected to pay all or part of your bill upfront and then claim a refund afterwards.</p>
+      <p>Depending on the country you visit, you may be expected to pay for all or part of the bill upfront and then claim a refund afterwards.</p>
       
       <p>You can claim back the difference between the total bill and the co-payment, but the actual co-payment is not refundable.</p>
-      <p>You should keep all invoices, receipts, and any other paperwork. You or your insurance company may need them if you apply for a refund.</p>
-      <p>To request a refund, you'll need to <a href="https://www.nhsbsa.nhs.uk/contact-us/overseas-healthcare-services-contact-us">contact us</a>. </p>
+      <p>You should keep all invoices, receipts, and any other paperwork. You or your insurance company may need them to apply for a refund.</p>
+      <p><a href="https://www.nhsbsa.nhs.uk/contact-us/overseas-healthcare-services-contact-us">Contact us to claim a refund</a>. </p>
 
       {{ details({
-        "text": "I cannot afford to pay the rest of my treatment",
+        "text": "I cannot afford to pay the rest of the treatment",
         "HTML": "
         <p>In exceptional circumstances, we may be able to consider your application for a PRC.</p>
 
         <p>If you cannot afford the rest of your treatment costs, email us at <a>nhsbsa.ohsregistrations1@nhs.net</a> with the following information: </p>
 
         <ul>
-          <li>Patient's name</li>
-          <li>Patient's date of birth</li>
-          <li>Patient's nationality</li>
-          <li>Patient's current UK address</li>
+          <li>Your name</li>
+          <li>Your date of birth</li>
+          <li>Your nationality</li>
+          <li>Your current UK address</li>
+          <li>Your child's name</li>
+          <li>Your child's date of birth</li>
+          <li>Your child's address (if this is different from your own)</li>
           <li>Start date of treatment</li>
-          <li>Country they received treatment in</li>
+          <li>Country of treatment</li>
           <li>Treatment facility name</li>
           <li>Treatment facility email address</li>
           <li>The total cost of treatment</li>
           <li>The amount of costs paid to date</li>
           <li>The type of treatments the costs relate to</li>
           <li>Reason the patient cannot pay in full</li>
-          <li>Name of person making the application, if this is different</li>
-          <li>Relationship to the patient, if you have one</li>
+          <li>Why you cannot pay in full</li>
         </ul>
         "
       }) }}

@@ -27,7 +27,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
 
-      <form action="treatmentStartMonthYearErr" method="post">
+      <form action="treatmentStartThreeDayMonthErr" method="post">
 
           <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
             <h2 class="nhsuk-error-summary__title" id="error-summary-title">
@@ -37,12 +37,12 @@
               
               <ul class="nhsuk-list nhsuk-error-summary__list">
                 <li>
-                  <a href="#example">Treatment start date must include a month and a year</a>
+                  <a href="#example">Treatment start date must include a day and a month</a>
                 </li>
               </ul>
             </div>
           </div>
-          <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 1</span>
+          <span class="nhsuk-caption-l nhsuk-caption--bottom">Treatment facility 3</span>
           <br>
           <h1>Treatment start date</h1>
           <p>You can only apply for a PRC from the time your child needs treatment. This includes treatment they've had already.</p>
@@ -84,12 +84,12 @@
                         "text": "For example, 19 2 2022"
                       },
                       "errorMessage": {
-                          "text": "Treatment start date must include a month and a year"
+                          "text": "Treatment start date must include a day and a month"
                       },
                       "items": [
                         {
                           "name": "day",
-                          "classes": "nhsuk-input--width-2"
+                          "classes": "nhsuk-input--width-2 nhsuk-input--error"
                         },
                         {
                           "name": "month",
@@ -97,7 +97,7 @@
                         },
                         {
                           "name": "year",
-                          "classes": "nhsuk-input--width-4 nhsuk-input--error"
+                          "classes": "nhsuk-input--width-4"
                         }
                       ]
                     }) }}
