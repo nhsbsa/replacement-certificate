@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is {{ data['patient-firstname'] }}'s date of birth?
+  What is your date of birth?
 {% endblock %}
 
 {% block beforeContent %}
@@ -41,7 +41,7 @@
       </div>
       <form action="dateBirthErr" method="post">
 
-        <h2>What is {{ data['patient-firstname'] }}'s date of birth?</h2>
+        <h2>What is your date of birth?</h2>
 
         {{ dateInput({
         "id": "example",
