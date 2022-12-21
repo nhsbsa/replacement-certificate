@@ -1,9 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-
-  Have you paid anything towards the cost of medical treatment?
-
+  Are you their parent or legal guardian?
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,23 +27,32 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <span class="nhsuk-caption-l nhsuk-caption--bottom">Check your eligibility</span> -->
-      <form action="paidTreatment" method="post">
+      <form action="parentGuardianErr" method="post">
+
+        {{ errorSummary({
+          "titleText": "There is a problem",
+          "errorList": [
+            {
+              "text": "Select yes if you are their parent or legal guardian",
+              "href": "#parent-guardian"
+            }
+          ]
+        }) }}
 
         {% call fieldset({
           legend: {
-            text: "Have you paid anything towards the cost of medical treatment?",
+            text: "Are you the parent or legal guardian of the child?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <!-- {{ insetText({
-          "HTML": "<p>In some countries you may need to pay medical costs  </p>"
-        }) }} -->
-
         {{ radios({
-          "idPrefix": "paid-treatment",
-          "name": "paid-treatment",
+          "idPrefix": "parent-guardian",
+          "name": "parent-guardian",
+          "errorMessage": {
+            "text": "Select yes if you are their parent or legal guardian"
+          },
           "items": [
             {
               "value": "Yes",
@@ -74,4 +81,3 @@
     </div>
   </div>
 {% endblock %}
-
