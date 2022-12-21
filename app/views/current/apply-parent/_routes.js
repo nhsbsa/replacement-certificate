@@ -333,7 +333,7 @@ router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '
   else {
     res.redirect('treatment-start-error')
   } 
-}
+})
   
 // What is your date of birth?
 
