@@ -617,7 +617,7 @@ router.post('/regS1', function (req, res) {
 
 // Do you know your OHS reference number?
 router.post(['/data-capture/knowOhs', '/data-capture/knowOhsErr'], function (req, res) {
-  var knowOhs = req.session.data['parent-know-ohs']
+  var knowOhs = req.session.data['patient-know-ohs']
   if (knowOhs == "Yes") {
     res.redirect('ohs')
   }
