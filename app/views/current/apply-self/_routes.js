@@ -378,48 +378,6 @@ router.post(['/data-capture/knowNino', '/data-capture/knowNinoErr'], function (r
   }
 })
 
-// // Have you lived at this address for the past 6 months?
-// router.post('/data-capture/twoYearsAddress', function (req, res) {
-//   var twoYearsAddress = req.session.data['two-years-address']
-//   if (twoYearsAddress == "Yes") {
-//     res.redirect('phone-number')
-//   }
-//   if (twoYearsAddress == "No") {
-//     res.redirect('previous-address-lookup')
-//   }
-//   else {
-//     res.redirect('two-years-address')
-//   }
-// })
-
-// Do you know [child]'s National Insurance number?
-// router.post('/data-capture/child/knowNino', function (req, res) {
-//   var knowNino = req.session.data['child-know-nino']
-//   if (knowNino == "Yes") {
-//     res.redirect('nino')
-//   }
-//   if (knowNino == "No") {
-//     res.redirect('same-address')
-//   }
-//   else {
-//     res.redirect('know-nino')
-//   }
-// })
-
-// Does [child] live with you?
-// router.post('/data-capture/child/childAddress', function (req, res) {
-//   var childAddress = req.session.data['child-address']
-//   if (childAddress == "Yes") {
-//     res.redirect('../cya')
-//   }
-//   if (childAddress == "No") {
-//     res.redirect('address-lookup')
-//   }
-//   else {
-//     res.redirect('same-address')
-//   }
-// })
-
 router.get('/treatment-start', function (req, res) {
   let today = new Date();
 
@@ -549,9 +507,8 @@ router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '
   }
   else {
     res.redirect('treatment-start-error')
-  } 
+  }
 })
-  
 
 // What is your date of birth?
 
@@ -667,5 +624,6 @@ router.post(['/data-capture/emailAddress', '/data-capture/emailAddressErr'], fun
     res.redirect('../cya')
   }
 })
+
 
 module.exports = router

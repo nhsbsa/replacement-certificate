@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is your name?
+  What is your date of birth?
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,7 +26,7 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-
+      
       <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
         <h2 class="nhsuk-error-summary__title" id="error-summary-title">
           There is a problem
@@ -34,49 +34,46 @@
         <div class="nhsuk-error-summary__body">
           <ul class="nhsuk-list nhsuk-error-summary__list">
             <li>
-              <a href="#parent-firstname">Enter your first name</a>
-              <br>
-              <a href="#parent-lastname">Enter your last name</a>
+              <a href="#example">Date of birth must include a month and year</a>
             </li>
           </ul>
         </div>
       </div>
-      <form action="fullNameErr" method="post">
+      <form action="dateBirthMonthYearErr" method="post">
 
-        {% call fieldset({
-          legend: {
-            text: "What is your name?",
-            classes: "nhsuk-fieldset__legend--l",
-            isPageHeading: true
-          }
-        }) %}
+        <h2>What is your date of birth?</h2>
 
-        {{ input({
-          "label": {
-            "text": "First name"
-          },
-          "errorMessage": {
-            "text": "Enter your first name"
-          },
-          "id": "parent-firstname",
-          "name": "parent-firstname",
-          "classes": "nhsuk-input--width-30 nhsuk-input--error"
-        }) }}
-
-        {{ input({
-          "label": {
-            "text": "Last name"
-          },
-          "errorMessage": {
-            "text": "Enter your last name"
-          },
-          "id": "parent-lastname",
-          "name": "parent-lastname",
-          "classes": "nhsuk-input--width-30 nhsuk-input--error"
-        }) }}
-
-
-        {% endcall %}
+        {{ dateInput({
+        "id": "example",
+        "namePrefix": "patient",
+        "fieldset": {
+          "legend": {
+            "text": "",
+            "classes": "nhsuk-label--l",
+            "isPageHeading": true
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 1984"
+            },
+            "errorMessage": {
+              "text": "Date of birth must include a month and year"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2 nhsuk-input--error"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4 nhsuk-input--error"
+              }
+            ]
+          }) }}
 
         {{ button({
           "text": "Continue"
