@@ -27,7 +27,7 @@
 <div class="nhsuk-grid-row">
    <div class="nhsuk-grid-column-three-quarters">
       <form action="app-submitted" method="post">
-         <h1>Check your answers before sending your application</h1>
+         <h1>Check your answers before sending this application</h1>
 
          <h2>Treatment details</h2>
 
@@ -57,9 +57,9 @@
                    {% if not data['start-date'].length %}
                       &#8212;
                    {% elseif data['start-date'] == "text" %}
-                      {{ data['choose-start-date-day'] }} / {{ data['choose-start-date-month'] }} / {{ data['choose-start-date-year'] }}
+                      {{ startDateFormatted }}
                    {% else %}
-                      {{ data['start-date'] }}
+                      {{ todayDateFormatted }}
                    {% endif %}
                </dd>
                <dd class="nhsuk-summary-list__actions">
@@ -221,7 +221,7 @@
                   Date of birth
                </dt>
                <dd class="nhsuk-summary-list__value">
-                  {{ data['parent-day'] }} / {{ data['parent-month'] }} / {{ data['parent-year'] }}
+                  {{ data['patient-day'] }} / {{ data['patient-month'] }} / {{ data['patient-year'] }}
                </dd>
                <dd class="nhsuk-summary-list__actions">
                   <a class="nhsuk-link" href="data-capture/dob">
@@ -412,7 +412,11 @@
           </dl>
          
          <h2>Now send your application</h2>
-         <p>By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+         <p>By sending this application, you are confirming that you understand that the NHSBSA may use and share information you provide in relation to this application internally and with Department of Health and Social Care (DHSC) and NHS Counter Fraud Authority (NHSCFA). This will be used for the purposes of the prevention, detection, loss measurement, investigation and prosecution of fraud or any other unlawful activity affecting the NHS.</p>
+         <p>You can <a href="https://www.nhsbsa.nhs.uk/our-policies/privacy/overseas-healthcare-services-privacy-notice">find out more about how we use this information on our website</a>.</p>
+         <p>If you withhold or provide false or misleading information, disciplinary action may be taken against you, and you may be liable to prosecution or face civil proceedings.</p>
+         <p>When you send this application, you are confirming that you accept and agree to these conditions.</p>
+
          {{ button({
          "text": "Accept and send"
          }) }}

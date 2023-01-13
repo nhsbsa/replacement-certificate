@@ -378,65 +378,66 @@ router.post(['/data-capture/knowNino', '/data-capture/knowNinoErr'], function (r
   }
 })
 
-router.get('/treatment-start', function (req, res) {
-  let today = new Date();
 
-  let date = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
+// router.get('/treatment-start', function (req, res) {
+//   let today = new Date();
 
-  let todayDate = date + " / " + month + " / " + year;
+//   let date = today.getDate();
+//   let month = today.getMonth() + 1;
+//   let year = today.getFullYear();
 
-  res.render(__dirname + '/treatment-start', {todayDate: todayDate});
-})
+//   let todayDate = date + " / " + month + " / " + year;
 
-router.get('/treatment-start-error', function (req, res) {
-  let today = new Date();
+//   res.render(__dirname + '/treatment-start', {todayDate: todayDate});
+// })
 
-  let date = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
+// router.get('/treatment-start-error', function (req, res) {
+//   let today = new Date();
 
-  let todayDate = date + " / " + month + " / " + year;
+//   let date = today.getDate();
+//   let month = today.getMonth() + 1;
+//   let year = today.getFullYear();
 
-  res.render(__dirname + '/treatment-start-error', {todayDate: todayDate});
-})
+//   let todayDate = date + " / " + month + " / " + year;
 
-router.get('/treatment-start-future-error', function (req, res) {
-  let today = new Date();
+//   res.render(__dirname + '/treatment-start-error', {todayDate: todayDate});
+// })
 
-  let date = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
+// router.get('/treatment-start-future-error', function (req, res) {
+//   let today = new Date();
 
-  let todayDate = date + " / " + month + " / " + year;
+//   let date = today.getDate();
+//   let month = today.getMonth() + 1;
+//   let year = today.getFullYear();
 
-  res.render(__dirname + '/treatment-start-future-error', {todayDate: todayDate});
-})
+//   let todayDate = date + " / " + month + " / " + year;
 
-router.get('/treatment-start-invalid-error', function (req, res) {
-  let today = new Date();
+//   res.render(__dirname + '/treatment-start-future-error', {todayDate: todayDate});
+// })
 
-  let date = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
+// router.get('/treatment-start-invalid-error', function (req, res) {
+//   let today = new Date();
 
-  let todayDate = date + " / " + month + " / " + year;
+//   let date = today.getDate();
+//   let month = today.getMonth() + 1;
+//   let year = today.getFullYear();
 
-  res.render(__dirname + '/treatment-start-invalid-error', {todayDate: todayDate});
-})
+//   let todayDate = date + " / " + month + " / " + year;
 
-router.get('/treatment-start-date-error', function (req, res) {
-  let today = new Date();
+//   res.render(__dirname + '/treatment-start-invalid-error', {todayDate: todayDate});
+// })
 
-  let date = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
+// router.get('/treatment-start-date-error', function (req, res) {
+//   let today = new Date();
 
-  let todayDate = date + " / " + month + " / " + year;
+//   let date = today.getDate();
+//   let month = today.getMonth() + 1;
+//   let year = today.getFullYear();
 
-  res.render(__dirname + '/treatment-start-date-error', {todayDate: todayDate});
-})
+//   let todayDate = date + " / " + month + " / " + year;
+
+//   res.render(__dirname + '/treatment-start-date-error', {todayDate: todayDate});
+// })
 
 // Check if string contains number
 // const paragraph = 'The quick brown fox jumps over the lazy dog. It barked.';
@@ -470,39 +471,59 @@ router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '
   var chooseMonth = req.session.data['choose-start-date-month'];
   var chooseYear = req.session.data['choose-start-date-year'];
 
-  var yearReg = /^(202[1-2])$/;            ///< Allows a number between 2021 and 2022
-  var monthReg = /^(0[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
-  var dayReg = /^(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
+  var yearReg = /^(202[1-3])$/;            ///< Allows a number between 2021 and 2022
+  var monthReg = /^([1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
+  var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
 
-  console.log(treatmentStart);
-  console.log(isNumeric(chooseDay, chooseMonth, chooseYear));
-  console.log(`Day: ${chooseDay}, month: ${chooseMonth}, year: ${chooseYear}.`);
+  console.log(`The treatment start value is: ${treatmentStart}`);
 
-  if (treatmentStart == 'text' && isNumeric(chooseDay, chooseMonth, chooseYear) == true && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+  //Today's date
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  let mm = today.getMonth() + 1; 
+  const dd = today.getDate();
+  const formattedToday = dd + '/' + mm + '/' + yyyy;
+  console.log(`The date for today's is: ${formattedToday}`);
+  var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
+  console.log(`The formatted date for today is: ${lastRunStartToday}`);
+
+  //User input treatment start date
+  const date = chooseDay + '/' + chooseMonth + '/' + chooseYear;
+  console.log(`The input date for treatment start is: ${date}`);
+  var lastRunStartDate = new Date(date.split('/')[2], date.split('/')[1] - 1, date.split('/')[0]);
+  console.log(`The formatted input date for treatment start is: ${lastRunStartDate}`);
+
+  if (treatmentStart == 'todayDate') {
     res.redirect('treatment-facility-name')
   }
-  else if (hasNumber(treatmentStart) == true && isNumeric(chooseDay, chooseMonth, chooseYear) == false) {
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear) && lastRunStartDate < lastRunStartToday) {
     res.redirect('treatment-facility-name')
   }
-  else if (treatmentStart == 'text' && !dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear) && lastRunStartDate > lastRunStartToday) {
+    res.redirect('treatment-start-date-future-error')
+  }
+  else if (treatmentStart == 'text' && (!dayReg.test(chooseDay) || !monthReg.test(chooseMonth) || !yearReg.test(chooseYear))) {
+    res.redirect('treatment-start-date-invalid-error')
+  }
+  else if (treatmentStart == 'text' && chooseDay == '' && monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
     res.redirect('treatment-start-date-day-error')
   }
-  else if (treatmentStart == 'text' && !dayReg.test(chooseDay) && monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+  else if (treatmentStart == 'text' && chooseDay == '' && monthReg.test(chooseMonth) && chooseYear == '') {
     res.redirect('treatment-start-date-day-year-error')
   }
-  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && chooseMonth == '' && yearReg.test(chooseYear)) {
     res.redirect('treatment-start-date-month-error')
   }   
-  else if (treatmentStart == 'text' && !dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+  else if (treatmentStart == 'text' && chooseDay == '' && chooseMonth == '' && yearReg.test(chooseYear)) {
     res.redirect('treatment-start-date-day-month-error')
   } 
-  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && chooseMonth == '' && chooseYear == '') {
     res.redirect('treatment-start-date-month-year-error')
   } 
-  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && chooseYear == '') {
     res.redirect('treatment-start-date-year-error')
   } 
-  else if (treatmentStart == 'text' && !dayReg.test(chooseDay) && !monthReg.test(chooseMonth) && !yearReg.test(chooseYear)) {
+  else if (treatmentStart == 'text' && chooseDay == '' && chooseMonth == '' && chooseYear == '') {
     res.redirect('treatment-start-date-error')
   }
   else {
@@ -512,17 +533,61 @@ router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '
 
 // What is your date of birth?
 
-router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr'], function (req, res) {
+router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-capture/dateBirthInvalid', '/data-capture/dateBirthDayErr', '/data-capture/dateBirthDayYearErr', '/data-capture/dateBirthFutureErr', '/data-capture/dateBirthInvalidErr', '/data-capture/dateBirthMonthErr', '/data-capture/dateBirthMonthYearErr', '/data-capture/dateBirthYearErr'], function (req, res) {
   var birthDay = req.session.data['patient-day']
   var birthMonth = req.session.data['patient-month']
   var birthYear = req.session.data['patient-year']
-  console.log(birthDay);
-  console.log(birthMonth);
-  console.log(birthYear);
-  if (isNumeric(birthDay, birthMonth, birthYear) == true) {
+
+  var yearReg = /^([1900-2023])$/;            ///< Allows a number between 1900 and 2023
+  var monthReg = /^([1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
+  var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
+
+  console.log(`Day: ${birthDay}, month: ${birthMonth}, year: ${birthYear}.`);
+
+  //Today's date
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  let mm = today.getMonth() + 1; 
+  const dd = today.getDate();
+  const formattedToday = dd + '/' + mm + '/' + yyyy;
+  console.log(`The date for today is: ${formattedToday}`);
+  var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
+  console.log(`The formatted date for today is: ${lastRunStartToday}`);
+
+  //User input DOB
+  const dob = birthDay + '/' + birthMonth + '/' + birthYear;
+  console.log(`The input date for DOB is: ${dob}`);
+  var lastRunStartDob = new Date(dob.split('/')[2], dob.split('/')[1] - 1, dob.split('/')[0]);
+  console.log(`The formatted input date for DOB is: ${lastRunStartDob}`);
+
+  if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday) {
     res.redirect('know-ohs')
   }
-  else {
+  else if ( dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob > lastRunStartToday) {
+    res.redirect('dob-future-error')
+  }
+  else if (!dayReg.test(birthDay) || !monthReg.test(birthMonth) || !yearReg.test(birthYear)) {
+    res.redirect('dob-invalid')
+  }
+  else if (birthDay == '' && monthReg.test(birthMonth) && yearReg.test(birthYear)) {
+    res.redirect('dob-day-error')
+  }
+  else if (birthDay == '' && monthReg.test(birthMonth) && birthYear == '') {
+    res.redirect('dob-day-year-error')
+  }
+  else if (dayReg.test(birthDay) && birthMonth == '' && yearReg.test(birthYear)) {
+    res.redirect('dob-month-error')
+  }   
+  else if (birthDay == '' && birthMonth == '' && yearReg.test(birthYear)) {
+    res.redirect('dob-day-month-error')
+  } 
+  else if (dayReg.test(birthDay) && birthMonth == '' && birthYear == '') {
+    res.redirect('dob-month-year-error')
+  } 
+  else if (dayReg.test(birthDay) && monthReg.test(birthMonth) && birthYear == '') {
+    res.redirect('dob-year-error')
+  } 
+  else if (birthDay == '' && birthMonth == '' && birthYear == '') {
     res.redirect('dob-error')
   }
 })
@@ -571,32 +636,32 @@ router.post(['/treatmentFacilityNameThree', '/treatmentFacilityNameThreeErr', '/
 
 
 // What is the email address of the hospital, clinic, or treatment facility??
-router.post('/treatmentFacilityEmail', function (req, res) {
+router.post(['/treatmentFacilityEmail', '/treatmentFacilityEmailErr', '/treatmentFacilityEmailInvalid'], function (req, res) {
   var treatmentFacilityEmail = req.session.data['treatment-facility-email']
+  const emailRegEx = /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+  
   if (treatmentFacilityEmail == '') {
     res.redirect('treatment-facility-email-error')
   }
+  else if (treatmentFacilityEmail != '' && !emailRegEx.test(treatmentFacilityEmail)) {
+    res.redirect('treatment-facility-email-invalid')
+  }
   else {
     res.redirect('additional-facility')
   }
 })
 
-// What is the email address of the hospital, clinic, or treatment facility (error)?
-router.post('/treatmentFacilityEmailErr', function (req, res) {
-  var treatmentFacilityEmailErr = req.session.data['treatment-facility-email-error']
-  if (treatmentFacilityEmailErr == '') {
-    res.redirect('treatment-facility-email-error')
-  }
-  else {
-    res.redirect('additional-facility')
-  }
-})
 
 // What is the email address of the hospital, clinic, or treatment facility 2?
-router.post(['/treatmentFacilityEmailTwo', '/treatmentFacilityEmailTwoErr'], function (req, res) {
+router.post(['/treatmentFacilityEmailTwo', '/treatmentFacilityEmailTwoErr', '/treatmentFacilityEmailTwoInvalid'], function (req, res) {
   var treatmentFacilityEmailTwo = req.session.data['treatment-facility-email-2']
+  const emailRegEx = /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+
   if (treatmentFacilityEmailTwo == '') {
     res.redirect('treatment-facility-email-2-error')
+  }
+  else if (treatmentFacilityEmailTwo != '' && !emailRegEx.test(treatmentFacilityEmailTwo)) {
+    res.redirect('treatment-facility-email-2-invalid')
   }
   else {
     res.redirect('additional-facility-2')
@@ -604,26 +669,190 @@ router.post(['/treatmentFacilityEmailTwo', '/treatmentFacilityEmailTwoErr'], fun
 })
 
 // What is the email address of the hospital, clinic, or treatment facility 3?
-router.post(['/treatmentFacilityEmailThree', '/treatmentFacilityEmailThreeErr'], function (req, res) {
+router.post(['/treatmentFacilityEmailThree', '/treatmentFacilityEmailThreeErr', '/treatmentFacilityEmailThreeInvalid'], function (req, res) {
   var treatmentFacilityEmailThree = req.session.data['treatment-facility-email-3']
+  const emailRegEx = /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+
   if (treatmentFacilityEmailThree == '') {
     res.redirect('treatment-facility-email-3-error')
+  }
+  else if (treatmentFacilityEmailThree != '' && !emailRegEx.test(treatmentFacilityEmailThree)) {
+    res.redirect('treatment-facility-email-3-invalid')
   }
   else {
     res.redirect('additional-facility-3')
   }
 })
 
+//What is your phone number?
+router.post(['/data-capture/phoneNumber', '/data-capture/phoneNumberInvalid'], function (req, res) {
+  var phoneNumber = req.session.data['phone-number']
+  const phoneRegEx = /^0([1-6][0-9]{8,10}|7[0-9]{9})$/;
+
+  if (phoneNumber == '') {
+    res.redirect('email-address')
+  }
+  else if (phoneNumber != '' && !phoneRegEx.test(phoneNumber)) {
+    res.redirect('phone-number-invalid')
+  }
+  else {
+    res.redirect('email-address')
+  }
+})
+
 //What is your email address?
-router.post(['/data-capture/emailAddress', '/data-capture/emailAddressErr'], function (req, res) {
+router.post(['/data-capture/emailAddress', '/data-capture/emailAddressErr', '/data-capture/emailAddressInvalid'], function (req, res) {
   var emailAddress = req.session.data['email-address']
+  const emailRegEx = /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+
   if (emailAddress == '') {
     res.redirect('email-address-error')
+  }
+  else if (emailAddress != '' && !emailRegEx.test(emailAddress)) {
+    res.redirect('email-address-invalid')
   }
   else {
     res.redirect('../cya')
   }
 })
 
+// Check your answers //
+router.get(/cya/, function (req,res){
+  const ReferenceDataService = require(path.resolve("app/service/referenceData.js"));
+  var countryList = ReferenceDataService.getCountries();
+  res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
+
+  var startDate = req.session.data['start-date'];
+  console.log(`This is the start date: ${startDate}`);
+
+  var startDay = req.session.data['choose-start-date-day'];
+  var startMonth = req.session.data['choose-start-date-month'];
+  var startYear = req.session.data['choose-start-date-year'];
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+
+  if (startDate == 'text') {
+    const d = new Date(startMonth);
+    var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
+    console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+
+    res.render(__dirname + '/cya', {startDateFormatted: startDateFormatted});
+  } 
+  
+  if (startDate == 'todayDate') {
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
+    
+    const m = new Date(month);
+    let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
+    console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+
+    res.render(__dirname + '/cya', {todayDateFormatted: todayDateFormatted});
+  }
+
+});
+
+// Treatment facility details dates //
+router.get(/treatment-facility-details/, function (req,res){
+  var startDate = req.session.data['start-date'];
+  console.log(`This is the start date: ${startDate}`);
+
+  var startDay = req.session.data['choose-start-date-day'];
+  var startMonth = req.session.data['choose-start-date-month'];
+  var startYear = req.session.data['choose-start-date-year'];
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+
+  if (startDate == 'text') {
+    const d = new Date(startMonth);
+    var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
+    console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+
+    res.render(__dirname + '/treatment-facility-details', {startDateFormatted: startDateFormatted});
+  } 
+  
+  if (startDate == 'todayDate'){
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
+    
+    const m = new Date(month);
+    let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
+    console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+
+    res.render(__dirname + '/treatment-facility-details', {todayDateFormatted: todayDateFormatted});
+  }
+});
+
+router.get(/treatment-facility-details-2/, function (req,res){
+  var startDate = req.session.data['start-date'];
+  console.log(`This is the start date: ${startDate}`);
+
+  var startDay = req.session.data['choose-start-date-day'];
+  var startMonth = req.session.data['choose-start-date-month'];
+  var startYear = req.session.data['choose-start-date-year'];
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+
+  if (startDate == 'text') {
+    const d = new Date(startMonth);
+    var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
+    console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+
+    res.render(__dirname + '/treatment-facility-details-2', {startDateFormatted: startDateFormatted});
+  } 
+  
+  if (startDate == 'todayDate') {
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
+    
+    const m = new Date(month);
+    let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
+    console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+
+    res.render(__dirname + '/treatment-facility-details-2', {todayDateFormatted: todayDateFormatted});
+  }
+});
+
+router.get(/treatment-facility-details-3/, function (req,res){
+  var startDate = req.session.data['start-date'];
+  console.log(`This is the start date: ${startDate}`);
+
+  var startDay = req.session.data['choose-start-date-day'];
+  var startMonth = req.session.data['choose-start-date-month'];
+  var startYear = req.session.data['choose-start-date-year'];
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+
+  if (startDate == 'todayDate') {
+    const d = new Date(startMonth);
+    var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
+    console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+
+    res.render(__dirname + '/treatment-facility-details-3', {startDateFormatted: startDateFormatted});
+  } 
+  
+  if (startDate == 'todayDate'){
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
+    
+    const m = new Date(month);
+    let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
+    console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+
+    res.render(__dirname + '/treatment-facility-details-3', {todayDateFormatted: todayDateFormatted});
+  }
+});
 
 module.exports = router

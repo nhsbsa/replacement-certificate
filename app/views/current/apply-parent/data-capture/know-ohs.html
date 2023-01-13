@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Do you know your OHS reference number?
+  Do you have an Overseas Healthcare Services (OHS) reference number?
 {% endblock %}
 
 {% block beforeContent %}
@@ -38,7 +38,8 @@
           hint: {
             html: "
             <p>An OHS reference number is a number we use to identify your record.</p>
-            <p>You can find it on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC).</p>
+            <p>It can be found on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC).</p>
+            <p>If you’re not sure if you have one, select no.</p>
             "
           }
         }) %}
@@ -50,11 +51,11 @@
           "items": [
             {
               "value": "Yes",
-              "text": "Yes, I know my OHS reference number"
+              "text": "Yes, I have an OHS reference number"
             },
             {
               "value": "No",
-              "text": "No, I do not know my OHS reference number"
+              "text": "No, I do not have an OHS reference number"
             }
           ]
         }) }}
@@ -69,7 +70,7 @@
         {{ details({
           "text": "Why we ask for your OHS reference number",
           "HTML": "
-          <p>We can use your OHS reference number to see if you currently hold a record with us. This may help us process your application faster.</p>
+          <p>We can use your OHS reference number to see if you currently hold a record with us. This may help us process the application faster.</p>
           <p>Providing this is optional and does not affect your eligibility to apply for a PRC.</p>
           "
         }) }}
