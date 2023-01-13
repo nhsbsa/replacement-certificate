@@ -959,7 +959,7 @@ router.get(/treatment-facility-details-3/, function (req,res){
   const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
 
-  if (startDate == 'todayDate') {
+  if (startDate == 'text') {
     const d = new Date(startMonth);
     var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
     console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);

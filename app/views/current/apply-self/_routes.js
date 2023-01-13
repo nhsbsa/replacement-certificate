@@ -751,7 +751,6 @@ router.get(/cya/, function (req,res){
 
     res.render(__dirname + '/cya', {todayDateFormatted: todayDateFormatted});
   }
-
 });
 
 // Treatment facility details dates //

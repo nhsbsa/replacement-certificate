@@ -318,7 +318,7 @@ router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '
   var lastRunStartDate = new Date(date.split('/')[2], date.split('/')[1] - 1, date.split('/')[0]);
   console.log(`The formatted input date for treatment start is: ${lastRunStartDate}`);
 
-  if (treatmentStart != 'text') {
+  if (treatmentStart == 'todayDate') {
     res.redirect('treatment-facility-name')
   }
   else if (treatmentStart == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear) && lastRunStartDate < lastRunStartToday) {
@@ -949,7 +949,7 @@ router.get(/treatment-facility-details-3/, function (req,res){
   const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
 
-  if (startDate == 'todayDate') {
+  if (startDate == 'text') {
     const d = new Date(startMonth);
     var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
     console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
