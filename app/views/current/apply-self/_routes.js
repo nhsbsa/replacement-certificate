@@ -461,9 +461,7 @@ function hasNumber(myString) {
 }
 
   //Example of implementing
-  // var val = $('yourinputelement').val();
-  // if(isNumeric(val)) { alert('number'); } 
-  // else { alert('not number'); }
+
 
 router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '/treatmentStartDayErr', '/treatmentStartDayMonthErr', '/treatmentStartDayYearErr','/treatmentStartMonthErr', '/treatmentStartMonthYearErr', '/treatmentStartYearErr', '/treatmentStartErr', '/treatmentStartFutureErr', '/treatmentStartInvalidErr'], function (req, res) {
   var treatmentStart = req.session.data['start-date'];
