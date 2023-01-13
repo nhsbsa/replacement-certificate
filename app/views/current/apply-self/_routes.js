@@ -542,7 +542,11 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   var monthReg = /^([1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
   var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
 
+<<<<<<< HEAD
   // console.log(`Day: ${birthDay}, month: ${birthMonth}, year: ${birthYear}.`);
+=======
+  console.log(`Day: ${birthDay}, month: ${birthMonth}, year: ${birthYear}.`);
+>>>>>>> 6405b71577bdbc390ad98d2d0063d5bee2f0fe27
 
   //Today's date
   const today = new Date();
