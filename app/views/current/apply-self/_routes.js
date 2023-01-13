@@ -221,7 +221,7 @@ router.post(['/nationality','/nationalityErr', '/nationalityErrEU', '/nationalit
 router.post(['/additionalFacilityOne', '/additionalFacilityOneErr'], function (req, res) {
   var additionalFacilityOne = req.session.data['additional-facility']
   if (additionalFacilityOne == "Yes") {
-    res.redirect('treatment-facility-name-2')
+    res.redirect('treatment-start-2')
   }
   if (additionalFacilityOne == "No") {
     res.redirect('treatment-facility-details')
@@ -236,7 +236,7 @@ router.post(['/additionalFacilityOne', '/additionalFacilityOneErr'], function (r
 router.post(['/additionalFacilityTwo', '/additionalFacilityTwoErr'], function (req, res) {
   var additionalFacilityTwo = req.session.data['additional-facility-2']
   if (additionalFacilityTwo == "Yes") {
-    res.redirect('treatment-facility-name-3')
+    res.redirect('treatment-start-3')
   }
   if (additionalFacilityTwo == "No") {
     res.redirect('treatment-facility-details-2')
@@ -377,6 +377,7 @@ router.post(['/data-capture/knowNino', '/data-capture/knowNinoErr'], function (r
     res.redirect('know-nino-error')
   }
 })
+
 
 // router.get('/treatment-start', function (req, res) {
 //   let today = new Date();
@@ -853,6 +854,5 @@ router.get(/treatment-facility-details-3/, function (req,res){
     res.render(__dirname + '/treatment-facility-details-3', {todayDateFormatted: todayDateFormatted});
   }
 });
-
 
 module.exports = router
