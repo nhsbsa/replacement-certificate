@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Does {{ data['child-first-name'] }} live with you?
+  Does your child live with you?
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,7 +29,7 @@
 
       <form action="childAddress" method="post">
 
-        <h2>Does {{ data['child-firstname'] }} live with you?</h2>
+        <h2>Does your child live with you?</h2>
 
         {% call fieldset({
           legend: {
@@ -46,11 +46,11 @@
           "items": [
             {
               "value": "Yes",
-              "text": "Yes"
+              "text": "Yes, they have the same address as me"
             },
             {
               "value": "No",
-              "text": "No"
+              "text": "No, they have a different address"
             }
           ]
         }) }}
