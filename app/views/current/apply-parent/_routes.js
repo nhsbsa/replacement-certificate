@@ -308,15 +308,15 @@ router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '
   let mm = today.getMonth() + 1; 
   const dd = today.getDate();
   const formattedToday = dd + '/' + mm + '/' + yyyy;
-  console.log(`The date for today's is: ${formattedToday}`);
+  // console.log(`The date for today's is: ${formattedToday}`);
   var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
-  console.log(`The formatted date for today is: ${lastRunStartToday}`);
+  // console.log(`The formatted date for today is: ${lastRunStartToday}`);
 
   //User input treatment start date
   const date = chooseDay + '/' + chooseMonth + '/' + chooseYear;
-  console.log(`The input date for treatment start is: ${date}`);
+  // console.log(`The input date for treatment start is: ${date}`);
   var lastRunStartDate = new Date(date.split('/')[2], date.split('/')[1] - 1, date.split('/')[0]);
-  console.log(`The formatted input date for treatment start is: ${lastRunStartDate}`);
+  // console.log(`The formatted input date for treatment start is: ${lastRunStartDate}`);
 
   if (treatmentStart == 'todayDate') {
     res.redirect('treatment-facility-name')
@@ -541,7 +541,7 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   var monthReg = /^([1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
   var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
 
-  console.log(`Day: ${birthDay}, month: ${birthMonth}, year: ${birthYear}.`);
+  // console.log(`Day: ${birthDay}, month: ${birthMonth}, year: ${birthYear}.`);
 
   //Today's date
   const today = new Date();
@@ -549,15 +549,15 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   let mm = today.getMonth() + 1; 
   const dd = today.getDate();
   const formattedToday = dd + '/' + mm + '/' + yyyy;
-  console.log(`The date for today is: ${formattedToday}`);
+  // console.log(`The date for today is: ${formattedToday}`);
   var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
-  console.log(`The formatted date for today is: ${lastRunStartToday}`);
+  // console.log(`The formatted date for today is: ${lastRunStartToday}`);
 
   //User input DOB
   const dob = birthDay + '/' + birthMonth + '/' + birthYear;
-  console.log(`The input date for DOB is: ${dob}`);
+  // console.log(`The input date for DOB is: ${dob}`);
   var lastRunStartDob = new Date(dob.split('/')[2], dob.split('/')[1] - 1, dob.split('/')[0]);
-  console.log(`The formatted input date for DOB is: ${lastRunStartDob}`);
+  // console.log(`The formatted input date for DOB is: ${lastRunStartDob}`);
 
   if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday) {
     res.redirect('know-ohs')
@@ -603,7 +603,7 @@ router.post(['/data-capture/child/dateBirth', '/data-capture/child/dateBirthErr'
   var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
 
   console.log(isNumeric(birthDay, birthMonth, birthYear));
-  console.log(`Day: ${birthDay}, month: ${birthMonth}, year: ${birthYear}.`);
+  // console.log(`Day: ${birthDay}, month: ${birthMonth}, year: ${birthYear}.`);
 
   //Today's date
   const today = new Date();
@@ -611,19 +611,19 @@ router.post(['/data-capture/child/dateBirth', '/data-capture/child/dateBirthErr'
   let mm = today.getMonth() + 1;
   const dd = today.getDate();
   const formattedToday = dd + '/' + mm + '/' + yyyy;
-  console.log(`The date for today is: ${formattedToday}`);
+  // console.log(`The date for today is: ${formattedToday}`);
   var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
-  console.log(`The formatted date for today is: ${lastRunStartToday}`);
+  // console.log(`The formatted date for today is: ${lastRunStartToday}`);
 
   //User input DOB
   const dob = birthDay + '/' + birthMonth + '/' + birthYear;
-  console.log(`The input date for DOB is: ${dob}`);
+  // console.log(`The input date for DOB is: ${dob}`);
   var lastRunStartDob = new Date(dob.split('/')[2], dob.split('/')[1] - 1, dob.split('/')[0]);
-  console.log(`The formatted input date for DOB is: ${lastRunStartDob}`);
+  // console.log(`The formatted input date for DOB is: ${lastRunStartDob}`);
 
   //Date of birth must be less than 18 years from current date
   var maxChildDob = new Date(lastRunToday.setYear(lastRunToday.getYear() - 18));
-  console.log(`The max date for a child DOB (< 18 years) is: ${maxChildDob}`);
+  // console.log(`The max date for a child DOB (< 18 years) is: ${maxChildDob}`);
 
   if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday && lastRunStartDob < maxChildDob) {
     res.redirect('same-address')
@@ -839,7 +839,7 @@ router.get(/cya/, function (req,res){
   res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
 
   var startDate = req.session.data['start-date'];
-  console.log(`This is the start date: ${startDate}`);
+  // console.log(`This is the start date: ${startDate}`);
 
   var startDay = req.session.data['choose-start-date-day'];
   var startMonth = req.session.data['choose-start-date-month'];
@@ -851,7 +851,7 @@ router.get(/cya/, function (req,res){
   if (startDate == 'text') {
     const d = new Date(startMonth);
     var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
-    console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+    // console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
 
     res.render(__dirname + '/cya', {startDateFormatted: startDateFormatted});
   } 
@@ -864,7 +864,7 @@ router.get(/cya/, function (req,res){
     
     const m = new Date(month);
     let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
-    console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+    // console.log(`This is the formatted date of today: ${todayDateFormatted}`);
 
     res.render(__dirname + '/cya', {todayDateFormatted: todayDateFormatted});
   }
@@ -874,7 +874,7 @@ router.get(/cya/, function (req,res){
 // Treatment facility details dates //
 router.get(/treatment-facility-details/, function (req,res){
   var startDate = req.session.data['start-date'];
-  console.log(`This is the start date: ${startDate}`);
+  // console.log(`This is the start date: ${startDate}`);
 
   var startDay = req.session.data['choose-start-date-day'];
   var startMonth = req.session.data['choose-start-date-month'];
@@ -886,7 +886,7 @@ router.get(/treatment-facility-details/, function (req,res){
   if (startDate == 'text') {
     const d = new Date(startMonth);
     var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
-    console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+    // console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
 
     res.render(__dirname + '/treatment-facility-details', {startDateFormatted: startDateFormatted});
   } 
@@ -899,7 +899,7 @@ router.get(/treatment-facility-details/, function (req,res){
     
     const m = new Date(month);
     let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
-    console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+    // console.log(`This is the formatted date of today: ${todayDateFormatted}`);
 
     res.render(__dirname + '/treatment-facility-details', {todayDateFormatted: todayDateFormatted});
   }
@@ -907,7 +907,7 @@ router.get(/treatment-facility-details/, function (req,res){
 
 router.get(/treatment-facility-details-2/, function (req,res){
   var startDate = req.session.data['start-date'];
-  console.log(`This is the start date: ${startDate}`);
+  // console.log(`This is the start date: ${startDate}`);
 
   var startDay = req.session.data['choose-start-date-day'];
   var startMonth = req.session.data['choose-start-date-month'];
@@ -919,7 +919,7 @@ router.get(/treatment-facility-details-2/, function (req,res){
   if (startDate == 'text') {
     const d = new Date(startMonth);
     var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
-    console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+    // console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
 
     res.render(__dirname + '/treatment-facility-details-2', {startDateFormatted: startDateFormatted});
   } 
@@ -932,7 +932,7 @@ router.get(/treatment-facility-details-2/, function (req,res){
     
     const m = new Date(month);
     let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
-    console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+    // console.log(`This is the formatted date of today: ${todayDateFormatted}`);
 
     res.render(__dirname + '/treatment-facility-details-2', {todayDateFormatted: todayDateFormatted});
   }
@@ -940,7 +940,7 @@ router.get(/treatment-facility-details-2/, function (req,res){
 
 router.get(/treatment-facility-details-3/, function (req,res){
   var startDate = req.session.data['start-date'];
-  console.log(`This is the start date: ${startDate}`);
+  // console.log(`This is the start date: ${startDate}`);
 
   var startDay = req.session.data['choose-start-date-day'];
   var startMonth = req.session.data['choose-start-date-month'];
@@ -952,7 +952,7 @@ router.get(/treatment-facility-details-3/, function (req,res){
   if (startDate == 'text') {
     const d = new Date(startMonth);
     var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
-    console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+    // console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
 
     res.render(__dirname + '/treatment-facility-details-3', {startDateFormatted: startDateFormatted});
   } 
@@ -965,7 +965,7 @@ router.get(/treatment-facility-details-3/, function (req,res){
     
     const m = new Date(month);
     let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
-    console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+    // console.log(`This is the formatted date of today: ${todayDateFormatted}`);
 
     res.render(__dirname + '/treatment-facility-details-3', {todayDateFormatted: todayDateFormatted});
   }
