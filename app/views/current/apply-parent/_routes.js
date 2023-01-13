@@ -104,7 +104,7 @@ router.post(['/ordinaryResidence', '/ordinaryResidenceErr'], function (req, res)
     res.redirect('cover-from-another')
   }
   if (ordinaryResidence == "EU, Norway, Iceland, Liechtenstein or Switzerland") {
-    res.redirect('kickouts/ineligible-living-efta')
+    res.redirect('ineligible-living-efta')
   }
   if (ordinaryResidence == "Other") {
     res.redirect('kickouts/ineligible-living-other')
@@ -296,7 +296,7 @@ router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '
   var chooseMonth = req.session.data['choose-start-date-month'];
   var chooseYear = req.session.data['choose-start-date-year'];
 
-  var yearReg = /^(202[1-3])$/;            ///< Allows a number between 2021 and 2022
+  var yearReg = /^(202[1-3])$/;            ///< Allows a number between 2021 and 2023
   var monthReg = /^([1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
   var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
 
@@ -536,7 +536,7 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   var birthDay = req.session.data['patient-day']
   var birthMonth = req.session.data['patient-month']
   var birthYear = req.session.data['patient-year']
-
+  
   var yearReg = /^([1900-2023])$/;            ///< Allows a number between 1900 and 2023
   var monthReg = /^([1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
   var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
@@ -764,7 +764,7 @@ router.post('/regS1', function (req, res) {
 
 // Do you know your OHS reference number?
 router.post(['/data-capture/knowOhs', '/data-capture/knowOhsErr'], function (req, res) {
-  var knowOhs = req.session.data['parent-know-ohs']
+  var knowOhs = req.session.data['patient-know-ohs']
   if (knowOhs == "Yes") {
     res.redirect('ohs')
   }
