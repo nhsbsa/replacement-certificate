@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is your date of birth?
+  What is their date of birth?
 {% endblock %}
 
 {% block beforeContent %}
@@ -34,18 +34,18 @@
         <div class="nhsuk-error-summary__body">
           <ul class="nhsuk-list nhsuk-error-summary__list">
             <li>
-              <a href="#example">Date of birth must be a real date</a>
+              <a href="#example">Date of birth must include a month and year</a>
             </li>
           </ul>
         </div>
       </div>
-      <form action="dateBirthInvalidErr" method="post">
+      <form action="dateBirthMonthYearErr" method="post">
 
-        <h2>What is your date of birth?</h2>
+        <h2>What is their date of birth?</h2>
 
         {{ dateInput({
         "id": "example",
-        "namePrefix": "parent",
+        "namePrefix": "patient",
         "fieldset": {
           "legend": {
             "text": "",
@@ -57,12 +57,12 @@
               "text": "For example, 15 3 1984"
             },
             "errorMessage": {
-              "text": "Date of birth must be a real date"
+              "text": "Date of birth must include a month and year"
             },
             "items": [
               {
                 "name": "day",
-                "classes": "nhsuk-input--width-2 nhsuk-input--error"
+                "classes": "nhsuk-input--width-2"
               },
               {
                 "name": "month",

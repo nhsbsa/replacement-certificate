@@ -94,7 +94,7 @@ router.post(['/coverAnother', '/coverAnotherErr'], function (req, res) {
   }
 })
 
-// What is their nationality?
+// What is your nationality?
 function arraysContainSame(a, b) {
   a = Array.isArray(a) ? a : [];
   b = Array.isArray(b) ? b : [];
@@ -111,59 +111,59 @@ router.post(['/nationality','/nationalityErr', '/nationalityErrEU', '/nationalit
   if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr == '') {
     res.redirect('nationality-eu-other-error')
   }
-  else if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
-    return res.redirect('nationality-eu-error')
+  if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
+    res.redirect('nationality-eu-error')
   }
-  else if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
-    return res.redirect('nationality-other-error')
+  if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
+    res.redirect('nationality-other-error')
   }
-  else if (arraysContainSame(nationality, ['UK', 'EU, EEA', 'Other']) == true) {
-    return res.redirect('treatment-start')
+  if (arraysContainSame(nationality, ['UK', 'EU, EEA', 'Other']) == true) {
+    res.redirect('treatment-start')
   }
-  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr == '') {
-    return res.redirect('nationality-eu-other-error')
+  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr == '') {
+    res.redirect('nationality-eu-other-error')
   }
-  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
-    return res.redirect('nationality-other-error')
+  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
+    res.redirect('nationality-other-error')
   }
-  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
-    return res.redirect('nationality-eu-error')
+  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
+    res.redirect('nationality-eu-error')
   }
-  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true) {
-    return res.redirect('treatment-start')
+  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true) {
+    res.redirect('treatment-start')
   }
-  else if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true && nationalityEUErr == '') {
-    return res.redirect('nationality-eu-error')
+  if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true && nationalityEUErr == '') {
+    res.redirect('nationality-eu-error')
   }
-  else if (nationality == 'EU, EEA' && nationalityEUErr == '') {
-    return res.redirect('nationality-eu-error')
+  if (nationality == 'EU, EEA' && nationalityEUErr == '') {
+    res.redirect('nationality-eu-error')
   }
-  else if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true) {
-    return res.redirect('treatment-start')
+  if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true) {
+    res.redirect('treatment-start')
   }
-  else if (nationality == 'EU, EEA') {
-    return res.redirect('treatment-start')
+  if (nationality == 'EU, EEA') {
+    res.redirect('treatment-start')
   }
-  else if (arraysContainSame(nationality, ['UK', 'Other']) == true && nationalityOtherErr == '') {
-    return res.redirect('nationality-other-error')
+  if (arraysContainSame(nationality, ['UK', 'Other']) == true && nationalityOtherErr == '') {
+    res.redirect('nationality-other-error')
   }
-  else if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
-    return res.redirect('treatment-start')
+  if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
+    res.redirect('treatment-start')
   }
-  else if (nationality == 'Other' && treatmentCountry == 'Switzerland') {
-    return res.redirect('kickouts/ineligible-swiss')
+  if (nationality == 'Other' && treatmentCountry == 'Switzerland') {
+    res.redirect('kickouts/ineligible-swiss')
   }
-  else if (nationality == 'Other' && nationalityOtherErr == '') {
-    return res.redirect('nationality-other-error')
+  if (nationality == 'Other' && nationalityOtherErr == '') {
+    res.redirect('nationality-other-error')
   }
-  else if (nationality == 'Other') {
-    return res.redirect('treatment-start')
+  if (nationality == 'Other') {
+    res.redirect('treatment-start')
   }
-  else if (nationality == 'UK') {
-    return res.redirect('treatment-start')
+  if (nationality == 'UK') {
+    res.redirect('treatment-start')
   }
   else {
-    return res.redirect('nationality-error')
+    res.redirect('nationality-error')
   }
 })
 
@@ -369,18 +369,67 @@ router.post(['/data-capture/fullName', '/data-capture/fullNameErr', '/data-captu
   }
 })
 
-// What is your date of birth?
+// What is their date of birth?
 
-router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr'], function (req, res) {
-  var dateBirth = req.session.data['example']
-  console.log(dateBirth);
-  if (dateBirth == '') {
-    res.redirect('dob-error')
+//Treatment start date
+router.post(['/treatmentStart', '/treatmentStartErr', '/treatmentStartDateErr', '/treatmentStartDayErr', '/treatmentStartDayMonthErr', '/treatmentStartDayYearErr','/treatmentStartMonthErr', '/treatmentStartMonthYearErr', '/treatmentStartYearErr', '/treatmentStartErr', '/treatmentStartFutureErr', '/treatmentStartInvalidErr'], function (req, res) {
+  var treatmentStart = req.session.data['start-date'];
+  var chooseDay = req.session.data['choose-start-date-day'];
+  var chooseMonth = req.session.data['choose-start-date-month'];
+  var chooseYear = req.session.data['choose-start-date-year'];
+  
+  var yearReg = /^(202[1-3])$/;            ///< Allows a number between 2021 and 2022
+  var monthReg = /^(0?[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
+  var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
+
+  //Today's date
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  let mm = today.getMonth() + 1; 
+  const dd = today.getDate();
+  const formattedToday = dd + '/' + mm + '/' + yyyy;
+
+  var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
+  
+  //User input treatment start date
+  const date = chooseDay + '/' + chooseMonth + '/' + chooseYear;
+  var lastRunStartDate = new Date(date.split('/')[2], date.split('/')[1] - 1, date.split('/')[0]);
+  
+  if (treatmentStart == 'todayDate') {
+    res.redirect('treatment-facility-name')
   }
-  else {
-    res.redirect('know-ohs')
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear) && lastRunStartDate < lastRunStartToday) {
+    res.redirect('treatment-facility-name')
+  }
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear) && lastRunStartDate > lastRunStartToday) {
+    res.redirect('treatment-start-future-error')
+  }
+  else if (treatmentStart == 'text' && chooseDay == '' && monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-day-error')
+  }
+  else if (treatmentStart == 'text' && chooseDay == '' && monthReg.test(chooseMonth) && chooseYear == '') {
+    res.redirect('treatment-start-date-day-year-error')
+  }
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && chooseMonth == '' && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-month-error')
+  }   
+  else if (treatmentStart == 'text' && chooseDay == '' && chooseMonth == '' && yearReg.test(chooseYear)) {
+    res.redirect('treatment-start-date-day-month-error')
+  } 
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && chooseMonth == '' && chooseYear == '') {
+    res.redirect('treatment-start-date-month-year-error')
+  } 
+  else if (treatmentStart == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && chooseYear == '') {
+    res.redirect('treatment-start-date-year-error')
+  } 
+  else if (treatmentStart == 'text' && chooseDay == '' && chooseMonth == '' && chooseYear == '') {
+    res.redirect('treatment-start-error')
+  }
+  else if (treatmentStart == 'text' && (!dayReg.test(chooseDay) || !monthReg.test(chooseMonth) || !yearReg.test(chooseYear))) {
+    res.redirect('treatment-start-invalid-error')
   }
 })
+
 
 // What is their OHS Number?
 
@@ -753,16 +802,18 @@ router.post(['/treatmentStart', '/treatmentStartErr', '/treatmentStartDateErr', 
   }
 })
 
-// What is your date of birth?
+// What is their date of birth?
 
-router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-capture/dateBirthInvalid', '/data-capture/dateBirthDayErr', '/data-capture/dateBirthDayYearErr', '/data-capture/dateBirthFutureErr', '/data-capture/dateBirthInvalidErr', '/data-capture/dateBirthMonthErr', '/data-capture/dateBirthMonthYearErr', '/data-capture/dateBirthYearErr'], function (req, res) {
-  var birthDay = req.session.data['patient-day']
-  var birthMonth = req.session.data['patient-month']
-  var birthYear = req.session.data['patient-year']
+router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-capture/dateBirthInvalid', '/data-capture/dateBirthDayErr', '/data-capture/dateBirthDayYearErr', '/data-capture/dateBirthFutureErr', '/data-capture/dateBirthMonthErr', '/data-capture/dateBirthMonthYearErr', '/data-capture/dateBirthYearErr'], function (req, res) {
+  const birthDay = req.session.data['patient-day']
+  const birthMonth = req.session.data['patient-month']
+  const birthYear = req.session.data['patient-year']
 
-  var yearReg = /^([1900-2023])$/;            ///< Allows a number between 1900 and 2023
-  var monthReg = /^(0?[1-9]|1[0-2])$/;          ///< Allows a number between 00 and 12
-  var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
+  const yearReg = /^([1900-2023])$/;            ///< Allows a number between 1900 and 2023
+  const monthReg = /^(0?[1-9]|1[0-2])$/;          ///< Allows a number between 00 and 12
+  const dayReg = /^(0?[1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
+
+  const dateReg = /^(0?[1-9]|[12][0-9]|3[01])[/](0?[1-9]|1[012])[/](\d{4})$/; /// Allows a day number between 00 and 31, a month number between 00 and 12 and a year number between 2021 and 2023
 
   // console.log(`Day: ${birthDay}, month: ${birthMonth}, year: ${birthYear}.`);
 
@@ -783,36 +834,35 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   var lastRunStartDob = new Date(dob.split('/')[2], dob.split('/')[1] - 1, dob.split('/')[0]);
   console.log(lastRunStartDob);
 
-
-  if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday) {
-    res.redirect('know-ohs')
-  }
-  else if ( dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob > lastRunStartToday) {
-    res.redirect('dob-future-error')
-  }
-  else if (!dayReg.test(birthDay) || !monthReg.test(birthMonth) || !yearReg.test(birthYear)) {
-    res.redirect('dob-invalid')
-  }
-  else if (birthDay == '' && monthReg.test(birthMonth) && yearReg.test(birthYear)) {
-    res.redirect('dob-day-error')
+  if (birthDay == '' && monthReg.test(birthMonth) && yearReg.test(birthYear)) {
+    return res.redirect('dob-day-error')
   }
   else if (birthDay == '' && monthReg.test(birthMonth) && birthYear == '') {
-    res.redirect('dob-day-year-error')
+    return res.redirect('dob-day-year-error')
   }
   else if (dayReg.test(birthDay) && birthMonth == '' && yearReg.test(birthYear)) {
-    res.redirect('dob-month-error')
+    return res.redirect('dob-month-error')
   }   
   else if (birthDay == '' && birthMonth == '' && yearReg.test(birthYear)) {
-    res.redirect('dob-day-month-error')
+    return res.redirect('dob-day-month-error')
   } 
   else if (dayReg.test(birthDay) && birthMonth == '' && birthYear == '') {
-    res.redirect('dob-month-year-error')
+    return res.redirect('dob-month-year-error')
   } 
   else if (dayReg.test(birthDay) && monthReg.test(birthMonth) && birthYear == '') {
-    res.redirect('dob-year-error')
-  } 
+    return res.redirect('dob-year-error')
+  }
   else if (birthDay == '' && birthMonth == '' && birthYear == '') {
-    res.redirect('dob-error')
+    return res.redirect('dob-error')
+  }
+  else if (dateReg.test(dob) && lastRunStartDob < lastRunStartToday) {
+    return res.redirect('know-ohs')
+  }
+  else if (dateReg.test(dob) && lastRunStartDob > lastRunStartToday) {
+    return res.redirect('dob-future-error')
+  }
+  else if (!dayReg.test(birthDay) || !monthReg.test(birthMonth) || !yearReg.test(birthYear)) {
+    return res.redirect('dob-invalid')
   }
 })
 
