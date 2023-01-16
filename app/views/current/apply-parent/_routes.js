@@ -735,16 +735,13 @@ router.post(['/data-capture/child/dateBirth', '/data-capture/child/dateBirthErr'
   else if (birthDay == '' && birthMonth == '' && birthYear == '') {
     res.redirect('dob-error')
   }
+  else if (dateReg.test(dob) && lastRunStartDob > maxChildDob) {
+    res.redirect('dob-max-error')
+  }
   else if (dateReg.test(dob) && lastRunStartDob < lastRunStartToday && lastRunStartDob < maxChildDob) {
     res.redirect('same-address')
   }
-  else if (dateReg.test(dob) && lastRunStartDob < lastRunStartToday && lastRunStartDob > maxChildDob) {
-    res.redirect('dob-max-error')
-  }
-  else if (dateReg.test(dob) && lastRunStartDob > lastRunStartToday) {
-    res.redirect('dob-future-error')
-  }
-  else if (!dayReg.test(birthDay) || !monthReg.test(birthMonth) || !yearReg.test(birthYear)) {
+  else {
     res.redirect('dob-invalid')
   }
 })
