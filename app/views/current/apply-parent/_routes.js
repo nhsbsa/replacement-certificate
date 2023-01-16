@@ -528,9 +528,9 @@ router.post(['/data-capture/child/fullName', '/data-capture/child/fullNameErr', 
 // What is your date of birth?
 
 router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-capture/dateBirthInvalid', '/data-capture/dateBirthDayErr', '/data-capture/dateBirthDayYearErr', '/data-capture/dateBirthFutureErr', '/data-capture/dateBirthInvalid', '/data-capture/dateBirthDayMonthErr', '/data-capture/dateBirthMonthErr', '/data-capture/dateBirthMonthYearErr', '/data-capture/dateBirthYearErr'], function (req, res) {
-  var birthDay = req.session.data['patient-day']
-  var birthMonth = req.session.data['patient-month']
-  var birthYear = req.session.data['patient-year']
+  var birthDay = req.session.data['parent-day']
+  var birthMonth = req.session.data['parent-month']
+  var birthYear = req.session.data['parent-year']
   
   var yearReg = /^([1900-2023])$/;            ///< Allows a number between 1900 and 2023
   var monthReg = /^(0?[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
