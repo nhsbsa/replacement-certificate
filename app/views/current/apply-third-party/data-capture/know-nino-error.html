@@ -44,6 +44,10 @@
 
         <h2>Do you know their National Insurance number?</h2>
 
+        <div class="nhsuk-hint">
+          <p>It's on their National Insurance card, benefit letter, payslip or P60. For example, 'QQ 12 34 56 C'.</p>
+        </div>
+
         {% call fieldset({
           legend: {
             text: "",
@@ -79,12 +83,6 @@
 
         {% endcall %}
 
-
-        {{ button({
-          "text": "Continue"
-        }) }}
-
-
         <details class="nhsuk-details">
           <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
@@ -96,6 +94,13 @@
             <p>Providing this is optional and does not affect their eligibility to apply for a PRC.</p>
           </div>
         </details>
+        
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+
+        
 
       </form>
 

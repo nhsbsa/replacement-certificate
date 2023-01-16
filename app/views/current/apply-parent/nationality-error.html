@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    What is your nationality?
+  What is your nationality?
 {% endblock %}
 
 {% block beforeContent %}
@@ -34,7 +34,7 @@
         <div class="nhsuk-error-summary__body">
           <ul class="nhsuk-list nhsuk-error-summary__list">
             <li>
-              <a href="#nationality-error">Select one or more nationalities, or add a nationality if this is not listed</a>
+              <a href="#nationality-error">Select one or more nationalities</a>
             </li>
           </ul>
         </div>
@@ -56,13 +56,13 @@
               </div>
 
               <span class="nhsuk-error-message" id="nationality-error">
-                <span class="nhsuk-u-visually-hidden">Error:</span> Select one or more nationalities, or add a nationality if this is not listed
+                <span class="nhsuk-u-visually-hidden">Error:</span> Select one or more nationalities
               </span>
         
               <div class="nhsuk-checkboxes">
 
                 <div class="nhsuk-checkboxes__item">
-                  <input class="nhsuk-checkboxes__input" id="nationality-1" name="nationality-error" type="checkbox" value="UK" aria-describedby="nationality-1-item-hint">
+                  <input class="nhsuk-checkboxes__input" id="nationality-1" name="nationality" type="checkbox" value="UK" aria-describedby="nationality-1-item-hint">
                   <label class="nhsuk-label nhsuk-checkboxes__label" for="nationality-1">
                     United Kingdom (UK) national
                   </label>
@@ -75,7 +75,7 @@
                 <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
 
                   <div class="nhsuk-checkboxes__item">
-                    <input class="nhsuk-checkboxes__input" id="eu-nationality" name="nationality-error" type="checkbox" value="EU, EEA" aria-describedby="nationality-3-item-hint" aria-controls="conditional-nationality-3" aria-expanded="false">
+                    <input class="nhsuk-checkboxes__input" id="eu-nationality" name="nationality" type="checkbox" value="EU, EEA" aria-describedby="nationality-3-item-hint" aria-controls="conditional-nationality-3" aria-expanded="false">
                     <label class="nhsuk-label nhsuk-checkboxes__label" for="eu-nationality">
                       An EU citizen, or a national of Iceland, Liechtenstein, Norway, or Switzerland
                     </label>
@@ -134,7 +134,7 @@
                 <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
 
                   <div class="nhsuk-checkboxes__item">
-                    <input class="nhsuk-checkboxes__input" id="other-nationality" name="nationality-error" type="checkbox" value="Other" aria-controls="conditional-nationality-4" aria-expanded="false">
+                    <input class="nhsuk-checkboxes__input" id="other-nationality" name="nationality" type="checkbox" value="Other" aria-controls="conditional-nationality-4" aria-expanded="false">
                     <label class="nhsuk-label nhsuk-checkboxes__label" for="other-nationality">
                       Any other nationality not listed
                     </label>
@@ -399,7 +399,7 @@
       </form>
 
      {{ backLink({
-        "href": "javascript:history.go(-1)",
+        "href": "javascript:history.go(-2)",
         "text": "Change my previous answer"
       }) }}
       

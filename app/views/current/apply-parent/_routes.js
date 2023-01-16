@@ -100,16 +100,17 @@ router.post(['/coPayment', '/coPaymentErr'], function (req, res) {
 // Where do you ordinarily live?
 router.post(['/ordinaryResidence', '/ordinaryResidenceErr'], function (req, res) {
   var ordinaryResidence = req.session.data['ordinarily-live']
+
   if (ordinaryResidence == "UK") {
     res.redirect('cover-from-another')
   }
-  if (ordinaryResidence == "EU, Norway, Iceland, Liechtenstein or Switzerland") {
-    res.redirect('ineligible-living-efta')
+  else if (ordinaryResidence == "EU, Norway, Iceland, Liechtenstein or Switzerland") {
+    res.redirect('kickouts/ineligible-living-efta')
   }
-  if (ordinaryResidence == "Other") {
+  else if (ordinaryResidence == "Other") {
     res.redirect('kickouts/ineligible-living-other')
   }
-  else {
+  else if (ordinaryResidence == " ") {
     res.redirect('ordinarily-live-error')
   }
 })
@@ -146,61 +147,62 @@ router.post(['/nationality','/nationalityErr', '/nationalityErrEU', '/nationalit
   if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr == '') {
     res.redirect('nationality-eu-other-error')
   }
-  else if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
+  if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
     res.redirect('nationality-eu-error')
   }
-  else if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
+  if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
     res.redirect('nationality-other-error')
   }
-  else if (arraysContainSame(nationality, ['UK', 'EU, EEA', 'Other']) == true) {
+  if (arraysContainSame(nationality, ['UK', 'EU, EEA', 'Other']) == true) {
     res.redirect('treatment-start')
   }
-  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr == '') {
+  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr == '') {
     res.redirect('nationality-eu-other-error')
   }
-  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
+  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
     res.redirect('nationality-other-error')
   }
-  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
+  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
     res.redirect('nationality-eu-error')
   }
-  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true) {
+  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true) {
     res.redirect('treatment-start')
   }
-  else if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true && nationalityEUErr == '') {
+  if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true && nationalityEUErr == '') {
     res.redirect('nationality-eu-error')
   }
-  else if (nationality == 'EU, EEA' && nationalityEUErr == '') {
+  if (nationality == 'EU, EEA' && nationalityEUErr == '') {
     res.redirect('nationality-eu-error')
   }
-  else if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true) {
+  if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true) {
     res.redirect('treatment-start')
   }
-  else if (nationality == 'EU, EEA') {
+  if (nationality == 'EU, EEA') {
     res.redirect('treatment-start')
   }
-  else if (arraysContainSame(nationality, ['UK', 'Other']) == true && nationalityOtherErr == '') {
+  if (arraysContainSame(nationality, ['UK', 'Other']) == true && nationalityOtherErr == '') {
     res.redirect('nationality-other-error')
   }
-  else if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
+  if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
     res.redirect('treatment-start')
   }
-  else if (nationality == 'Other' && treatmentCountry == 'Switzerland') {
+  if (nationality == 'Other' && treatmentCountry == 'Switzerland') {
     res.redirect('kickouts/ineligible-swiss')
   }
-  else if (nationality == 'Other' && nationalityOtherErr == '') {
+  if (nationality == 'Other' && nationalityOtherErr == '') {
     res.redirect('nationality-other-error')
   }
-  else if (nationality == 'Other') {
+  if (nationality == 'Other') {
     res.redirect('treatment-start')
   }
-  else if (nationality == 'UK') {
+  if (nationality == 'UK') {
     res.redirect('treatment-start')
   }
   else {
     res.redirect('nationality-error')
   }
 })
+
 
 router.post('/treatment-country', function (req, res) {
 
@@ -290,34 +292,30 @@ function hasNumber(myString) {
   return /\d/.test(myString);
 }
 
-router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '/treatmentStartDayErr', '/treatmentStartDayMonthErr', '/treatmentStartDayYearErr','/treatmentStartMonthErr', '/treatmentStartMonthYearErr', '/treatmentStartYearErr', '/treatmentStartErr', '/treatmentStartFutureErr', '/treatmentStartInvalidErr'], function (req, res) {
+//Treatment start date
+router.post(['/treatmentStart', '/treatmentStartErr', '/treatmentStartDateErr', '/treatmentStartDayErr', '/treatmentStartDayMonthErr', '/treatmentStartDayYearErr','/treatmentStartMonthErr', '/treatmentStartMonthYearErr', '/treatmentStartYearErr', '/treatmentStartErr', '/treatmentStartFutureErr', '/treatmentStartInvalidErr'], function (req, res) {
   var treatmentStart = req.session.data['start-date'];
   var chooseDay = req.session.data['choose-start-date-day'];
   var chooseMonth = req.session.data['choose-start-date-month'];
   var chooseYear = req.session.data['choose-start-date-year'];
-
-  var yearReg = /^(202[1-3])$/;            ///< Allows a number between 2021 and 2023
-  var monthReg = /^([1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
+  
+  var yearReg = /^(202[1-3])$/;            ///< Allows a number between 2021 and 2022
+  var monthReg = /^(0?[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
   var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
-
-  console.log(treatmentStart);
-
+  
   //Today's date
   const today = new Date();
   const yyyy = today.getFullYear();
   let mm = today.getMonth() + 1; 
   const dd = today.getDate();
   const formattedToday = dd + '/' + mm + '/' + yyyy;
-  // console.log(`The date for today's is: ${formattedToday}`);
+  
   var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
-  // console.log(`The formatted date for today is: ${lastRunStartToday}`);
-
+  
   //User input treatment start date
   const date = chooseDay + '/' + chooseMonth + '/' + chooseYear;
-  // console.log(`The input date for treatment start is: ${date}`);
   var lastRunStartDate = new Date(date.split('/')[2], date.split('/')[1] - 1, date.split('/')[0]);
-  // console.log(`The formatted input date for treatment start is: ${lastRunStartDate}`);
-
+  
   if (treatmentStart == 'todayDate') {
     res.redirect('treatment-facility-name')
   }
@@ -325,10 +323,7 @@ router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '
     res.redirect('treatment-facility-name')
   }
   else if (treatmentStart == 'text' && dayReg.test(chooseDay) && monthReg.test(chooseMonth) && yearReg.test(chooseYear) && lastRunStartDate > lastRunStartToday) {
-    res.redirect('treatment-start-date-future-error')
-  }
-  else if (treatmentStart == 'text' && (!dayReg.test(chooseDay) || !monthReg.test(chooseMonth) || !yearReg.test(chooseYear))) {
-    res.redirect('treatment-start-date-invalid-error')
+    res.redirect('treatment-start-future-error')
   }
   else if (treatmentStart == 'text' && chooseDay == '' && monthReg.test(chooseMonth) && yearReg.test(chooseYear)) {
     res.redirect('treatment-start-date-day-error')
@@ -349,10 +344,10 @@ router.post(['/treatmentStart', '/treatmentStartErr','/treatmentStartDateErr', '
     res.redirect('treatment-start-date-year-error')
   } 
   else if (treatmentStart == 'text' && chooseDay == '' && chooseMonth == '' && chooseYear == '') {
-    res.redirect('treatment-start-date-error')
-  }
-  else {
     res.redirect('treatment-start-error')
+  }
+  else if (treatmentStart == 'text' && (!dayReg.test(chooseDay) || !monthReg.test(chooseMonth) || !yearReg.test(chooseYear))) {
+    res.redirect('treatment-start-invalid-error')
   }
 })
 
@@ -538,7 +533,7 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   var birthYear = req.session.data['patient-year']
   
   var yearReg = /^([1900-2023])$/;            ///< Allows a number between 1900 and 2023
-  var monthReg = /^([1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
+  var monthReg = /^(0?[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
   var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
 
   // console.log(`Day: ${birthDay}, month: ${birthMonth}, year: ${birthYear}.`);
@@ -599,7 +594,7 @@ router.post(['/data-capture/child/dateBirth', '/data-capture/child/dateBirthErr'
   var birthYear = req.session.data['child-year']
 
   var yearReg = /^([1900-2023])$/;            ///< Allows a number between 2021 and 2023
-  var monthReg = /^([1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
+  var monthReg = /^(0?[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
   var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
 
   console.log(isNumeric(birthDay, birthMonth, birthYear));
@@ -622,7 +617,9 @@ router.post(['/data-capture/child/dateBirth', '/data-capture/child/dateBirthErr'
   // console.log(`The formatted input date for DOB is: ${lastRunStartDob}`);
 
   //Date of birth must be less than 18 years from current date
-  var maxChildDob = new Date(lastRunToday.setYear(lastRunToday.getYear() - 18));
+
+  var maxChildDob = new Date(lastRunStartToday.setYear(lastRunStartToday.getYear() - 18));
+
   // console.log(`The max date for a child DOB (< 18 years) is: ${maxChildDob}`);
 
   if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday && lastRunStartDob < maxChildDob) {
@@ -676,7 +673,7 @@ router.post(['/data-capture/addressLookup', '/data-capture/addressLookupErr'], f
 
 router.post(['/data-capture/addressList', '/data-capture/addressListErr'], function (req, res) {
   var addressList = req.session.data['select-1']
-  if (addressList == '') {
+  if (addressList == '1') {
     res.redirect('address-list-error')
   }
   else {
@@ -790,6 +787,80 @@ router.post(['/data-capture/knowNino', '/data-capture/knowNinoErr'], function (r
   }
 })
 
+// What is your OHS Number?
+
+router.post(['/data-capture/ohsNr', '/data-capture/ohsInvalid'], function (req, res) {
+  var ohsNr = req.session.data['patient-ohs']
+  const ohsRegEx = /^[0-9]{8}$/;
+  console.log(ohsNr);
+
+  if (ohsNr == '') {
+    res.redirect('know-nino')
+  }
+  else if (ohsNr != '' && !ohsRegEx.test(ohsNr)){
+    res.redirect('ohs-invalid')
+  }
+  else {
+    res.redirect('know-nino')
+  }
+})
+
+// What is your NINO?
+
+router.post(['/data-capture/ninoNr', '/data-capture/ninoInvalid'], function (req, res) {
+  var ninoNr = req.session.data['patient-nino']
+  const ninoRegEx = /^(?!BG)(?!GB)(?!NK)(?!KN)(?!TN)(?!NT)(?!ZZ)(?:[A-CEGHJ-PR-TW-Z][A-CEGHJ-NPR-TW-Z])(?:\s*\d\s*){6}([A-D]|\s)$/;
+  console.log(ninoNr);
+
+  if (ninoNr == '') {
+    res.redirect('address-lookup')
+  }
+  else if (ninoNr != '' && !ninoRegEx.test(ninoNr)){
+    res.redirect('nino-invalid')
+  }
+  else {
+    res.redirect('address-lookup')
+  }
+})
+
+//
+
+// Do you know theirr OHS reference number?
+router.post(['/data-capture/child/knowOhs', '/data-capture/child/knowOhsErr'], function (req, res) {
+  var knowOhs = req.session.data['child-know-ohs']
+  if (knowOhs == "Yes") {
+    res.redirect('ohs')
+  }
+  if (knowOhs == "No") {
+    res.redirect('same-address')
+  }
+  else {
+    res.redirect('know-ohs-error')
+  }
+})
+
+
+// What is their OHS Number?
+
+router.post(['/data-capture/child/ohsNr', '/data-capture/child/ohsInvalid'], function (req, res) {
+  var ohsNr = req.session.data['child-ohs']
+  const ohsRegEx = /^[0-9]{8}$/;
+  console.log(ohsNr);
+
+  if (ohsNr == '') {
+    res.redirect('same-address')
+  }
+  else if (ohsNr != '' && !ohsRegEx.test(ohsNr)){
+    res.redirect('ohs-invalid')
+  }
+  else {
+    res.redirect('same-address')
+  }
+})
+
+
+//
+
 // Have you lived at this address for the past 6 months?
 router.post('/data-capture/twoYearsAddress', function (req, res) {
   var twoYearsAddress = req.session.data['two-years-address']
@@ -834,9 +905,9 @@ router.post('/data-capture/child/childAddress', function (req, res) {
 
 // Check your answers //
 router.get(/cya/, function (req,res){
-  const ReferenceDataService = require(path.resolve("app/service/referenceData.js"));
-  var countryList = ReferenceDataService.getCountries();
-  res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
+  // const ReferenceDataService = require(path.resolve("app/service/referenceData.js"));
+  // var countryList = ReferenceDataService.getCountries();
+  // res.render(__dirname + '/cya', {treatmentFacilities: treatmentFacilities, countryList: countryList});
 
   var startDate = req.session.data['start-date'];
   // console.log(`This is the start date: ${startDate}`);

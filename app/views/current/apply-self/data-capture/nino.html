@@ -26,7 +26,7 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="address-lookup" method="post">
+      <form action="ninoNr" method="post">
 
         {% call fieldset({
           legend: {
@@ -36,13 +36,11 @@
           }
         }) %}
       
+        <div class="nhsuk-hint">It's on your National Insurance card, benefit letter, payslip or P60. For example, 'QQ 12 34 56 C'.</div>
 
         {{ input({
           "label": {
             "text": "National Insurance number (optional)"
-          },
-          hint: {
-            html: "It's on your National Insurance card, benefit letter, payslip or P60. For example, 'QQ 12 34 56 C'."
           },
           "id": "input-width-10",
           "name": "patient-nino",

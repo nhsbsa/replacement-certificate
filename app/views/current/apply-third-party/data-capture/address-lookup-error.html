@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is {{ data['patient-firstname'] }}'s home address?
+  What is their home postcode?
 {% endblock %}
 
 {% block beforeContent %}
@@ -41,7 +41,7 @@
       </div>
       <form action="addressLookupErr" method="post">
 
-        <h2>What is {{ data['patient-firstname'] }}'s home address?</h2>
+        <h2>What is their home postcode?</h2>
 
         {% call fieldset({
           legend: {

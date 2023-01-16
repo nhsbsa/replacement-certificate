@@ -27,9 +27,9 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
       <!-- <form action="nino" method="post"> -->
-      <form action="dateBirth" method="post">
+      <form action="know-ohs" method="post">
 
-        <h2>What is {{ data['child-firstname'] }}'s date of birth?</h2>
+        <h2>What is your child's date of birth?</h2>
 
         {{ dateInput({
           "id": "example",
@@ -42,7 +42,7 @@
                 }
               },
               "hint": {
-                "text": "For example, 15 3 2014"
+                "text": "Your child must be under 18 years old. For example, 15 3 2021."
               },
               "items": [
                 {

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is your own email address?
+  What is your email address?
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,22 +30,19 @@
 
         {% call fieldset({
           legend: {
-            text: "What is your own email address?",
+            text: "What is your email address?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        <p>As you're applying on behalf of someone else, we need your email address in case we need to ask for more information to help with this application.</p>
+        <p>We'll use this to send you a copy of your PRC or if we need to ask you for any more information to support your application.</p>
 
         {{ input({
           "label": {
-            "text": "Enter your email address"
+            "text": "Email address"
           },
-          "hint": {
-            "text": "We'll only use this if we need to ask for more information"
-          },
-          "id": "input-width-30",
+          "id": "your-email-address",
           "name": "your-email-address",
           "classes": "nhsuk-input--width-30"
         }) }}

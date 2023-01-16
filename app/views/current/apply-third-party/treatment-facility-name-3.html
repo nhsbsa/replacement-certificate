@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the name of the hospital, clinic, or treatment facility where they're receiving treatment?
+  What is the name of the hospital, clinic, or treatment facility that has provided treatment?
 {% endblock %}
 
 {% block beforeContent %}
@@ -32,14 +32,14 @@
 
         {% call fieldset({
           legend: {
-            text: "What is the name of the hospital, clinic, or treatment facility where they're receiving treatment?",
+            text: "What is the name of the hospital, clinic, or treatment facility that has provided treatment?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
         <div class="nhsuk-hint">
-          If they've had treatment in more than one place, you'll be able to add these later.
+          If they have had treatment in more than one place, you’ll be able to add these later.
         </div>
 
         {{ details({

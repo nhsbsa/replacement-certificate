@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is {{ data['patient-firstname'] }}'s home address?
+  What is their full home address?
 {% endblock %}
 
 {% block beforeContent %}
@@ -43,7 +43,7 @@
 
         {% call fieldset({
           legend: {
-            text: "What is {{ data['patient-firstname'] }}'s home address?",
+            text: "What is their full home address?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
@@ -94,7 +94,17 @@
           },
           "id": "postcode",
           "name": "postcode",
-          "classes": "nhsuk-input--width-10 nhsuk-input--error"
+          "classes": "nhsuk-input--width-20 nhsuk-input--error"
+        }) }}
+
+        {{ input({
+          "label": {
+            "text": "Country"
+          },
+          "id": "country",
+          "name": "country",
+          "value": "United Kingdom",
+          "classes": "nhsuk-input--width-20"
         }) }}
 
 

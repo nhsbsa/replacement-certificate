@@ -357,17 +357,17 @@
                </dd>
             </div>
 
-                  {% if data['child-know-nino'] == "Yes" %}
+                  {% if data['child-know-ohs'] == "Yes" %}
                     <div class="nhsuk-summary-list__row">
                        <dt class="nhsuk-summary-list__key">
-                          National Insurance number
+                        Child’s reference number
                        </dt>
                        <dd class="nhsuk-summary-list__value">
                           {{ data['child-nino'] }}
                        </dd>
                        <dd class="nhsuk-summary-list__actions">
-                          <a href="data-capture/child/nino">
-                          Change<span class="nhsuk-u-visually-hidden"> National Insurance number</span>
+                          <a href="data-capture/child/ohs">
+                          Change<span class="nhsuk-u-visually-hidden"> your child's reference number</span>
                           </a>
                        </dd>
                     </div>
