@@ -123,25 +123,23 @@
                       "text": "Choose another date",
                       "conditional": {
                         "html": chooseDateHtml
-                      }
+                      },
+                      "checked": "true"
                     }
                   ]
                 }) }}
 
 
-            </fieldset>
+              </fieldset>
+              <button class="nhsuk-button" type="submit">Continue</button>
+          </form>
 
-          </div>
+          {{ backLink({
+            "href": "javascript:history.go(-1)",
+            "text": "Change my previous answer"
+          }) }}
 
-            <button class="nhsuk-button" type="submit">Continue</button>
-        </form>
-
-     {{ backLink({
-        "href": "javascript:history.go(-2)",
-        "text": "Change my previous answer"
-      }) }}
-      
+      </div>
     </div>
-  </div>
 {% endblock %}
           
