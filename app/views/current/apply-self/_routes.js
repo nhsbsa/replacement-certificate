@@ -510,13 +510,14 @@ router.post(['/treatmentStart', '/treatmentStartErr', '/treatmentStartDateErr', 
   var yearReg = /^(202[1-3])$/;            ///< Allows a number between 2021 and 2022
   var monthReg = /^(0?[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
   var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
-  
+
   //Today's date
   const today = new Date();
   const yyyy = today.getFullYear();
   let mm = today.getMonth() + 1; 
   const dd = today.getDate();
   const formattedToday = dd + '/' + mm + '/' + yyyy;
+
   var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
   
   //User input treatment start date
@@ -577,6 +578,7 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   let mm = today.getMonth() + 1; 
   const dd = today.getDate();
   const formattedToday = dd + '/' + mm + '/' + yyyy;
+
   console.log(formattedToday);
   var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
   console.log(lastRunStartToday);
@@ -586,6 +588,7 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   console.log(dob);
   var lastRunStartDob = new Date(dob.split('/')[2], dob.split('/')[1] - 1, dob.split('/')[0]);
   console.log(lastRunStartDob);
+
 
   if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday) {
     return res.redirect('know-ohs')

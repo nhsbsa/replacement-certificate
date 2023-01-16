@@ -604,9 +604,11 @@ function hasNumber(myString) {
 }
 
   //Example of implementing
+
   
 //Treatment start date
 router.post(['/treatmentStart', '/treatmentStartErr', '/treatmentStartDateErr', '/treatmentStartDayErr', '/treatmentStartDayMonthErr', '/treatmentStartDayYearErr','/treatmentStartMonthErr', '/treatmentStartMonthYearErr', '/treatmentStartYearErr', '/treatmentStartErr', '/treatmentStartFutureErr', '/treatmentStartInvalidErr'], function (req, res) {
+
   var treatmentStart = req.session.data['start-date'];
   var chooseDay = req.session.data['choose-start-date-day'];
   var chooseMonth = req.session.data['choose-start-date-month'];
@@ -622,6 +624,7 @@ router.post(['/treatmentStart', '/treatmentStartErr', '/treatmentStartDateErr', 
   let mm = today.getMonth() + 1; 
   const dd = today.getDate();
   const formattedToday = dd + '/' + mm + '/' + yyyy;
+
   var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
   
   //User input treatment start date
@@ -682,6 +685,7 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   let mm = today.getMonth() + 1; 
   const dd = today.getDate();
   const formattedToday = dd + '/' + mm + '/' + yyyy;
+
   console.log(formattedToday);
   var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
   console.log(lastRunStartToday);
@@ -691,6 +695,7 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   console.log(dob);
   var lastRunStartDob = new Date(dob.split('/')[2], dob.split('/')[1] - 1, dob.split('/')[0]);
   console.log(lastRunStartDob);
+
 
   if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday) {
     res.redirect('know-ohs')
@@ -996,6 +1001,7 @@ router.get(/cya/, function (req,res){
     const d = new Date(startMonth);
     var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
 
+
     res.render(__dirname + '/cya', {startDateFormatted: startDateFormatted});
   } 
   
@@ -1014,4 +1020,6 @@ router.get(/cya/, function (req,res){
 });
 
 
+
 module.exports = router
+

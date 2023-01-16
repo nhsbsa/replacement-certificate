@@ -309,6 +309,7 @@ router.post(['/treatmentStart', '/treatmentStartErr', '/treatmentStartDateErr', 
   let mm = today.getMonth() + 1; 
   const dd = today.getDate();
   const formattedToday = dd + '/' + mm + '/' + yyyy;
+  
   var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
   
   //User input treatment start date
@@ -616,7 +617,9 @@ router.post(['/data-capture/child/dateBirth', '/data-capture/child/dateBirthErr'
   // console.log(`The formatted input date for DOB is: ${lastRunStartDob}`);
 
   //Date of birth must be less than 18 years from current date
+
   var maxChildDob = new Date(lastRunStartToday.setYear(lastRunStartToday.getYear() - 18));
+
   // console.log(`The max date for a child DOB (< 18 years) is: ${maxChildDob}`);
 
   if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday && lastRunStartDob < maxChildDob) {
