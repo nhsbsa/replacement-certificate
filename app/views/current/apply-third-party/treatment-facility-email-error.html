@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the email address of the hospital, clinic, or treatment facility where they're receiving treatment? 
+  What is the email address of the hospital, clinic, or treatment facility?
 {% endblock %}
 
 {% block beforeContent %}
@@ -46,15 +46,14 @@
 
         {% call fieldset({
           legend: {
-            text: "What is the email address of the hospital, clinic, or treatment facility where they're receiving treatment?",
+            text: "What is the email address of the hospital, clinic, or treatment facility?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
         <div class="nhsuk-hint">
-          It's important that this email address is accurate. Medical staff will be able to provide you with this.  
-
-          You should not search for this online as this information may not be correct.
+          <p>It’s important that this email address is accurate. Medical staff will be able to provide you with this.</p>
+          <p>You should not search online for this as this information may not be correct.</p>
         </div>
 
         {{ input({

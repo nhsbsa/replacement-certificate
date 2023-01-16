@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is {{ data['patient-firstname'] }}'s home address?
+  What is their home address?
 {% endblock %}
 
 {% block beforeContent %}
@@ -41,7 +41,7 @@
       </div>
       <form action="addressListErr" method="post">
 
-        <h2>What is {{ data['patient-firstname'] }}'s home address?</h2>
+        <h2>What is their home address?</h2>
 
         {% call fieldset({
           legend: {
@@ -51,16 +51,15 @@
           }
         }) %}
 
-        <h3>Select an address</h3>
-
         {{ select({
           "id": "select-1",
           "name": "select-1",
           "class": "nhsuk-input--error",
-          "label": {
-          },
           "errorMessage": {
             "text": "Select an address from the list"
+          },
+          "label": {
+            "text": "Select an address"
           },
           "items": [
             {

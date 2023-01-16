@@ -128,24 +128,17 @@
                   ]
                 }) }}
 
-
               </fieldset>
 
               <button class="nhsuk-button" type="submit">Continue</button>
-
-              {{ backLink({
-                "href": "javascript:history.go(-2)",
-                "text": "Change my previous answer"
-              }) }}
-
-            </div>
-  
-              
           </form>
-
-     
-      
+  
+       {{ backLink({
+          "href": "javascript:history.go(-1)",
+          "text": "Change my previous answer"
+        }) }}
+        
+      </div>
     </div>
-  </div>
 {% endblock %}
           

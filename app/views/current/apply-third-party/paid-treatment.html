@@ -1,9 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-
-  Has the patient paid towards the cost of medical treatment?
-
+  Have they paid anything towards the cost of medical treatment?
 {% endblock %}
 
 {% block beforeContent %}
@@ -33,7 +31,7 @@
 
         {% call fieldset({
           legend: {
-            text: "Has the patient paid anything towards the cost of medical treatment?",
+            text: "Have they paid anything towards the cost of medical treatment?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }

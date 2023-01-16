@@ -26,7 +26,7 @@
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
-      <form action="know-nino" method="post">
+      <form action="ohsNr" method="post">
 
         <h2>What is their OHS reference number?</h2>
 
@@ -38,7 +38,9 @@
           }
         }) %}
 
-        <p>This can be found on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC).</p>
+        <div class="nhsuk-hint">
+          <p>This can be found on any letters or emails from us relating to a UK European Health Insurance Card (EHIC), UK Global Health Insurance Card (GHIC), S1, or Provisional Replacement Certificate (PRC).</p>
+        </div>
 
         {{ input({
           "label": {
@@ -46,7 +48,7 @@
           },
           "id": "patient-ohs",
           "name": "patient-ohs",
-          "classes": "nhsuk-input--width-10"
+          "classes": "nhsuk-input--width-20"
         }) }}
 
 

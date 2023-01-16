@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is the name of the hospital, clinic, or treatment facility where they're receiving treatment?
+  What is the name of the hospital, clinic, or treatment facility that has provided treatment?
 {% endblock %}
 
 {% block beforeContent %}
@@ -34,7 +34,7 @@
         <div class="nhsuk-error-summary__body">
           <ul class="nhsuk-list nhsuk-error-summary__list">
             <li>
-              <a href="#treatment-facility-name">Enter the name of the hospital, clinic, or treatment facility</a>
+              <a href="#treatment-facility-name">Facility name must only include letters a to z, accented characters, hyphens, spaces and apostrophes</a>
             </li>
           </ul>
         </div>
@@ -45,14 +45,14 @@
        <br>
         {% call fieldset({
           legend: {
-            text: "What is the name of the hospital, clinic, or treatment facility where they're receiving treatment?",
+            text: "What is the name of the hospital, clinic, or treatment facility that has provided treatment?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
         <div class="nhsuk-hint">
-          If they've had treatment in more than one place, you'll be able to add these later.
+          If they have had treatment in more than one place, you’ll be able to add these later.
         </div>
         
         {{ details({
@@ -69,7 +69,7 @@
             "text": "Name"
           },
           "errorMessage": {
-            "text": "Enter the name of the hospital, clinic, or treatment facility"
+            "text": "Facility name must only include letters a to z, accented characters, hyphens, spaces and apostrophes"
           },
           "id": "treatment-facility-name",
           "name": "treatment-facility-name",
