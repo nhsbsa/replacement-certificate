@@ -60,18 +60,16 @@
 
         {% endcall %}
 
-
-        {{ button({
-          "text": "Continue"
-        }) }}
-
-
         {{ details({
           "text": "Why we ask for your OHS reference number",
           "HTML": "
           <p>We can use your OHS reference number to see if you currently hold a record with us. This may help us process your application faster.</p>
           <p>Providing this is optional and does not affect your eligibility to apply for a PRC.</p>
           "
+        }) }}
+
+        {{ button({
+          "text": "Continue"
         }) }}
 
       </form>
