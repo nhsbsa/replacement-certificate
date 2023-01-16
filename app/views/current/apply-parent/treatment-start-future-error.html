@@ -75,6 +75,9 @@
                     {{ dateInput({
                       "id": "example",
                       "namePrefix": "choose-start-date",
+                      "errorMessage": {
+                        "text": "Treatment start date cannot be in the future"
+                      },
                       "fieldset": {
                         "legend": {
                           "classes": "nhsuk-label--l",
@@ -105,9 +108,6 @@
                 {{ radios({
                   "idPrefix": "start-date",
                   "name": "start-date",
-                  "errorMessage": {
-                    "text": "Treatment start date cannot be in the future"
-                  },
                   "fieldset": {
                     "legend": {
 
@@ -125,7 +125,8 @@
                       "text": "Choose another date",
                       "conditional": {
                         "html": chooseDateHtml
-                      }
+                      },
+                      "checked": "true"
                     }
                   ]
                 }) }}
