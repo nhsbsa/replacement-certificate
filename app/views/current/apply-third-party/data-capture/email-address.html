@@ -38,8 +38,11 @@
           }
         }) %}
 
-        <p>If this application is successful, we'll email the PRC to the treatment facilities so they can work out which costs can be covered. </p>
-        <p>If you can provide an email address for {{ data['patient-firstname'] }}, we’ll use this to send them a copy of the PRC for their reference.</p>
+        <div class="nhsuk-hint">
+          <p>If this application is successful, we'll email the PRC to the treatment facilities so they can work out which costs can be covered. </p>
+          <p>If you can provide an email address for {{ data['patient-firstname'] }}, we’ll use this to send them a copy of the PRC for their reference.</p>
+        </div>
+
 
         {{ input({
           "label": {
