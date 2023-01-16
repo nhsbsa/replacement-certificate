@@ -226,7 +226,36 @@ router.post(['/additionalFacilityOne', '/additionalFacilityOneErr'], function (r
     res.redirect('treatment-facility-name-2')
   }
   if (additionalFacilityOne == "No") {
-    res.redirect('treatment-facility-details')
+    var startDate = req.session.data['start-date'];
+    // console.log(`This is the start date: ${startDate}`);
+
+    var startDay = req.session.data['choose-start-date-day'];
+    var startMonth = req.session.data['choose-start-date-month'];
+    var startYear = req.session.data['choose-start-date-year'];
+
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+
+    if (startDate == 'text') {
+      const d = new Date(startMonth);
+      var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
+      // console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+
+      res.render(__dirname + '/treatment-facility-details', {startDateFormatted: startDateFormatted});
+    } 
+
+    if (startDate == 'todayDate'){
+      let today = new Date();
+      let day = today.getDate();
+      let month = today.getMonth() + 1;
+      let year = today.getFullYear();
+
+      const m = new Date(month);
+      let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
+      // console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+
+      res.render(__dirname + '/treatment-facility-details', {todayDateFormatted: todayDateFormatted});
+    }
   }
   else {
     res.redirect('additional-facility-error')
@@ -241,7 +270,36 @@ router.post(['/additionalFacilityTwo', '/additionalFacilityTwoErr'], function (r
     res.redirect('treatment-facility-name-3')
   }
   if (additionalFacilityTwo == "No") {
-    res.redirect('treatment-facility-details-2')
+    var startDate = req.session.data['start-date'];
+    // console.log(`This is the start date: ${startDate}`);
+
+    var startDay = req.session.data['choose-start-date-day'];
+    var startMonth = req.session.data['choose-start-date-month'];
+    var startYear = req.session.data['choose-start-date-year'];
+
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+
+    if (startDate == 'text') {
+      const d = new Date(startMonth);
+      var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
+      // console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+
+      res.render(__dirname + '/treatment-facility-details-2', {startDateFormatted: startDateFormatted});
+    } 
+
+    if (startDate == 'todayDate'){
+      let today = new Date();
+      let day = today.getDate();
+      let month = today.getMonth() + 1;
+      let year = today.getFullYear();
+
+      const m = new Date(month);
+      let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
+      // console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+
+      res.render(__dirname + '/treatment-facility-details-2', {todayDateFormatted: todayDateFormatted});
+    }
   }
   else {
     res.redirect('additional-facility-2-error')
@@ -256,7 +314,36 @@ router.post(['/additionalFacilityThree', '/additionalFacilityThreeErr'], functio
     res.redirect('additional-facility-3')
   }
   if (additionalFacilityThree == "No") {
-    res.redirect('treatment-facility-details-3')
+    var startDate = req.session.data['start-date'];
+    // console.log(`This is the start date: ${startDate}`);
+
+    var startDay = req.session.data['choose-start-date-day'];
+    var startMonth = req.session.data['choose-start-date-month'];
+    var startYear = req.session.data['choose-start-date-year'];
+
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+
+    if (startDate == 'text') {
+      const d = new Date(startMonth);
+      var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
+      // console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+
+      res.render(__dirname + '/treatment-facility-details-3', {startDateFormatted: startDateFormatted});
+    } 
+
+    if (startDate == 'todayDate'){
+      let today = new Date();
+      let day = today.getDate();
+      let month = today.getMonth() + 1;
+      let year = today.getFullYear();
+
+      const m = new Date(month);
+      let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
+      // console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+
+      res.render(__dirname + '/treatment-facility-details-3', {todayDateFormatted: todayDateFormatted});
+    }
   }
   else {
     res.redirect('additional-facility-3-error')
@@ -819,107 +906,6 @@ router.post(['/treatmentFacilityEmailThree', '/treatmentFacilityEmailThreeErr', 
     res.redirect('additional-facility-3')
   }
 })
-
-// Treatment facility details dates //
-router.get(/treatment-facility-details/, function (req,res){
-  var startDate = req.session.data['start-date'];
-  // console.log(`This is the start date: ${startDate}`);
-
-  var startDay = req.session.data['choose-start-date-day'];
-  var startMonth = req.session.data['choose-start-date-month'];
-  var startYear = req.session.data['choose-start-date-year'];
-
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
-
-  if (startDate == 'text') {
-    const d = new Date(startMonth);
-    var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
-    // console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
-
-    res.render(__dirname + '/treatment-facility-details', {startDateFormatted: startDateFormatted});
-  } 
-  
-  if (startDate == 'todayDate'){
-    let today = new Date();
-    let day = today.getDate();
-    let month = today.getMonth() + 1;
-    let year = today.getFullYear();
-    
-    const m = new Date(month);
-    let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
-    // console.log(`This is the formatted date of today: ${todayDateFormatted}`);
-
-    res.render(__dirname + '/treatment-facility-details', {todayDateFormatted: todayDateFormatted});
-  }
-});
-
-router.get(/treatment-facility-details-2/, function (req,res){
-  var startDate = req.session.data['start-date'];
-  // console.log(`This is the start date: ${startDate}`);
-
-  var startDay = req.session.data['choose-start-date-day'];
-  var startMonth = req.session.data['choose-start-date-month'];
-  var startYear = req.session.data['choose-start-date-year'];
-
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
-
-  if (startDate == 'text') {
-    const d = new Date(startMonth);
-    var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
-    // console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
-
-    res.render(__dirname + '/treatment-facility-details-2', {startDateFormatted: startDateFormatted});
-  } 
-  
-  if (startDate == 'todayDate') {
-    let today = new Date();
-    let day = today.getDate();
-    let month = today.getMonth() + 1;
-    let year = today.getFullYear();
-    
-    const m = new Date(month);
-    let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
-    // console.log(`This is the formatted date of today: ${todayDateFormatted}`);
-
-    res.render(__dirname + '/treatment-facility-details-2', {todayDateFormatted: todayDateFormatted});
-  }
-});
-
-router.get(/treatment-facility-details-3/, function (req,res){
-  var startDate = req.session.data['start-date'];
-  // console.log(`This is the start date: ${startDate}`);
-
-  var startDay = req.session.data['choose-start-date-day'];
-  var startMonth = req.session.data['choose-start-date-month'];
-  var startYear = req.session.data['choose-start-date-year'];
-
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
-
-  if (startDate == 'todayDate') {
-    const d = new Date(startMonth);
-    var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
-    // console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
-
-    res.render(__dirname + '/treatment-facility-details-3', {startDateFormatted: startDateFormatted});
-  } 
-  
-  if (startDate == 'todayDate'){
-    let today = new Date();
-    let day = today.getDate();
-    let month = today.getMonth() + 1;
-    let year = today.getFullYear();
-    
-    const m = new Date(month);
-    let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
-    // console.log(`This is the formatted date of today: ${todayDateFormatted}`);
-
-    res.render(__dirname + '/treatment-facility-details-3', {todayDateFormatted: todayDateFormatted});
-  }
-});
-
 
 // Do you know your OHS reference number?
 router.post(['/data-capture/knowOhs', '/data-capture/knowOhsErr'], function (req, res) {
