@@ -704,15 +704,15 @@ router.post(['/data-capture/child/dateBirth', '/data-capture/child/dateBirthErr'
 
   //User input DOB
   const dob = birthDay + '/' + birthMonth + '/' + birthYear;
-  // console.log(`The input date for DOB is: ${dob}`);
+  // console.log('DOB date is ' + dob);
   var lastRunStartDob = new Date(dob.split('/')[2], dob.split('/')[1] - 1, dob.split('/')[0]);
-  // console.log(`The formatted input date for DOB is: ${lastRunStartDob}`);
+  // console.log('Formatted DOB is ' + lastRunStartDob);
 
   //Date of birth must be less than 18 years from current date
 
-  var maxChildDob = new Date(lastRunStartToday.setYear(lastRunStartToday.getYear() - 18));
+  var maxChildDob = new Date(lastRunStartToday.setFullYear(lastRunStartToday.getFullYear() - 18));
 
-  // console.log(`The max date for a child DOB (< 18 years) is: ${maxChildDob}`);
+  // console.log('Max Child DOB is ' + maxChildDob);
 
   if (birthDay == '' && monthReg.test(birthMonth) && yearReg.test(birthYear)) {
     res.redirect('dob-day-error')
@@ -736,13 +736,10 @@ router.post(['/data-capture/child/dateBirth', '/data-capture/child/dateBirthErr'
     res.redirect('dob-error')
   }
   else if (dateReg.test(dob) && lastRunStartDob > maxChildDob) {
-    res.redirect('dob-max-error')
-  }
-  else if (dateReg.test(dob) && lastRunStartDob < lastRunStartToday && lastRunStartDob < maxChildDob) {
     res.redirect('same-address')
   }
-  else {
-    res.redirect('dob-invalid')
+  else if (dateReg.test(dob) && lastRunStartDob < maxChildDob) {
+    res.redirect('dob-max-error')
   }
 })
 

@@ -90,7 +90,7 @@ router.post(['/coverAnother', '/coverAnotherErr'], function (req, res) {
     res.redirect('nationality')
   }
   else {
-    res.redirect('cover-from-another')
+    res.redirect('cover-from-another-error')
   }
 })
 
