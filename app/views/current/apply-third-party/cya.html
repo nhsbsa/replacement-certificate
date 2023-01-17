@@ -167,13 +167,17 @@
                </dt>
                <dd class="nhsuk-summary-list__value">
                   {% if 'UK' in data['nationality'] %}
-							UK national<br>
+							UK
 						{% endif %}
-						{% if 'EU, EEA or Swiss' in data['nationality'] %}
-							   <span>{{ data['myInputsEURT'] }}</span><br>
+						{% if 'EU, EEA' in data['nationality'] %}
+							{% for i in data['myInputsEURT'] %}
+								<span>{{i}}</span>
+							{% endfor %}
 						{% endif %}
 						{% if 'Other' in data['nationality'] %}
-								<span>{{ data['myInputsOtherRT'] }}</span><br>
+							{% for i in data['myInputsOtherRT'] %}
+								<span>{{i}}</span>
+							{% endfor %}
 						{% endif %}
                </dd>
                <dd class="nhsuk-summary-list__actions">
