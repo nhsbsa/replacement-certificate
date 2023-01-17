@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What is your date of birth?
+  What is their date of birth?
 {% endblock %}
 
 {% block beforeContent %}
@@ -39,9 +39,9 @@
           </ul>
         </div>
       </div>
-      <form action="dateBirthInvalidErr" method="post">
+      <form action="dateBirthInvalid" method="post">
 
-        <h2>What is your date of birth?</h2>
+        <h2>What is their date of birth?</h2>
 
         {{ dateInput({
         "id": "example",

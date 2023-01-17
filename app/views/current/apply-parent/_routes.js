@@ -480,6 +480,36 @@ router.post(['/additionalFacilityOne', '/additionalFacilityOneErr'], function (r
 
       res.render(__dirname + '/treatment-facility-details', {todayDateFormatted: todayDateFormatted});
     }
+    var startDate = req.session.data['start-date'];
+    // console.log(`This is the start date: ${startDate}`);
+
+    var startDay = req.session.data['choose-start-date-day'];
+    var startMonth = req.session.data['choose-start-date-month'];
+    var startYear = req.session.data['choose-start-date-year'];
+
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+
+    if (startDate == 'text') {
+      const d = new Date(startMonth);
+      var startDateFormatted = startDay + ' ' + monthNames[d.getMonth()] + ' ' + startYear;
+      // console.log(`This is the formatted choose-start-date: ${startDateFormatted}`);
+
+      res.render(__dirname + '/treatment-facility-details', {startDateFormatted: startDateFormatted});
+    } 
+
+    if (startDate == 'todayDate'){
+      let today = new Date();
+      let day = today.getDate();
+      let month = today.getMonth() + 1;
+      let year = today.getFullYear();
+
+      const m = new Date(month);
+      let todayDateFormatted = day + ' ' +  monthNames[m.getMonth()] + ' ' + year;
+      // console.log(`This is the formatted date of today: ${todayDateFormatted}`);
+
+      res.render(__dirname + '/treatment-facility-details', {todayDateFormatted: todayDateFormatted});
+    }
   }
   else {
     res.redirect('additional-facility-error')
@@ -614,14 +644,16 @@ router.post(['/data-capture/child/fullName', '/data-capture/child/fullNameErr', 
 
 // What is your date of birth?
 
-router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-capture/dateBirthInvalid', '/data-capture/dateBirthDayErr', '/data-capture/dateBirthDayYearErr', '/data-capture/dateBirthFutureErr', '/data-capture/dateBirthInvalid', '/data-capture/dateBirthDayMonthErr', '/data-capture/dateBirthMonthErr', '/data-capture/dateBirthMonthYearErr', '/data-capture/dateBirthYearErr'], function (req, res) {
-  var birthDay = req.session.data['parent-day']
-  var birthMonth = req.session.data['parent-month']
-  var birthYear = req.session.data['parent-year']
-  
-  var yearReg = /^([1900-2023])$/;            ///< Allows a number between 1900 and 2023
-  var monthReg = /^(0?[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
-  var dayReg = /^([1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
+router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-capture/dateBirthInvalid', '/data-capture/dateBirthDayErr', '/data-capture/dateBirthDayYearErr', '/data-capture/dateBirthFutureErr', '/data-capture/dateBirthMonthErr', '/data-capture/dateBirthMonthYearErr', '/data-capture/dateBirthYearErr'], function (req, res) {
+  const birthDay = req.session.data['parent-day']
+  const birthMonth = req.session.data['parent-month']
+  const birthYear = req.session.data['parent-year']
+
+  const yearReg = /^([1900-2023])$/;            ///< Allows a number between 1900 and 2023
+  const monthReg = /^(0?[1-9]|1[0-2])$/;          ///< Allows a number between 00 and 12
+  const dayReg = /^(0?[1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
+
+  const dateReg = /^(0?[1-9]|[12][0-9]|3[01])[/](0?[1-9]|1[012])[/](\d{4})$/; /// Allows a day number between 00 and 31, a month number between 00 and 12 and a year number between 2021 and 2023
 
   // console.log(`Day: ${birthDay}, month: ${birthMonth}, year: ${birthYear}.`);
 
@@ -631,45 +663,46 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   let mm = today.getMonth() + 1; 
   const dd = today.getDate();
   const formattedToday = dd + '/' + mm + '/' + yyyy;
-  // console.log(`The date for today is: ${formattedToday}`);
+
+  console.log(formattedToday);
   var lastRunStartToday = new Date(formattedToday.split('/')[2], formattedToday.split('/')[1] - 1, formattedToday.split('/')[0]);
-  // console.log(`The formatted date for today is: ${lastRunStartToday}`);
+  console.log(lastRunStartToday);
 
   //User input DOB
   const dob = birthDay + '/' + birthMonth + '/' + birthYear;
-  // console.log(`The input date for DOB is: ${dob}`);
+  console.log(dob);
   var lastRunStartDob = new Date(dob.split('/')[2], dob.split('/')[1] - 1, dob.split('/')[0]);
-  // console.log(`The formatted input date for DOB is: ${lastRunStartDob}`);
+  console.log(lastRunStartDob);
 
-  if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday) {
-    res.redirect('know-ohs')
-  }
-  else if ( dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob > lastRunStartToday) {
-    res.redirect('dob-future-error')
-  }
-  else if (!dayReg.test(birthDay) || !monthReg.test(birthMonth) || !yearReg.test(birthYear)) {
-    res.redirect('dob-invalid')
-  }
-  else if (birthDay == '' && monthReg.test(birthMonth) && yearReg.test(birthYear)) {
-    res.redirect('dob-day-error')
+  if (birthDay == '' && monthReg.test(birthMonth) && yearReg.test(birthYear)) {
+    return res.redirect('dob-day-error')
   }
   else if (birthDay == '' && monthReg.test(birthMonth) && birthYear == '') {
-    res.redirect('dob-day-year-error')
+    return res.redirect('dob-day-year-error')
   }
   else if (dayReg.test(birthDay) && birthMonth == '' && yearReg.test(birthYear)) {
-    res.redirect('dob-month-error')
+    return res.redirect('dob-month-error')
   }   
   else if (birthDay == '' && birthMonth == '' && yearReg.test(birthYear)) {
-    res.redirect('dob-day-month-error')
+    return res.redirect('dob-day-month-error')
   } 
   else if (dayReg.test(birthDay) && birthMonth == '' && birthYear == '') {
-    res.redirect('dob-month-year-error')
+    return res.redirect('dob-month-year-error')
   } 
   else if (dayReg.test(birthDay) && monthReg.test(birthMonth) && birthYear == '') {
-    res.redirect('dob-year-error')
-  } 
+    return res.redirect('dob-year-error')
+  }
   else if (birthDay == '' && birthMonth == '' && birthYear == '') {
-    res.redirect('dob-error')
+    return res.redirect('dob-error')
+  }
+  else if (dateReg.test(dob) && lastRunStartDob < lastRunStartToday) {
+    return res.redirect('know-ohs')
+  }
+  else if (dateReg.test(dob) && lastRunStartDob > lastRunStartToday) {
+    return res.redirect('dob-future-error')
+  }
+  else if (!dayReg.test(birthDay) || !monthReg.test(birthMonth) || !yearReg.test(birthYear)) {
+    return res.redirect('dob-invalid')
   }
 })
 
@@ -679,6 +712,8 @@ router.post(['/data-capture/child/dateBirth', '/data-capture/child/dateBirthErr'
   var birthDay = req.session.data['child-day']
   var birthMonth = req.session.data['child-month']
   var birthYear = req.session.data['child-year']
+
+  const dateReg = /^(0?[1-9]|[12][0-9]|3[01])[/](0?[1-9]|1[012])[/](\d{4})$/; /// Allows a day number between 00 and 31, a month number between 00 and 12 and a year number between 2021 and 2023
 
   var yearReg = /^([1900-2023])$/;            ///< Allows a number between 2021 and 2023
   var monthReg = /^(0?[1-9]|1[0-2])$/;               ///< Allows a number between 00 and 12
@@ -699,29 +734,17 @@ router.post(['/data-capture/child/dateBirth', '/data-capture/child/dateBirthErr'
 
   //User input DOB
   const dob = birthDay + '/' + birthMonth + '/' + birthYear;
-  // console.log(`The input date for DOB is: ${dob}`);
+  // console.log('DOB date is ' + dob);
   var lastRunStartDob = new Date(dob.split('/')[2], dob.split('/')[1] - 1, dob.split('/')[0]);
-  // console.log(`The formatted input date for DOB is: ${lastRunStartDob}`);
+  // console.log('Formatted DOB is ' + lastRunStartDob);
 
   //Date of birth must be less than 18 years from current date
 
-  var maxChildDob = new Date(lastRunStartToday.setYear(lastRunStartToday.getYear() - 18));
+  var maxChildDob = new Date(lastRunStartToday.setFullYear(lastRunStartToday.getFullYear() - 18));
 
-  // console.log(`The max date for a child DOB (< 18 years) is: ${maxChildDob}`);
+  // console.log('Max Child DOB is ' + maxChildDob);
 
-  if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday && lastRunStartDob < maxChildDob) {
-    res.redirect('same-address')
-  }
-  else if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday && lastRunStartDob > maxChildDob) {
-    res.redirect('dob-max-error')
-  }
-  else if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob > lastRunStartToday) {
-    res.redirect('dob-future-error')
-  }
-  else if (!dayReg.test(birthDay) || !monthReg.test(birthMonth) || !yearReg.test(birthYear)) {
-    res.redirect('dob-invalid')
-  }
-  else if (birthDay == '' && monthReg.test(birthMonth) && yearReg.test(birthYear)) {
+  if (birthDay == '' && monthReg.test(birthMonth) && yearReg.test(birthYear)) {
     res.redirect('dob-day-error')
   }
   else if (birthDay == '' && monthReg.test(birthMonth) && birthYear == '') {
@@ -741,6 +764,12 @@ router.post(['/data-capture/child/dateBirth', '/data-capture/child/dateBirthErr'
   } 
   else if (birthDay == '' && birthMonth == '' && birthYear == '') {
     res.redirect('dob-error')
+  }
+  else if (dateReg.test(dob) && lastRunStartDob > maxChildDob) {
+    res.redirect('same-address')
+  }
+  else if (dateReg.test(dob) && lastRunStartDob < maxChildDob) {
+    res.redirect('dob-max-error')
   }
 })
 

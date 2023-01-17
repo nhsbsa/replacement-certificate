@@ -34,12 +34,12 @@
         <div class="nhsuk-error-summary__body">
           <ul class="nhsuk-list nhsuk-error-summary__list">
             <li>
-              <a href="#example">Date of birth must include a year</a>
+              <a href="#example">Date of birth must include a month and year</a>
             </li>
           </ul>
         </div>
       </div>
-      <form action="dateBirthYearErr" method="post">
+      <form action="dateBirthMonthYearErr" method="post">
 
         <h2>What is their date of birth?</h2>
 
@@ -57,7 +57,7 @@
               "text": "For example, 15 3 1984"
             },
             "errorMessage": {
-              "text": "Date of birth must include a year"
+              "text": "Date of birth must include a month and year"
             },
             "items": [
               {
@@ -66,7 +66,7 @@
               },
               {
                 "name": "month",
-                "classes": "nhsuk-input--width-2"
+                "classes": "nhsuk-input--width-2 nhsuk-input--error"
               },
               {
                 "name": "year",

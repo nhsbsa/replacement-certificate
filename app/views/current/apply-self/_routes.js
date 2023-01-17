@@ -657,6 +657,8 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   const monthReg = /^(0?[1-9]|1[0-2])$/;          ///< Allows a number between 00 and 12
   const dayReg = /^(0?[1-9]|1[0-9]|2[0-9]|3[0-1])$/;   ///< Allows a number between 00 and 31
 
+  const dateReg = /^(0?[1-9]|[12][0-9]|3[01])[/](0?[1-9]|1[012])[/](\d{4})$/; /// Allows a day number between 00 and 31, a month number between 00 and 12 and a year number between 2021 and 2023
+
   // console.log(`Day: ${birthDay}, month: ${birthMonth}, year: ${birthYear}.`);
 
   //Today's date
@@ -676,14 +678,7 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   var lastRunStartDob = new Date(dob.split('/')[2], dob.split('/')[1] - 1, dob.split('/')[0]);
   console.log(lastRunStartDob);
 
-
-  if (dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob < lastRunStartToday) {
-    return res.redirect('know-ohs')
-  }
-  else if ( dayReg.test(birthDay) && monthReg.test(birthMonth) && yearReg.test(birthYear) && lastRunStartDob > lastRunStartToday) {
-    return res.redirect('dob-future-error')
-  }
-  else if (birthDay == '' && monthReg.test(birthMonth) && yearReg.test(birthYear)) {
+  if (birthDay == '' && monthReg.test(birthMonth) && yearReg.test(birthYear)) {
     return res.redirect('dob-day-error')
   }
   else if (birthDay == '' && monthReg.test(birthMonth) && birthYear == '') {
@@ -700,9 +695,15 @@ router.post(['/data-capture/dateBirth', '/data-capture/dateBirthErr', '/data-cap
   } 
   else if (dayReg.test(birthDay) && monthReg.test(birthMonth) && birthYear == '') {
     return res.redirect('dob-year-error')
-  } 
+  }
   else if (birthDay == '' && birthMonth == '' && birthYear == '') {
     return res.redirect('dob-error')
+  }
+  else if (dateReg.test(dob) && lastRunStartDob < lastRunStartToday) {
+    return res.redirect('know-ohs')
+  }
+  else if (dateReg.test(dob) && lastRunStartDob > lastRunStartToday) {
+    return res.redirect('dob-future-error')
   }
   else if (!dayReg.test(birthDay) || !monthReg.test(birthMonth) || !yearReg.test(birthYear)) {
     return res.redirect('dob-invalid')

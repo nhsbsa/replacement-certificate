@@ -82,18 +82,21 @@
                       "hint": {
                         "text": "For example, 19 2 2022"
                       },
+                      "errorMessage": {
+                        "text": "Treatment start date cannot be in the future"
+                      },
                       "items": [
                         {
                           "name": "day",
-                          "classes": "nhsuk-input--width-2"
+                          "classes": "nhsuk-input--width-2 nhsuk-input--error"
                         },
                         {
                           "name": "month",
-                          "classes": "nhsuk-input--width-2"
+                          "classes": "nhsuk-input--width-2 nhsuk-input--error"
                         },
                         {
                           "name": "year",
-                          "classes": "nhsuk-input--width-4"
+                          "classes": "nhsuk-input--width-4 nhsuk-input--error"
                         }
                       ]
                     }) }}
@@ -103,9 +106,6 @@
                 {{ radios({
                   "idPrefix": "start-date",
                   "name": "start-date",
-                  "errorMessage": {
-                    "text": "Treatment start date cannot be in the future"
-                  },
                   "fieldset": {
                     "legend": {
 
@@ -123,7 +123,8 @@
                       "text": "Choose another date",
                       "conditional": {
                         "html": chooseDateHtml
-                      }
+                      },
+                      "checked": "true"
                     }
                   ]
                 }) }}
