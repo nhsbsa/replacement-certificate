@@ -107,62 +107,65 @@ router.post(['/nationality','/nationalityErr', '/nationalityErrEU', '/nationalit
   var treatmentCountry = req.session.data['location-picker-1'];
   var nationalityEUErr = req.session.data['myInputsEURT'];
   var nationalityOtherErr = req.session.data['myInputsOther'];
+  console.log(nationality);
+  console.log(nationalityEUErr);
+  console.log(nationalityOtherErr);
 
   if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr == '') {
     res.redirect('nationality-eu-other-error')
   }
-  if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
+  else if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
     res.redirect('nationality-eu-error')
   }
-  if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
+  else if (arraysContainSame(nationality, ['UK','EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
     res.redirect('nationality-other-error')
   }
-  if (arraysContainSame(nationality, ['UK', 'EU, EEA', 'Other']) == true) {
+  else if (arraysContainSame(nationality, ['UK', 'EU, EEA', 'Other']) == true) {
     res.redirect('treatment-start')
   }
-  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr == '') {
+  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr == '') {
     res.redirect('nationality-eu-other-error')
   }
-  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
+  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr != '' && nationalityOtherErr == '') {
     res.redirect('nationality-other-error')
   }
-  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
+  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true && nationalityEUErr == '' && nationalityOtherErr != '') {
     res.redirect('nationality-eu-error')
   }
-  if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true) {
+  else if (arraysContainSame(nationality, ['EU, EEA', 'Other']) == true) {
     res.redirect('treatment-start')
   }
-  if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true && nationalityEUErr == '') {
+  else if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true && nationalityEUErr == '') {
     res.redirect('nationality-eu-error')
   }
-  if (nationality == 'EU, EEA' && nationalityEUErr == '') {
+  else if (nationality == 'EU, EEA' && nationalityEUErr == '') {
     res.redirect('nationality-eu-error')
   }
-  if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true) {
+  else if (arraysContainSame(nationality, ['UK', 'EU, EEA']) == true) {
     res.redirect('treatment-start')
   }
-  if (nationality == 'EU, EEA') {
+  else if (nationality == 'EU, EEA') {
     res.redirect('treatment-start')
   }
-  if (arraysContainSame(nationality, ['UK', 'Other']) == true && nationalityOtherErr == '') {
+  else if (arraysContainSame(nationality, ['UK', 'Other']) == true && nationalityOtherErr == '') {
     res.redirect('nationality-other-error')
   }
-  if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
+  else if (arraysContainSame(nationality, ['UK', 'Other']) == true) {
     res.redirect('treatment-start')
   }
-  if (nationality == 'Other' && treatmentCountry == 'Switzerland') {
+  else if (nationality == 'Other' && treatmentCountry == 'Switzerland') {
     res.redirect('kickouts/ineligible-swiss')
   }
-  if (nationality == 'Other' && nationalityOtherErr == '') {
+  else if (nationality == 'Other' && nationalityOtherErr == '') {
     res.redirect('nationality-other-error')
   }
-  if (nationality == 'Other') {
+  else if (nationality == 'Other') {
     res.redirect('treatment-start')
   }
-  if (nationality == 'UK') {
+  else if (nationality == 'UK') {
     res.redirect('treatment-start')
   }
-  else {
+  else if (nationality == undefined) {
     res.redirect('nationality-error')
   }
 })

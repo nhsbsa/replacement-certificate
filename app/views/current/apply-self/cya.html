@@ -197,23 +197,19 @@
                   Nationality
                </dt>
                <dd class="nhsuk-summary-list__value">
-                  {% if data['nationality'] %}
-                  
-                     {% if 'UK' in data['nationality'] %}
-                        UK
-                     {% endif %}
-
-                     {% if 'EU, EEA or Swiss' in data['nationality'] %}
-                        EU
-                     {% endif %}
-
-                     {% if 'Other' in data['nationality'] %}
-                        Other
-                     {% endif %}
-
-                  {% else %}
-                     &#8212;
-                  {% endif %}
+                  {% if 'UK' in data['nationality'] %}
+							UK
+						{% endif %}
+						{% if 'EU, EEA' in data['nationality'] %}
+							{% for i in data['myInputsEURT'] %}
+								<span>{{i}}</span>
+							{% endfor %}
+						{% endif %}
+						{% if 'Other' in data['nationality'] %}
+							{% for i in data['myInputsOtherRT'] %}
+								<span>{{i}}</span>
+							{% endfor %}
+						{% endif %}
                </dd>
                <dd class="nhsuk-summary-list__actions">
                   <a class="nhsuk-link" href="nationality">
